@@ -67,9 +67,10 @@ nnoremap <Space> :
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Open .vimrc (really custom_vimrc)
+" Open .vimrc 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>v :e  ~/.vim/custom_vimrc<CR>
+nnoremap <leader>v :e  ~/.vimrc<CR>
+map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
