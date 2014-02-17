@@ -24,21 +24,22 @@ Bundle 'rking/ag.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/syntastic'
 Bundle 'junegunn/vim-easy-align'
+Bundle 'tpope/vim-surround'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " no vi compatability
-set nocompatible 
+set nocompatible
 
 " Enable filetype detection
-filetype on           
+filetype on
 
 " Enable filetype-specific indenting
-filetype indent on    
+filetype indent on
 
 " Enable filetype-specific plugins
-filetype plugin on    
+filetype plugin on
 
 " Sets how many lines of history VIM has to remember
 set history=200
@@ -67,7 +68,7 @@ nnoremap <Space> :
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Open .vimrc 
+" Open .vimrc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>v :e  ~/.vimrc<CR>
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
@@ -139,9 +140,9 @@ set smartindent
 filetype indent on
 
 " Navigate splits
-nmap <silent> <c-k> :wincmd k<CR>                                                                                                                       
-nmap <silent> <c-j> :wincmd j<CR>                                                                                                                       
-nmap <silent> <c-h> :wincmd h<CR>                                                                                                                       
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 " consistent menu navigation
@@ -179,6 +180,24 @@ set undolevels=100
 " Treat long lines as break lines
 map j gj
 map k gk
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Strip trailing whitespace
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+" Currently stripping for all filetypes
+autocmd BufWritePre *.* :call <SID>StripTrailingWhitespaces()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
