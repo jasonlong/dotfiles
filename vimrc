@@ -25,6 +25,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/syntastic'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-rails'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
