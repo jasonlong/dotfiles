@@ -57,8 +57,11 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" ExitInsertMode: Alternative keybinding
+" ExitInsertMode: Alternative keybinding (w/ save)
 imap jj <Esc>:w<CR>
+
+" Close buffer, but leave split open
+nnoremap <Leader>d :bp\|bd #<CR>
 
 " Fast buffer switching
 :nnoremap <F1> :bprevious<CR>
