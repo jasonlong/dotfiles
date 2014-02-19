@@ -236,6 +236,9 @@ nnoremap f H:call EasyMotion#F(0, 0)<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>t :CtrlP<CR>
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|vendor)$',
+  \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tComment
@@ -261,6 +264,7 @@ map <C-s> :NERDTreeToggle<CR>
 " Ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>a :Ag<space>
+let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore-case --ignore vendor/ --ignore .log"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
