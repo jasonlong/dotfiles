@@ -48,8 +48,8 @@ set history=200
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Set working directory automatically
-" set autochdir
+" Save when focus lost
+:au FocusLost * silent! wa
 
 let mapleader = ","
 let g:mapleader = ","
@@ -58,7 +58,7 @@ let g:mapleader = ","
 nmap <leader>w :w!<cr>
 
 " ExitInsertMode: Alternative keybinding
-imap jj <Esc>
+imap jj <Esc>:w<CR>
 
 " Fast buffer switching
 :nnoremap <F1> :bprevious<CR>
