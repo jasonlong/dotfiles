@@ -7,7 +7,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'tComment'
-Bundle 'Solarized'
 Bundle 'Indent-Guides'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
@@ -16,7 +15,6 @@ Bundle 'mattn/emmet-vim'
 Bundle 'Shougo/neocomplete'
 Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/neosnippet-snippets'
-Bundle 'tomasr/molokai'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'jiangmiao/auto-pairs'
@@ -26,6 +24,12 @@ Bundle 'scrooloose/syntastic'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-rails'
+
+" Colors
+Bundle 'sjl/badwolf'
+Bundle 'Solarized'
+Bundle 'tomasr/molokai'
+Bundle '29decibel/codeschool-vim-theme'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -90,7 +94,6 @@ set ruler
 " Line numbers
 set number
 
-
 " A buffer becomes hidden when it is abandoned
 set hid
 
@@ -121,6 +124,10 @@ set showmatch
 
 " How many tenths of a second to blink when matching brackets
 set mat=2
+
+" Remove scrollbars
+set guioptions-=r " right scrollbar
+set go-=L " left scrollbar
 
 " No annoying sound on errors
 set noerrorbells
@@ -159,11 +166,10 @@ inoremap <C-k> <C-p>
 " Enable syntax highlighting
 syntax enable
 
-set background=light
-colorscheme tomorrow
-let g:solarized_style="light"
-let g:solarized_contrast="high"
-
+set background=dark
+colorscheme codeschool
+" let g:solarized_style="dark"
+" let g:solarized_contrast="high"
 set guifont=Consolas\ for\ Powerline:h17
 
 " Set utf8 as standard encoding and en_US as the standard language
