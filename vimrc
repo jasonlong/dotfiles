@@ -25,11 +25,12 @@ Bundle 'junegunn/vim-easy-align'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-rails'
 
-" Colors
+" Colors and color tools
 Bundle 'sjl/badwolf'
 Bundle 'Solarized'
 Bundle 'tomasr/molokai'
 Bundle '29decibel/codeschool-vim-theme'
+Bundle 'gerw/vim-HiLinkTrace'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -167,7 +168,7 @@ inoremap <C-k> <C-p>
 syntax enable
 
 set background=dark
-colorscheme codeschool
+colorscheme lotus
 " let g:solarized_style="dark"
 " let g:solarized_contrast="high"
 set guifont=Consolas\ for\ Powerline:h17
