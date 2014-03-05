@@ -1,3 +1,6 @@
+" Temp for reloading lavalamp.vim colorscheme
+autocmd! bufwritepost lavalamp.vim source %
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -23,13 +26,14 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/syntastic'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-rails'
+'
 
 " Colors and color tools
 Bundle 'sjl/badwolf'
 Bundle 'Solarized'
 Bundle 'tomasr/molokai'
 Bundle '29decibel/codeschool-vim-theme'
+Bundle 'sickill/vim-monokai'
 Bundle 'gerw/vim-HiLinkTrace'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -53,6 +57,9 @@ set history=200
 " Set to auto read when a file is changed from the outside
 set autoread
 
+" Don't line break in the middle of words
+set lbr
+
 " Save when focus lost
 :au FocusLost * silent! wa
 
@@ -75,6 +82,10 @@ nnoremap <Leader>d :bp\|bd #<CR>
 " Fast access to : commands
 nnoremap <Space> :
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" File types
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au BufRead,BufNewFile *.md set syntax=markdown
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Open .vimrc
@@ -131,9 +142,11 @@ set guioptions-=r " right scrollbar
 set go-=L " left scrollbar
 
 " No annoying sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
+" set noerrorbells
+" set novisualbell
+" set t_vb=
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 set tm=500
 
 " Tab handling
@@ -168,9 +181,9 @@ inoremap <C-k> <C-p>
 syntax enable
 
 set background=dark
-colorscheme lotus
-" let g:solarized_style="dark"
-" let g:solarized_contrast="high"
+colorscheme lavalamp
+let g:solarized_style="light"
+let g:solarized_contrast="high"
 set guifont=Consolas\ for\ Powerline:h17
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -231,6 +244,7 @@ vmap <Enter><Enter> :EasyAlign =<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyMotion_smartcase = 1
 nnoremap f H:call EasyMotion#F(0, 0)<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -279,11 +293,14 @@ let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore-case --ignore vendor/ 
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='solarized'
-" let g:airline_theme='sol'
-let g:airline_theme='tomorrow'
+let g:airline_theme='lavalamp'
 let g:airline_section_x=""
 let g:airline_section_y="%{strlen(&ft)?&ft:'none'}"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" HiLinkTrace
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>h :HLT<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neocomplete
