@@ -26,7 +26,8 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/syntastic'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'tpope/vim-surround'
-'
+Bundle 'kchmck/vim-coffee-script'
+
 
 " Colors and color tools
 Bundle 'sjl/badwolf'
@@ -245,7 +246,9 @@ vmap <Enter><Enter> :EasyAlign =<CR>
 " EasyMotion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_smartcase = 1
-nnoremap f H:call EasyMotion#F(0, 0)<CR>
+" nnoremap f H:call EasyMotion#F(0, 0)<CR>
+map  f <Plug>(easymotion-bd-f)
+map  / <Plug>(easymotion-sn)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Emmet
