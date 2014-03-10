@@ -27,6 +27,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'tpope/vim-surround'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'jelera/vim-javascript-syntax'
 
 
 " Colors and color tools
@@ -36,6 +37,8 @@ Bundle 'tomasr/molokai'
 Bundle '29decibel/codeschool-vim-theme'
 Bundle 'sickill/vim-monokai'
 Bundle 'gerw/vim-HiLinkTrace'
+
+nmap <leader>bi :BundleInstall<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -164,6 +167,10 @@ set gcr=n:blinkon0
 " Indenting
 set smartindent
 filetype indent on
+
+" Increment / decrement numbers
+" <C-a> for increment
+:nnoremap <C-z> <C-x>
 
 " Navigate splits
 nmap <silent> <c-k> :wincmd k<CR>
