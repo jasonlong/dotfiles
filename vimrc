@@ -266,6 +266,7 @@ map  / <Plug>(easymotion-sn)
 " CtrlP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>t :CtrlP<CR>
+nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|vendor)$',
