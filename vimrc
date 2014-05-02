@@ -28,7 +28,7 @@ Bundle 'junegunn/vim-easy-align'
 Bundle 'tpope/vim-surround'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'jelera/vim-javascript-syntax'
-
+Bundle 'jasonlong/csscomb-vim.git'
 
 " Colors and color tools
 Bundle 'sjl/badwolf'
@@ -178,6 +178,14 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
+" Tab Navigation
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tn  :tabnew<CR>
+nnoremap tc  :tabclose<CR>
+
 " consistent menu navigation
 inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
@@ -296,7 +304,13 @@ map <C-s> :NERDTreeToggle<CR>
 " Ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>a :Ag<space>
-let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore-case --ignore vendor/ --ignore .log"
+" let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore-case --ignore vendor/ --ignore .log"
+let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore vendor/ --ignore .log"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_scss_checkers = ['scss_lint']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
