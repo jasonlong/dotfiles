@@ -4,6 +4,8 @@ autocmd! bufwritepost lavalamp.vim source %
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off "turn back on after Vundle config
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -15,9 +17,10 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'mattn/emmet-vim'
-Bundle 'Shougo/neocomplete'
-Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/neosnippet-snippets'
+" Bundle 'SirVer/ultisnips'
+" Bundle 'honza/vim-snippets'
+Bundle 'Shougo/neocomplcache.vim'
+" Bundle 'JazzCore/neocomplcache-ultisnips'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'jiangmiao/auto-pairs'
@@ -28,7 +31,6 @@ Bundle 'junegunn/vim-easy-align'
 Bundle 'tpope/vim-surround'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'jelera/vim-javascript-syntax'
-Bundle 'jasonlong/csscomb-vim.git'
 
 " Colors and color tools
 Bundle 'sjl/badwolf'
@@ -266,11 +268,6 @@ map  f <Plug>(easymotion-bd-f)
 map  / <Plug>(easymotion-sn)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Emmet
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:user_emmet_leader_key='<c-,>'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>t :CtrlP<CR>
@@ -328,39 +325,44 @@ let g:airline_section_y="%{strlen(&ft)?&ft:'none'}"
 nmap <leader>h :HLT<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Neocomplete
+" Emmet
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
+let g:user_emmet_leader_key='<C-a>'
+" let g:user_emmet_leader_key='<space>'
+" let g:user_emmet_install_global = 0
+" autocmd FileType css,scss EmmetInstall
+" imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Neosnippet
+" UltiSnip
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" neocomplcache
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_auto_delimiter = 1
+let g:neocomplcache_max_list = 15
+let g:neocomplcache_force_overwrite_completefunc = 1
+
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+" Enable omni completion.
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
