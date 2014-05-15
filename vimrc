@@ -84,6 +84,9 @@ nnoremap <Leader>d :bp\|bd #<CR>
 " Fast access to : commands
 nnoremap <Space> :
 
+" Turn off highlighting
+nnoremap <leader><space> :noh<CR>
+
 " Faster escape timeout
 set ttimeout
 set ttimeoutlen=100
@@ -302,8 +305,8 @@ map <C-s> :NERDTreeToggle<CR>
 " Ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>a :Ag<space>
-" let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore-case --ignore vendor/ --ignore .log"
-let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore vendor/ --ignore .log"
+let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore-case --ignore vendor/ --ignore .log"
+" let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore vendor/ --ignore .log"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
