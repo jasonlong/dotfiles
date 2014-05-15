@@ -17,10 +17,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'mattn/emmet-vim'
-" Bundle 'SirVer/ultisnips'
-" Bundle 'honza/vim-snippets'
 Bundle 'Shougo/neocomplcache.vim'
-" Bundle 'JazzCore/neocomplcache-ultisnips'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'jiangmiao/auto-pairs'
@@ -29,7 +26,6 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/syntastic'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'tpope/vim-surround'
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'jelera/vim-javascript-syntax'
 
 " Colors and color tools
@@ -87,6 +83,11 @@ nnoremap <Leader>d :bp\|bd #<CR>
 
 " Fast access to : commands
 nnoremap <Space> :
+
+" Faster escape timeout
+set ttimeout
+set ttimeoutlen=100
+set timeoutlen=3000
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File types
