@@ -13,7 +13,7 @@ Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'tComment'
 Bundle 'Indent-Guides'
-Bundle 'scrooloose/nerdtree'
+" Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'mattn/emmet-vim'
@@ -27,6 +27,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'tpope/vim-surround'
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " Colors and color tools
 Bundle 'sjl/badwolf'
@@ -73,6 +75,7 @@ nmap <leader>w :w!<cr>
 
 " ExitInsertMode: Alternative keybinding (w/ save)
 imap jj <Esc>:w<CR>
+imap kj <Esc>:w<CR>
 
 " Close buffer, but leave split open
 nnoremap <Leader>d :bp\|bd #<CR>
@@ -204,8 +207,6 @@ syntax enable
 
 set background=dark
 colorscheme lavalamp
-let g:solarized_style="light"
-let g:solarized_contrast="high"
 set guifont=Consolas\ for\ Powerline:h17
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -324,6 +325,11 @@ let g:airline_section_x=""
 let g:airline_section_y="%{strlen(&ft)?&ft:'none'}"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-textobj-user
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+runtime macros/matchit.vim
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " HiLinkTrace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>h :HLT<CR>
@@ -332,17 +338,11 @@ nmap <leader>h :HLT<CR>
 " Emmet
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_leader_key='<C-a>'
-" let g:user_emmet_leader_key='<space>'
-" let g:user_emmet_install_global = 0
-" autocmd FileType css,scss EmmetInstall
-" imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnip
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " neocomplcache
@@ -357,13 +357,6 @@ let g:neocomplcache_force_overwrite_completefunc = 1
 
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-
-" Enable omni completion.
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
