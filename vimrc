@@ -10,26 +10,29 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'Lokaltog/vim-easymotion.git'
-Bundle 'tComment'
-Bundle 'Indent-Guides'
-" Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'mattn/emmet-vim'
-Bundle 'Shougo/neocomplcache.vim'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'rking/ag.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'scrooloose/syntastic'
-Bundle 'junegunn/vim-easy-align'
-Bundle 'tpope/vim-surround'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
 
+" Bundle 'kien/ctrlp.vim'
+Bundle 'Indent-Guides'
+Bundle 'Lokaltog/vim-easymotion.git'
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neomru.vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'bling/vim-airline'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'junegunn/vim-easy-align'
+Bundle 'kana/vim-textobj-user'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'mattn/emmet-vim'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'rking/ag.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'tComment'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-ruby/vim-ruby'
 " Colors and color tools
 Bundle 'sjl/badwolf'
 Bundle 'Solarized'
@@ -75,7 +78,6 @@ nmap <leader>w :w!<cr>
 
 " ExitInsertMode: Alternative keybinding (w/ save)
 imap jj <Esc>:w<CR>
-imap kj <Esc>:w<CR>
 
 " Close buffer, but leave split open
 nnoremap <Leader>d :bp\|bd #<CR>
@@ -187,14 +189,6 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
-" Tab Navigation
-nnoremap th  :tabfirst<CR>
-nnoremap tj  :tabnext<CR>
-nnoremap tk  :tabprev<CR>
-nnoremap tl  :tablast<CR>
-nnoremap tn  :tabnew<CR>
-nnoremap tc  :tabclose<CR>
-
 " consistent menu navigation
 inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
@@ -205,7 +199,7 @@ inoremap <C-k> <C-p>
 " Enable syntax highlighting
 syntax enable
 
-set background=dark
+set background=light
 colorscheme lavalamp
 set guifont=Consolas\ for\ Powerline:h17
 
@@ -268,19 +262,35 @@ vmap <Enter><Enter> :EasyAlign =<CR>
 " EasyMotion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_smartcase = 1
-" nnoremap f H:call EasyMotion#F(0, 0)<CR>
-map  f <Plug>(easymotion-bd-f)
-map  / <Plug>(easymotion-sn)
+map f <Plug>(easymotion-bd-f)
+map / <Plug>(easymotion-sn)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Unite
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:unite_source_history_yank_enable = 1
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+nnoremap <leader>g :<C-u>Unite -no-split grep:.<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>t :CtrlP<CR>
-nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|vendor)$',
-  \ }
+" nmap <leader>t :CtrlP<CR>
+" nmap <leader>b :CtrlPBuffer<CR>
+" nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\v[\/]\.(git|vendor)$',
+"   \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tComment
