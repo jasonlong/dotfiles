@@ -2,46 +2,69 @@
 autocmd! bufwritepost lavalamp.vim source %
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle
+" NeoBundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype off "turn back on after Vundle config
+if has('vim_starting')
+  set nocompatible               " Be iMproved
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+  " Required:
+  set runtimepath+=/Users/jason/.vim/bundle/neobundle.vim/
+endif
 
-Bundle 'gmarik/vundle'
+" Required:
+call neobundle#begin(expand('/Users/jason/.vim/bundle'))
 
-" Bundle 'kien/ctrlp.vim'
-Bundle 'Indent-Guides'
-Bundle 'Lokaltog/vim-easymotion.git'
-Bundle 'Shougo/neocomplcache.vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neomru.vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'bling/vim-airline'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'junegunn/vim-easy-align'
-Bundle 'kana/vim-textobj-user'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'mattn/emmet-vim'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'rking/ag.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'tComment'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-ruby/vim-ruby'
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Shougo/vimproc', { 'build': {
+  \   'windows': 'make -f make_mingw32.mak',
+  \   'cygwin': 'make -f make_cygwin.mak',
+  \   'mac': 'make -f make_mac.mak',
+  \   'unix': 'make -f make_unix.mak',
+  \ } }
+
+" My Bundles here:
+NeoBundle 'Indent-Guides'
+NeoBundle 'Lokaltog/vim-easymotion.git'
+NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'nelstrom/vim-textobj-rubyblock'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tComment'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'vim-ruby/vim-ruby'
+
 " Colors and color tools
-Bundle 'sjl/badwolf'
-Bundle 'Solarized'
-Bundle 'tomasr/molokai'
-Bundle '29decibel/codeschool-vim-theme'
-Bundle 'sickill/vim-monokai'
-Bundle 'gerw/vim-HiLinkTrace'
+NeoBundle 'sjl/badwolf'
+NeoBundle 'Solarized'
+NeoBundle 'tomasr/molokai'
+NeoBundle '29decibel/codeschool-vim-theme'
+NeoBundle 'sickill/vim-monokai'
+NeoBundle 'gerw/vim-HiLinkTrace'
 
-nmap <leader>bi :BundleInstall<CR>
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -295,9 +318,6 @@ nnoremap <leader>g :<C-u>Unite -no-split grep:.<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tComment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" gcc : comment an individual line
-" gc  : comment out a block in visual mode
-" gcip: comment out a full block in command mode
 nmap <D-/> gcc
 vmap <D-/> gc
 
