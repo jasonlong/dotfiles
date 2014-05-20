@@ -100,7 +100,7 @@ let g:mapleader = ","
 nmap <leader>w :w!<cr>
 
 " ExitInsertMode: Alternative keybinding (w/ save)
-imap jj <Esc>:w<CR>
+imap jj <Esc>
 
 " Close buffer, but leave split open
 nnoremap <Leader>d :bp\|bd #<CR>
@@ -203,8 +203,8 @@ set smartindent
 filetype indent on
 
 " Insert blank lines above and below
-nnoremap <silent><c-[> O<esc>j
-nnoremap <silent><c-]> o<esc>k
+" nnoremap <silent><c-[> O<esc>j
+" nnoremap <silent><c-]> o<esc>k
 
 " Increment / decrement numbers
 " <C-a> for increment
