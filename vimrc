@@ -203,8 +203,8 @@ set smartindent
 filetype indent on
 
 " Insert blank lines above and below
-" nnoremap <silent><c-[> :set paste<CR>m`O``:set nopaste<CR>
-" nnoremap <silent><c-]> :set paste<CR>m`o``:set nopaste<CR>
+nnoremap <silent><c-[> O<esc>j
+nnoremap <silent><c-]> o<esc>k
 
 " Increment / decrement numbers
 " <C-a> for increment
@@ -319,16 +319,6 @@ function! s:unite_settings()
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CtrlP
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nmap <leader>t :CtrlP<CR>
-" nmap <leader>b :CtrlPBuffer<CR>
-" nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  '\v[\/]\.(git|vendor)$',
-"   \ }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tComment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <D-/> gcc
@@ -350,7 +340,6 @@ map <C-s> :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>a :Ag<space>
 let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore-case --ignore vendor/ --ignore .log"
-" let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore vendor/ --ignore .log"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
