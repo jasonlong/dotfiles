@@ -99,9 +99,6 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" ExitInsertMode: Alternative keybinding (w/ save)
-imap jj <Esc>
-
 " Close buffer, but leave split open
 nnoremap <Leader>d :bp\|bd #<CR>
 
@@ -203,8 +200,8 @@ set smartindent
 filetype indent on
 
 " Insert blank lines above and below
-" nnoremap <silent><c-[> O<esc>j
-" nnoremap <silent><c-]> o<esc>k
+nnoremap <CR> o<Esc>k
+nnoremap <s-CR> O<Esc>j
 
 " Increment / decrement numbers
 " <C-a> for increment
@@ -226,7 +223,7 @@ inoremap <C-k> <C-p>
 " Enable syntax highlighting
 syntax enable
 
-set background=light
+set background=dark
 colorscheme lavalamp
 set guifont=Consolas\ for\ Powerline:h17
 
@@ -282,7 +279,6 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " Start interactive EasyAlign with a Vim movement
 nmap <Leader>a <Plug>(EasyAlign)
-
 vmap <Enter><Enter> :EasyAlign =<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -312,8 +308,8 @@ nnoremap <leader>g :<C-u>Unite -no-split grep:.<cr>
 autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
   nmap <buffer> Q <plug>(unite_exit)
-  nmap <buffer> <esc> <plug>(unite_exit)
-  imap <buffer> <esc> <plug>(unite_exit)
+  " nmap <buffer> <esc> <plug>(unite_exit)
+  " imap <buffer> <esc> <plug>(unite_exit)
   imap <buffer> <tab> <plug>(unite_do_default_action)
   nmap <buffer> <tab> <plug>(unite_do_default_action)
 endfunction
