@@ -33,7 +33,6 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'kana/vim-textobj-user'
@@ -43,11 +42,14 @@ NeoBundle 'nelstrom/vim-textobj-rubyblock'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-commentary'
-
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-ruby/vim-ruby'
+
+" Languages
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'othree/html5.vim'
 
 " Colors and color tools
 NeoBundle 'sjl/badwolf'
@@ -72,6 +74,9 @@ NeoBundleCheck
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " no vi compatability
 set nocompatible
+
+" set pwd to current directory
+cd $PWD
 
 " Enable filetype detection
 filetype on
@@ -98,7 +103,8 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving
-nmap <leader>w :w!<cr>
+map <Esc><Esc> :w<CR>
+map <leader>w :w<CR>
 
 " Close buffer, but leave split open
 nnoremap <Leader>d :bp\|bd #<CR>
@@ -224,7 +230,7 @@ inoremap <C-k> <C-p>
 " Enable syntax highlighting
 syntax enable
 
-set background=dark
+set background=light
 colorscheme lavalamp
 set guifont=Consolas\ for\ Powerline:h17
 
@@ -292,6 +298,9 @@ map / <Plug>(easymotion-sn)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Unite
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:unite_source_rec_max_cache_files = 5000
+call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(\.git$\|\.png$\|\.eot$\|\.woff$\|\.ttf$\|\.gpg$\|\.swf$\|\.ico$\|\.gif$\|\.jpg$\)')
+call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 5000)
 let g:unite_source_history_yank_enable = 1
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
