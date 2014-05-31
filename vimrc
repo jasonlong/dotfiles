@@ -42,6 +42,7 @@ NeoBundle 'nelstrom/vim-textobj-rubyblock'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-surround'
@@ -118,6 +119,9 @@ nnoremap <Space> :
 
 " Turn off highlighting
 nnoremap <leader><space> :noh<CR>
+
+" Easy expansion of current directory
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Faster escape timeout
 set ttimeout
