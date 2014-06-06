@@ -128,6 +128,9 @@ set ttimeout
 set ttimeoutlen=100
 set timeoutlen=3000
 
+" CSScomb
+nnoremap <leader>c :silent !php ~/dev/csscomb/csscomb.php -i %<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File types
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -234,7 +237,7 @@ inoremap <C-k> <C-p>
 " Enable syntax highlighting
 syntax enable
 
-set background=light
+set background=dark
 colorscheme lavalamp
 set guifont=Consolas\ for\ Powerline:h17
 
@@ -339,11 +342,6 @@ vmap <D-/> gc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indent_guides_guide_size = 1
 "Toggle with <Leader>ig
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-s> :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ag
