@@ -106,6 +106,7 @@ let g:mapleader = ","
 " Fast saving
 map <Esc><Esc> :w<CR>
 map <leader>w :w<CR>
+inoremap jk <esc>
 
 " Close buffer, but leave split open
 nnoremap <Leader>d :bp\|bd #<CR>
@@ -239,7 +240,8 @@ syntax enable
 
 set background=dark
 colorscheme lavalamp
-set guifont=Consolas\ for\ Powerline:h17
+" set guifont=Consolas\ for\ Powerline:h17
+set guifont=CamingoCode\ for\ Powerline:h17
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
