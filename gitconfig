@@ -41,7 +41,7 @@
 	summary = true
 	tool = Kaleidoscope
 [push]
-	default = current
+	default = simple
 [hub]
 	protocol = https
   helper = /opt/boxen/bin/boxen-git-credential

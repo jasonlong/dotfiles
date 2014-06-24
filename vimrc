@@ -29,9 +29,10 @@ NeoBundle 'Shougo/vimproc', { 'build': {
 NeoBundle 'Indent-Guides'
 NeoBundle 'Lokaltog/vim-easymotion.git'
 NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'Shougo/unite.vim'
+" NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'junegunn/vim-easy-align'
@@ -240,8 +241,8 @@ syntax enable
 
 set background=dark
 colorscheme lavalamp
-" set guifont=Consolas\ for\ Powerline:h17
-set guifont=CamingoCode\ for\ Powerline:h17
+set guifont=Consolas\ for\ Powerline:h17
+" set guifont=CamingoCode\ for\ Powerline:h17
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -307,31 +308,43 @@ map / <Plug>(easymotion-sn)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Unite
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:unite_source_rec_max_cache_files = 5000
-call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(\.git$\|\.png$\|\.eot$\|\.woff$\|\.ttf$\|\.gpg$\|\.swf$\|\.ico$\|\.gif$\|\.jpg$\)')
-call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 5000)
-let g:unite_source_history_yank_enable = 1
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --ignore-case --column --ignore vendor/ --ignore .log'
-  let g:unite_source_grep_recursive_opt = ''
-endif
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
-nnoremap <leader>g :<C-u>Unite -no-split grep:.<cr>
+" let g:unite_source_rec_max_cache_files = 5000
+" call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(\.git$\|\.png$\|\.eot$\|\.woff$\|\.ttf$\|\.gpg$\|\.swf$\|\.ico$\|\.gif$\|\.jpg$\)')
+" call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 5000)
+" let g:unite_source_history_yank_enable = 1
+" if executable('ag')
+"   let g:unite_source_grep_command = 'ag'
+"   let g:unite_source_grep_default_opts = '--nogroup --nocolor --ignore-case --column --ignore vendor/ --ignore .log'
+"   let g:unite_source_grep_recursive_opt = ''
+" endif
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+" nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+" nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+" nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+" nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+" nnoremap <leader>g :<C-u>Unite -no-split grep:.<cr>
 
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  nmap <buffer> Q <plug>(unite_exit)
-  " nmap <buffer> <esc> <plug>(unite_exit)
-  " imap <buffer> <esc> <plug>(unite_exit)
-  imap <buffer> <tab> <plug>(unite_do_default_action)
-  nmap <buffer> <tab> <plug>(unite_do_default_action)
-endfunction
+" autocmd FileType unite call s:unite_settings()
+" function! s:unite_settings()
+"   nmap <buffer> Q <plug>(unite_exit)
+"   " nmap <buffer> <esc> <plug>(unite_exit)
+"   " imap <buffer> <esc> <plug>(unite_exit)
+"   imap <buffer> <tab> <plug>(unite_do_default_action)
+"   nmap <buffer> <tab> <plug>(unite_do_default_action)
+" endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlP
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>t :CtrlP<CR>
+nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>r :CtrlPMRU<CR>
+nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|vendor)$',
+  \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tComment
