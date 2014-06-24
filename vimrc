@@ -361,7 +361,7 @@ let g:indent_guides_guide_size = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>a :Ag<space>
+nmap <leader>g :Ag<space>
 let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore-case --ignore vendor/ --ignore .log"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
