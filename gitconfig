@@ -5,7 +5,7 @@
 	email = jlong@github.com
 [alias]
   up = !sh -c 'export bn=`git rev-parse --abbrev-ref HEAD` && git branch --set-upstream $bn origin/$bn' -
-
+  unstage = reset --
 	co = checkout
 	st = status
   dt = difftool
