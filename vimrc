@@ -29,7 +29,6 @@ NeoBundle 'Shougo/vimproc', { 'build': {
 NeoBundle 'Indent-Guides'
 NeoBundle 'Lokaltog/vim-easymotion.git'
 NeoBundle 'Shougo/neocomplcache.vim'
-" NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'kien/ctrlp.vim'
