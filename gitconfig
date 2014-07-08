@@ -4,8 +4,7 @@
 	name = Jason Long
 	email = jlong@github.com
 [alias]
-  up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
-  #up = !sh -c 'export bn=`git rev-parse --abbrev-ref HEAD` && git branch --set-upstream $bn origin/$bn' -
+  pushy = !sh -c 'export bn=`git rev-parse --abbrev-ref HEAD` && git push --set-upstream origin $bn' -
   unstage = reset --
 	co = checkout
 	st = status
