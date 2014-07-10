@@ -115,6 +115,10 @@ nnoremap <Leader>d :bp\|bd #<CR>
 :nnoremap <F1> :bprevious<CR>
 :nnoremap <F2> :bnext<CR>
 
+" Copy paragraphs / blocks of code
+noremap cp yap<S-}>p
+
+
 " Fast access to : commands
 nnoremap <Space> :
 
