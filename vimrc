@@ -47,10 +47,13 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'JazzCore/neocomplcache-ultisnips'
 
 " Languages
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'othree/html5.vim'
+NeoBundle 'plasticboy/vim-markdown'
 
 " Colors and color tools
 NeoBundle 'sjl/badwolf'
@@ -139,7 +142,7 @@ nnoremap <leader>c :silent !php ~/dev/csscomb/csscomb.php -i %<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File types
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufRead,BufNewFile *.md set syntax=markdown
+" au BufRead,BufNewFile *.md set syntax=markdown
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Open .vimrc
@@ -401,6 +404,8 @@ let g:user_emmet_leader_key='<C-a>'
 " UltiSnip
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " neocomplcache
@@ -421,3 +426,4 @@ if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+
