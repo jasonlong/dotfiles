@@ -25,11 +25,11 @@ NeoBundle 'Shougo/vimproc', { 'build': {
   \   'unix': 'make -f make_unix.mak',
   \ } }
 
-" My Bundles here:
 NeoBundle 'Indent-Guides'
-NeoBundle 'Lokaltog/vim-easymotion.git'
-NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'Shougo/neomru.vim'
+" NeoBundle 'Lokaltog/vim-easymotion.git'
+" NeoBundle 'Shougo/neocomplcache.vim'
+" NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
@@ -105,6 +105,8 @@ set lbr
 
 let mapleader = ","
 let g:mapleader = ","
+" let mapleader = "\<Space>"
+" let g:mapleader = "\<Space>"
 
 " Fast saving
 map <Esc><Esc> :w<CR>
@@ -120,7 +122,6 @@ nnoremap <Leader>d :bp\|bd #<CR>
 
 " Copy paragraphs / blocks of code
 noremap cp yap<S-}>p
-
 
 " Fast access to : commands
 nnoremap <Space> :
@@ -149,7 +150,6 @@ nnoremap <leader>c :silent !php ~/dev/csscomb/csscomb.php -i %<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>v :e  ~/.vimrc<CR>
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim UI
@@ -199,9 +199,6 @@ set guioptions-=r " right scrollbar
 set go-=L " left scrollbar
 
 " No annoying sound on errors
-" set noerrorbells
-" set novisualbell
-" set t_vb=
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 set tm=500
@@ -238,6 +235,13 @@ nmap <silent> <c-l> :wincmd l<CR>
 " consistent menu navigation
 inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
+
+" Paste from system clipboard
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and fonts
@@ -307,38 +311,10 @@ vmap <Enter><Enter> :EasyAlign =<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:EasyMotion_smartcase = 1
-map f <Plug>(easymotion-bd-f)
-map / <Plug>(easymotion-sn)
+" let g:EasyMotion_smartcase = 1
+" map f <Plug>(easymotion-bd-f)
+" map / <Plug>(easymotion-sn)
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Unite
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:unite_source_rec_max_cache_files = 5000
-" call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(\.git$\|\.png$\|\.eot$\|\.woff$\|\.ttf$\|\.gpg$\|\.swf$\|\.ico$\|\.gif$\|\.jpg$\)')
-" call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 5000)
-" let g:unite_source_history_yank_enable = 1
-" if executable('ag')
-"   let g:unite_source_grep_command = 'ag'
-"   let g:unite_source_grep_default_opts = '--nogroup --nocolor --ignore-case --column --ignore vendor/ --ignore .log'
-"   let g:unite_source_grep_recursive_opt = ''
-" endif
-" call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-" nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-" nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-" nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-" nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
-" nnoremap <leader>g :<C-u>Unite -no-split grep:.<cr>
-
-" autocmd FileType unite call s:unite_settings()
-" function! s:unite_settings()
-"   nmap <buffer> Q <plug>(unite_exit)
-"   " nmap <buffer> <esc> <plug>(unite_exit)
-"   " imap <buffer> <esc> <plug>(unite_exit)
-"   imap <buffer> <tab> <plug>(unite_do_default_action)
-"   nmap <buffer> <tab> <plug>(unite_do_default_action)
-" endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
@@ -406,24 +382,30 @@ let g:user_emmet_leader_key='<C-a>'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sneak
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:sneak#s_next=1
+let g:sneak#streak=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " neocomplcache
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_enable_auto_delimiter = 1
-let g:neocomplcache_max_list = 15
-let g:neocomplcache_force_overwrite_completefunc = 1
+" let g:neocomplcache_enable_at_startup = 1
+" let g:neocomplcache_enable_camel_case_completion = 1
+" let g:neocomplcache_enable_smart_case = 1
+" let g:neocomplcache_enable_underbar_completion = 1
+" let g:neocomplcache_enable_auto_delimiter = 1
+" let g:neocomplcache_max_list = 15
+" let g:neocomplcache_force_overwrite_completefunc = 1
 
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-    let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+" " Enable heavy omni completion.
+" if !exists('g:neocomplcache_omni_patterns')
+"     let g:neocomplcache_omni_patterns = {}
+" endif
+" let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
