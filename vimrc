@@ -26,13 +26,10 @@ NeoBundle 'Shougo/vimproc', { 'build': {
   \ } }
 
 NeoBundle 'Indent-Guides'
-" NeoBundle 'Lokaltog/vim-easymotion.git'
-" NeoBundle 'Shougo/neocomplcache.vim'
-" NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'kien/ctrlp.vim'
-" NeoBundle 'bling/vim-airline'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'kana/vim-textobj-user'
@@ -48,7 +45,7 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'SirVer/ultisnips'
-NeoBundle 'JazzCore/neocomplcache-ultisnips'
+" NeoBundle 'JazzCore/neocomplcache-ultisnips'
 
 " Languages
 NeoBundle 'jelera/vim-javascript-syntax'
@@ -255,7 +252,6 @@ syntax enable
 set background=dark
 colorscheme lavalamp
 set guifont=Consolas\ for\ Powerline:h17
-" set guifont=CamingoCode\ for\ Powerline:h17
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -357,12 +353,12 @@ let g:syntastic_scss_checkers = ['scss_lint']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set laststatus=2
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme='lavalamp'
-" let g:airline_section_x=""
-" let g:airline_section_y="%{strlen(&ft)?&ft:'none'}"
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='lavalamp'
+let g:airline_section_x=""
+let g:airline_section_y="%{strlen(&ft)?&ft:'none'}"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-textobj-user
