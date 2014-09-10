@@ -45,7 +45,6 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'SirVer/ultisnips'
-" NeoBundle 'JazzCore/neocomplcache-ultisnips'
 
 " Languages
 NeoBundle 'jelera/vim-javascript-syntax'
@@ -342,7 +341,7 @@ let g:indent_guides_guide_size = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>g :Ag<space>
+nmap <leader>g :Ag!<space>
 let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore-case --ignore vendor/ --ignore .log"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
