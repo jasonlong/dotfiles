@@ -42,6 +42,7 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'SirVer/ultisnips'
@@ -58,6 +59,7 @@ NeoBundle 'tomasr/molokai'
 NeoBundle '29decibel/codeschool-vim-theme'
 NeoBundle 'sickill/vim-monokai'
 NeoBundle 'gerw/vim-HiLinkTrace'
+NeoBundle 'ap/vim-css-color'
 
 " Required:
 call neobundle#end()
@@ -142,7 +144,7 @@ nnoremap <leader>c :silent !php ~/dev/csscomb/csscomb.php -i %<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File types
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" au BufRead,BufNewFile *.md set syntax=markdown
+au BufRead,BufNewFile *.md set syntax=markdown
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Open .vimrc
@@ -323,7 +325,7 @@ nmap <leader>r :CtrlPMRU<CR>
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|vendor)$',
+  \ 'dir':  '\v[\/]\.(git)$',
   \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
