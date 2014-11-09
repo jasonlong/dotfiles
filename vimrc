@@ -42,7 +42,6 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'SirVer/ultisnips'
@@ -60,6 +59,9 @@ NeoBundle '29decibel/codeschool-vim-theme'
 NeoBundle 'sickill/vim-monokai'
 NeoBundle 'gerw/vim-HiLinkTrace'
 NeoBundle 'ap/vim-css-color'
+NeoBundle 'vim-scripts/applescript.vim'
+NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'endel/vim-github-colorscheme'
 
 " Required:
 call neobundle#end()
@@ -250,12 +252,27 @@ vmap <Leader>P "+P
 " Enable syntax highlighting
 syntax enable
 
-set background=dark
-colorscheme lavalamp
+set background=light
+" colorscheme lavalamp
+let base16colorspace=256  " Access colors present in 256 colorspace
+" colorscheme base16-railscasts
+colorscheme github
 set guifont=Consolas\ for\ Powerline:h17
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
+
+nmap <F5> :call ToggleBackgroundColour()<CR>
+
+function ToggleBackgroundColour()
+  if (&background == 'light')
+    set background=dark
+    colorscheme base16-railscasts
+  else
+    set background=light
+    colorscheme github
+  endif
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files, backups and undo
@@ -357,7 +374,8 @@ let g:syntastic_scss_checkers = ['scss_lint']
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='lavalamp'
+" let g:airline_theme='lavalamp'
+let g:airline_theme='sol'
 let g:airline_section_x=""
 let g:airline_section_y="%{strlen(&ft)?&ft:'none'}"
 
