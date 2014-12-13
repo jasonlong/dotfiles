@@ -45,6 +45,7 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'SirVer/ultisnips'
+NeoBundle 'haya14busa/incsearch.vim'
 
 " Languages
 NeoBundle 'jelera/vim-javascript-syntax'
@@ -122,8 +123,8 @@ inoremap jk <esc>
 nnoremap <Leader>d :bp\|bd #<CR>
 
 " Fast buffer switching
-:nnoremap <F1> :bprevious<CR>
-:nnoremap <F2> :bnext<CR>
+:nnoremap <D-[> :bprevious<CR>
+:nnoremap <D-]> :bnext<CR>
 
 " Copy paragraphs / blocks of code
 noremap cp yap<S-}>p
@@ -255,6 +256,7 @@ vmap <Leader>P "+P
 syntax enable
 
 set background=dark
+" colorscheme base16-ocean
 colorscheme gotham
 set guifont=Consolas\ for\ Powerline:h17
 
@@ -325,12 +327,11 @@ nmap <Leader>a <Plug>(EasyAlign)
 vmap <Enter><Enter> :EasyAlign =<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EasyMotion
+" incsearch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:EasyMotion_smartcase = 1
-" map f <Plug>(easymotion-bd-f)
-" map / <Plug>(easymotion-sn)
-
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
