@@ -257,7 +257,7 @@ syntax enable
 
 set background=dark
 " colorscheme base16-ocean
-colorscheme gotham
+colorscheme lavalamp
 set guifont=Consolas\ for\ Powerline:h17
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -268,7 +268,7 @@ nmap <F5> :call ToggleBackgroundColour()<CR>
 function ToggleBackgroundColour()
   if (&background == 'light')
     set background=dark
-    colorscheme gotham
+    colorscheme lavalamp
   else
     set background=light
     colorscheme Tomorrow
@@ -329,6 +329,7 @@ vmap <Enter><Enter> :EasyAlign =<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " incsearch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:incsearch#auto_nohlsearch = 1
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
@@ -374,7 +375,7 @@ let g:syntastic_scss_checkers = ['scss_lint']
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='gotham'
+let g:airline_theme='lavalamp'
 let g:airline_section_x=""
 let g:airline_section_y="%{strlen(&ft)?&ft:'none'}"
 
