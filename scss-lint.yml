@@ -12,31 +12,100 @@ exclude:
   - 'github*/index.scss'
 
 linters:
-  StringQuotes:
-    style: double_quotes
-
-  SpaceBeforeBrace:
+  BorderZero:
     enabled: true
-    allow_single_line_padding: true
+    severity: error
+
+  CapitalizationInSelector:
+    enabled: true
+    severity: error
+
+  ColorKeyword:
+    enabled: true
+    severity: error
+
+  Comment:
+    enabled: true
+    severity: error
+
+  DebugStatement:
+    enabled: true
+    severity: error
+
+  DeclarationOrder:
+    enabled: true
+    severity: error
+
+  DuplicateProperty:
+    enabled: true
+    severity: error
+
+  ElsePlacement:
+    enabled: true
+    style: same_line # or 'new_line'
+    severity: error
+
+  EmptyLineBetweenBlocks:
+    enabled: true
+    ignore_single_line_blocks: true
+    severity: error
 
   EmptyRule:
     enabled: false
+    severity: error
 
-  PlaceholderInExtend:
-    enabled: false
-
-  SelectorDepth:
+  FinalNewline:
     enabled: true
-    max_depth: 5
+    present: true
+    severity: error
+
+  HexLength:
+    enabled: true
+    style: short # or 'long'
+    severity: error
+
+  HexNotation:
+    enabled: true
+    style: lowercase # or 'uppercase'
+    severity: error
+
+  HexValidation:
+    enabled: true
+    severity: error
+
+  IdWithExtraneousSelector:
+    enabled: true
+    severity: error
+
+  Indentation:
+    enabled: true
+    character: space # or 'tab'
+    width: 2
+    severity: error
+
+  LeadingZero:
+    enabled: true
+    style: include_zero
+    severity: error
+
+  MergeableSelector:
+    enabled: true
+    force_nesting: true
+    severity: error
 
   NameFormat:
     enabled: false
+    convention: hyphenated_lowercase # or 'BEM', or a regex pattern
+    severity: error
 
-  LeadingZero:
-    style: include_zero
+  PlaceholderInExtend:
+    enabled: false
+    severity: error
 
   PropertySortOrder:
     enabled: false
+    ignore_unspecified: true
+    severity: warning
     order: [
       "position",
       "top",
@@ -53,7 +122,6 @@ linters:
       "min-height",
       "max-height",
       "-webkit-box-sizing",
-      "-moz-box-sizing",
       "box-sizing",
       "-webkit-appearance",
       "padding",
@@ -246,84 +314,140 @@ linters:
       "-ms-filter:\\'progid:DXImageTransform.Microsoft.Alpha",
       "opacity",
       "-ms-interpolation-mode",
-      "-webkit-transition",
       "-moz-transition",
       "-ms-transition",
       "-o-transition",
       "transition",
-      "-webkit-transition-delay",
       "-moz-transition-delay",
       "-ms-transition-delay",
       "-o-transition-delay",
       "transition-delay",
-      "-webkit-transition-timing-function",
       "-moz-transition-timing-function",
       "-ms-transition-timing-function",
       "-o-transition-timing-function",
       "transition-timing-function",
-      "-webkit-transition-duration",
       "-moz-transition-duration",
       "-ms-transition-duration",
       "-o-transition-duration",
       "transition-duration",
-      "-webkit-transition-property",
       "-moz-transition-property",
       "-ms-transition-property",
       "-o-transition-property",
       "transition-property",
       "-webkit-transform",
-      "-moz-transform",
-      "-ms-transform",
       "-o-transform",
       "transform",
       "-webkit-transform-origin",
-      "-moz-transform-origin",
-      "-ms-transform-origin",
       "-o-transform-origin",
       "transform-origin",
-      "-webkit-animation",
-      "-moz-animation",
       "-ms-animation",
       "-o-animation",
       "animation",
-      "-webkit-animation-name",
-      "-moz-animation-name",
       "-ms-animation-name",
       "-o-animation-name",
       "animation-name",
-      "-webkit-animation-duration",
-      "-moz-animation-duration",
       "-ms-animation-duration",
       "-o-animation-duration",
       "animation-duration",
-      "-webkit-animation-fill-mode",
-      "-moz-animation-fill-mode",
       "-ms-animation-fill-mode",
       "-o-animation-fill-mode",
       "animation-fill-mode",
-      "-webkit-animation-play-state",
-      "-moz-animation-play-state",
       "-ms-animation-play-state",
       "-o-animation-play-state",
       "animation-play-state",
-      "-webkit-animation-timing-function",
-      "-moz-animation-timing-function",
       "-ms-animation-timing-function",
       "-o-animation-timing-function",
       "animation-timing-function",
-      "-webkit-animation-delay",
-      "-moz-animation-delay",
       "-ms-animation-delay",
       "-o-animation-delay",
       "animation-delay",
-      "-webkit-animation-iteration-count",
-      "-moz-animation-iteration-count",
       "-ms-animation-iteration-count",
       "-o-animation-iteration-count",
       "animation-iteration-count",
-      "-webkit-animation-direction",
-      "-moz-animation-direction",
       "-ms-animation-direction",
       "-o-animation-direction",
       "animation-direction"
     ]
+
+  PropertySpelling:
+    enabled: true
+    extra_properties: []
+    severity: error
+
+  SelectorDepth:
+    enabled: true
+    max_depth: 4
+    severity: error
+
+  SelectorFormat:
+    enabled: false
+
+  Shorthand:
+    enabled: true
+    severity: error
+
+  SingleLinePerProperty:
+    enabled: true
+    allow_single_line_rule_sets: true
+    severity: error
+
+  SingleLinePerSelector:
+    enabled: true
+    severity: error
+
+  SpaceAfterComma:
+    enabled: true
+    severity: error
+
+  SpaceAfterPropertyColon:
+    enabled: true
+    style: one_space
+    severity: error
+
+  SpaceAfterPropertyName:
+    enabled: true
+    severity: error
+
+  SpaceBeforeBrace:
+    enabled: true
+    allow_single_line_padding: true
+    severity: error
+
+  SpaceBetweenParens:
+    enabled: true
+    spaces: 0
+    severity: error
+
+  StringQuotes:
+    enabled: true
+    style: double_quotes
+    severity: error
+
+  TrailingSemicolon:
+    enabled: true
+    severity: error
+
+  UnnecessaryMantissa:
+    enabled: true
+    severity: error
+
+  UnnecessaryParentReference:
+    enabled: true
+    severity: error
+
+  UrlFormat:
+    enabled: true
+    severity: error
+
+  UrlQuotes:
+    enabled: true
+    severity: error
+
+  VendorPrefixes:
+    enabled: true
+    identifier_list: base
+    severity: error
+
+  ZeroUnit:
+    enabled: true
+    severity: error
