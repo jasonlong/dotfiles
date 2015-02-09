@@ -111,8 +111,6 @@ set lbr
 
 let mapleader = ","
 let g:mapleader = ","
-" let mapleader = "\<Space>"
-" let g:mapleader = "\<Space>"
 
 " Fast saving
 map <Esc><Esc> :w<CR>
@@ -330,7 +328,7 @@ vmap <Enter><Enter> :EasyAlign =<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " incsearch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:incsearch#auto_nohlsearch = 1
+" let g:incsearch#auto_nohlsearch = 1
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
