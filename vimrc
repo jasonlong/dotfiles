@@ -137,6 +137,7 @@ nnoremap <leader><space> :noh<CR>
 
 " Easy expansion of current directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+map <leader>ew :e %%
 
 " Faster escape timeout
 set ttimeout
