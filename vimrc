@@ -46,6 +46,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'haya14busa/incsearch.vim'
+NeoBundle 'ervandew/supertab'
 
 " Languages
 NeoBundle 'jelera/vim-javascript-syntax'
@@ -160,7 +161,8 @@ map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 " Vim UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,.git\*,.hg\*,.svn\*
+set wildignore+=*.DS_Store,*~,,.git\*,.svn\*,*.swp,*.tmp,*.zip
+set wildignore+=*.gif,*.jpg,*.png,*.sketch,*.psd
 
 "Always show current position
 set ruler
@@ -397,32 +399,13 @@ let g:user_emmet_leader_key='<C-a>'
 " UltiSnip
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sneak
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:sneak#s_next=1
 let g:sneak#streak=0
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" neocomplcache
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:neocomplcache_enable_at_startup = 1
-" let g:neocomplcache_enable_camel_case_completion = 1
-" let g:neocomplcache_enable_smart_case = 1
-" let g:neocomplcache_enable_underbar_completion = 1
-" let g:neocomplcache_enable_auto_delimiter = 1
-" let g:neocomplcache_max_list = 15
-" let g:neocomplcache_force_overwrite_completefunc = 1
-
-" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-
-" " Enable heavy omni completion.
-" if !exists('g:neocomplcache_omni_patterns')
-"     let g:neocomplcache_omni_patterns = {}
-" endif
-" let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-
