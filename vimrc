@@ -215,6 +215,9 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 
+" Consider more more chars as words for autocomplete
+set iskeyword+=-,$
+
 " Highlight current line
 set cursorline
 
