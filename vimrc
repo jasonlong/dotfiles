@@ -59,13 +59,9 @@ NeoBundle 'vim-scripts/applescript.vim'
 NeoBundle 'gerw/vim-HiLinkTrace'
 NeoBundle 'ap/vim-css-color'
 
-NeoBundle 'sjl/badwolf'
 NeoBundle 'Solarized'
-NeoBundle 'tomasr/molokai'
-NeoBundle '29decibel/codeschool-vim-theme'
 NeoBundle 'sickill/vim-monokai'
 NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'endel/vim-github-colorscheme'
 NeoBundle 'whatyouhide/vim-gotham'
 
 " Required:
@@ -403,8 +399,6 @@ let g:user_emmet_leader_key='<C-a>'
 " UltiSnip
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
