@@ -43,6 +43,7 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'haya14busa/incsearch.vim'
@@ -366,7 +367,7 @@ let g:indent_guides_guide_size = 1
 " Ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>g :Ag!<space>
-let g:agprg="/opt/boxen/homebrew/bin/ag --column --ignore-case --ignore vendor/ --ignore .log"
+let g:agprg="/opt/boxen/homebrew/bin/ag -U --column --ignore-case --ignore vendor/cache --ignore vendor/gems --ignore vendor/ruby --ignore .log --ignore tmp/"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
