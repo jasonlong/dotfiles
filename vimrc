@@ -216,7 +216,9 @@ set shiftwidth=2
 set iskeyword+=-,$
 
 " Highlight current line
-set cursorline
+if has("gui_running")
+  set cursorline
+endif
 
 " Turn off blinking cursor in command mode
 set gcr=n:blinkon0
@@ -257,7 +259,6 @@ vmap <Leader>P "+P
 syntax enable
 
 set background=dark
-" colorscheme base16-ocean
 colorscheme lavalamp
 set guifont=Consolas\ for\ Powerline:h17
 
