@@ -58,6 +58,7 @@ NeoBundle 'vim-scripts/applescript.vim'
 " Colors and color tools
 NeoBundle 'gerw/vim-HiLinkTrace'
 NeoBundle 'ap/vim-css-color'
+NeoBundle 'godlygeek/csapprox'
 
 NeoBundle 'Solarized'
 NeoBundle 'sickill/vim-monokai'
@@ -258,8 +259,8 @@ vmap <Leader>P "+P
 " Enable syntax highlighting
 syntax enable
 
-set background=dark
-colorscheme lavalamp
+set background=light
+colorscheme Tomorrow
 set guifont=Consolas\ for\ Powerline:h17
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -267,7 +268,7 @@ set encoding=utf8
 
 nmap <F5> :call ToggleBackgroundColour()<CR>
 
-function ToggleBackgroundColour()
+function! ToggleBackgroundColour()
   if (&background == 'light')
     set background=dark
     colorscheme lavalamp
@@ -364,7 +365,7 @@ let g:indent_guides_guide_size = 1
 " Ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>g :Ag!<space>
-let g:agprg="/opt/boxen/homebrew/bin/ag -U --column --ignore-case --ignore vendor/cache --ignore vendor/gems --ignore vendor/ruby --ignore .log --ignore tmp/"
+let g:agprg="/opt/boxen/homebrew/bin/ag -U --column --ignore-case --ignore vendor/cache/ --ignore vendor/gems/ --ignore vendor/ruby/ --ignore .log --ignore log/ --ignore tmp/"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
@@ -377,7 +378,7 @@ let g:syntastic_scss_checkers = ['scss_lint']
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='lavalamp'
+" let g:airline_theme='lavalamp'
 let g:airline_section_x=""
 let g:airline_section_y="%{strlen(&ft)?&ft:'none'}"
 
