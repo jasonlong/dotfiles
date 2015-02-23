@@ -2,78 +2,53 @@
 autocmd! bufwritepost lavalamp.vim source %
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NeoBundle
+" vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('vim_starting')
-  set nocompatible               " Be iMproved
+call plug#begin('~/.vim/plugged')
 
-  " Required:
-  set runtimepath+=/Users/jason/.vim/bundle/neobundle.vim/
-endif
-
-" Required:
-call neobundle#begin(expand('/Users/jason/.vim/bundle'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'Shougo/vimproc', { 'build': {
-  \   'windows': 'make -f make_mingw32.mak',
-  \   'cygwin': 'make -f make_cygwin.mak',
-  \   'mac': 'make -f make_mac.mak',
-  \   'unix': 'make -f make_unix.mak',
-  \ } }
-
-NeoBundle 'Indent-Guides'
-NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'Shougo/vimproc.vim'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'nelstrom/vim-textobj-rubyblock'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-vinegar'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'haya14busa/incsearch.vim'
-NeoBundle 'ervandew/supertab'
+Plug 'Indent-Guides'
+Plug 'justinmk/vim-sneak'
+Plug 'Shougo/vimproc.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/vim-easy-align'
+Plug 'kana/vim-textobj-user'
+Plug 'kchmck/vim-coffee-script'
+Plug 'mattn/emmet-vim'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'SirVer/ultisnips'
+Plug 'haya14busa/incsearch.vim'
+Plug 'ervandew/supertab'
 
 " Languages
-NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'vim-scripts/applescript.vim'
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'othree/html5.vim', { 'for': 'html' }
+Plug 'plasticboy/vim-markdown'
 
 " Colors and color tools
-NeoBundle 'gerw/vim-HiLinkTrace'
-NeoBundle 'ap/vim-css-color'
-NeoBundle 'godlygeek/csapprox'
+Plug 'gerw/vim-HiLinkTrace'
+Plug 'ap/vim-css-color'
+Plug 'godlygeek/csapprox'
 
-NeoBundle 'Solarized'
-NeoBundle 'sickill/vim-monokai'
-NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'whatyouhide/vim-gotham'
+Plug 'chriskempson/base16-vim'
+" Plug 'Solarized'
+" Plug 'sickill/vim-monokai'
+" Plug 'whatyouhide/vim-gotham'
 
-" Required:
-call neobundle#end()
+call plug#end()
 
 " Required:
 filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
