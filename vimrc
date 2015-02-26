@@ -41,9 +41,6 @@ Plug 'ap/vim-css-color'
 Plug 'godlygeek/csapprox'
 
 Plug 'chriskempson/base16-vim'
-" Plug 'Solarized'
-" Plug 'sickill/vim-monokai'
-" Plug 'whatyouhide/vim-gotham'
 
 call plug#end()
 
@@ -235,7 +232,8 @@ vmap <Leader>P "+P
 syntax enable
 
 set background=light
-colorscheme Tomorrow
+" colorscheme Tomorrow
+colorscheme lavalamp
 set guifont=Consolas\ for\ Powerline:h17
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -246,11 +244,11 @@ nmap <F5> :call ToggleBackgroundColour()<CR>
 function! ToggleBackgroundColour()
   if (&background == 'light')
     set background=dark
-    colorscheme lavalamp
   else
     set background=light
-    colorscheme Tomorrow
   endif
+  source ~/dev/lavalamp/vim/autoload/airline/themes/lavalamp.vim
+  AirlineRefresh
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -353,7 +351,7 @@ let g:syntastic_scss_checkers = ['scss_lint']
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='lavalamp'
+let g:airline_theme='lavalamp'
 let g:airline_section_x=""
 let g:airline_section_y="%{strlen(&ft)?&ft:'none'}"
 
