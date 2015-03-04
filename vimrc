@@ -15,7 +15,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
-Plug 'mattn/emmet-vim'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
@@ -232,9 +231,15 @@ vmap <Leader>P "+P
 syntax enable
 
 set background=light
-" colorscheme Tomorrow
 colorscheme lavalamp
+" colorscheme Tomorrow
+
 set guifont=Consolas\ for\ Powerline:h17
+
+" Always use dark bg in console
+if !has("gui_running")
+  set background=dark
+endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
