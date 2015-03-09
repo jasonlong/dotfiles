@@ -386,4 +386,4 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " Sneak
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:sneak#s_next=1
-let g:sneak#streak=0
+let g:sneak#streak=1
