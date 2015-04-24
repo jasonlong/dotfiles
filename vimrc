@@ -23,7 +23,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'SirVer/ultisnips'
@@ -31,7 +30,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'ervandew/supertab'
 
 " Languages
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby'
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'plasticboy/vim-markdown'
@@ -121,6 +120,9 @@ nnoremap <leader>c :silent !php ~/dev/csscomb/csscomb.php -i %<CR>
 " File types
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead,BufNewFile *.md set syntax=markdown
+
+" Open all folds by default
+au BufRead * normal zR
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Open .vimrc
@@ -353,6 +355,7 @@ let g:agprg="/opt/boxen/homebrew/bin/ag -U --column --ignore-case --ignore vendo
 " Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_scss_checkers = ['scss_lint']
+let g:syntastic_scss_scss_lint_args = "--config=$HOME/.scss-lint.yml"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
