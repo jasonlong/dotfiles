@@ -11,7 +11,6 @@ Plug 'justinmk/vim-sneak'
 Plug 'Shougo/vimproc.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'bling/vim-airline'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
@@ -19,12 +18,12 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'tomtom/tcomment_vim'
 Plug 'SirVer/ultisnips'
 Plug 'haya14busa/incsearch.vim'
 Plug 'ervandew/supertab'
@@ -39,6 +38,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'gerw/vim-HiLinkTrace'
 Plug 'ap/vim-css-color'
 Plug 'godlygeek/csapprox'
+Plug 'editorconfig/editorconfig-vim'
 
 Plug 'chriskempson/base16-vim'
 
@@ -229,6 +229,19 @@ vmap <Leader>P "+P
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Statusline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set laststatus=2
+set statusline =
+set statusline +=[%n]                                    " buffer number
+set statusline +=\ %F                                    " Full path to file
+set statusline +=\ %m                                    " modified flag
+set statusline +=%y                                      " Filetype
+set statusline +=%=%-14.(%l,%c%V%)                       " Line, column-virtual column
+set statusline +=%=lines:\ %-5L                          " Lines in the buffer
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
@@ -238,7 +251,8 @@ set background=light
 colorscheme lavalamp
 " colorscheme Tomorrow
 
-set guifont=Consolas\ for\ Powerline:h17
+" set guifont=Source\ Code\ Pro\ for\ Powerline:h16
+set guifont=Fira\ Mono:h16
 
 " Always use dark bg in console
 if !has("gui_running")
@@ -256,8 +270,6 @@ function! ToggleBackgroundColour()
   else
     set background=light
   endif
-  source ~/dev/lavalamp/vim/autoload/airline/themes/lavalamp.vim
-  AirlineRefresh
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -356,16 +368,6 @@ let g:agprg="/opt/boxen/homebrew/bin/ag -U --column --ignore-case --ignore vendo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_scss_scss_lint_args = "--config=$HOME/.scss-lint.yml"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Airline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme='lavalamp'
-let g:airline_section_x=""
-let g:airline_section_y="%{strlen(&ft)?&ft:'none'}"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-textobj-user
