@@ -134,7 +134,7 @@ map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 " Vim UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ignore compiled files
-set wildignore+=*.DS_Store,*~,,.git\*,.svn\*,*.swp,*.tmp,*.zip
+set wildignore+=*.DS_Store,*~,.git\*,.svn\*,*.swp,*.tmp,*.zip
 set wildignore+=*.gif,*.jpg,*.png,*.sketch,*.psd
 
 "Always show current position
