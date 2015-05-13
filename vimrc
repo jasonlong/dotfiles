@@ -354,8 +354,8 @@ vmap <D-/> gc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indent Guides
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle with <Leader>ig
 let g:indent_guides_guide_size = 1
-"Toggle with <Leader>ig
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ag
@@ -366,8 +366,27 @@ let g:agprg="/opt/boxen/homebrew/bin/ag -U --column --ignore-case --ignore vendo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_check_on_open = 1
 let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_scss_scss_lint_args = "--config=$HOME/.scss-lint.yml"
+let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_filetype_map = { "eruby": "html" }
+let g:syntastic_enable_signs   = 1
+let g:syntastic_error_symbol   = '✕'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_html_tidy_ignore_errors = [
+      \ '<poll-include-fragment> is not recognized!',
+      \ 'discarding unexpected <poll-include-fragment>',
+      \ 'discarding unexpected </poll-include-fragment>',
+			\ 'trimming empty <span>',
+			\ '<svg> is not recognized!',
+			\ 'discarding unexpected <svg>',
+			\ 'discarding unexpected </svg>',
+			\ ]
+
+" To ignore files
+" let g:syntastic_ignore_files = ['\m\c\.html.erb$']
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-textobj-user
