@@ -6,9 +6,8 @@ autocmd! bufwritepost lavalamp.vim source %
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-Plug 'Indent-Guides'
+Plug 'Yggdroot/indentLine'
 Plug 'justinmk/vim-sneak'
-Plug 'Shougo/vimproc.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'jiangmiao/auto-pairs'
@@ -352,10 +351,10 @@ nmap <D-/> gcc
 vmap <D-/> gc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Indent Guides
+" IndentLine
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle with <Leader>ig
-let g:indent_guides_guide_size = 1
+nmap <leader>ig :IndentLinesToggle<CR>
+let g:indentLine_char = '│'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ag
@@ -373,15 +372,17 @@ let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_filetype_map = { "eruby": "html" }
 let g:syntastic_enable_signs   = 1
 let g:syntastic_error_symbol   = '✕'
-let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_warning_symbol = '!'
 let g:syntastic_html_tidy_ignore_errors = [
-      \ '<poll-include-fragment> is not recognized!',
-      \ 'discarding unexpected <poll-include-fragment>',
-      \ 'discarding unexpected </poll-include-fragment>',
-			\ 'trimming empty <span>',
-			\ '<svg> is not recognized!',
-			\ 'discarding unexpected <svg>',
-			\ 'discarding unexpected </svg>',
+      \ "<poll-include-fragment> is not recognized!",
+      \ "discarding unexpected <poll-include-fragment>",
+      \ "discarding unexpected </poll-include-fragment>",
+			\ "trimming empty <span>",
+			\ "<svg> is not recognized!",
+			\ "discarding unexpected <svg>",
+			\ "discarding unexpected </svg>",
+			\ "<a> escaping malformed URI reference",
+			\ "plain text isn't allowed in <head> elements",
 			\ ]
 
 " To ignore files
