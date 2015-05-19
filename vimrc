@@ -355,6 +355,7 @@ vmap <D-/> gc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>ig :IndentLinesToggle<CR>
 let g:indentLine_char = '│'
+let g:indentLine_enabled = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ag
