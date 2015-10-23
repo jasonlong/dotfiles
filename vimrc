@@ -8,7 +8,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'Yggdroot/indentLine'
 Plug 'justinmk/vim-sneak'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
@@ -26,6 +26,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'SirVer/ultisnips'
 Plug 'haya14busa/incsearch.vim'
 Plug 'ervandew/supertab'
+Plug 'justinmk/vim-dirvish'
 
 " Languages
 Plug 'vim-ruby/vim-ruby'
@@ -61,9 +62,6 @@ cd $PWD
 " Enable filetype detection
 filetype on
 
-" Enable filetype-specific indenting
-filetype indent on
-
 " Enable filetype-specific plugins
 filetype plugin on
 
@@ -86,6 +84,9 @@ let g:mapleader = ","
 map <Esc><Esc> :w<CR>
 map <leader>w :w<CR>
 inoremap jk <esc>
+
+" Keep indentation when pasting
+nnoremap p p=`]
 
 " Close buffer, but leave split open
 nnoremap <Leader>d :bp\|bd #<CR>
@@ -192,7 +193,7 @@ set iskeyword+=-,$
 
 " Highlight current line
 if has("gui_running")
-  set cursorline
+  " set cursorline
 endif
 
 " Turn off blinking cursor in command mode
@@ -246,12 +247,13 @@ set statusline +=%=lines:\ %-5L                          " Lines in the buffer
 " Enable syntax highlighting
 syntax enable
 
-set background=light
+set background=dark
 colorscheme lavalamp
 " colorscheme Tomorrow
 
-" set guifont=Source\ Code\ Pro\ for\ Powerline:h16
-set guifont=Fira\ Mono:h16
+" set guifont=Fira\ Code:h14
+" set guifont=Consolas:h17
+set guifont=Hack:h15
 
 " Always use dark bg in console
 if !has("gui_running")
@@ -384,6 +386,7 @@ let g:syntastic_html_tidy_ignore_errors = [
 			\ "discarding unexpected </svg>",
 			\ "<a> escaping malformed URI reference",
 			\ "plain text isn't allowed in <head> elements",
+			\ "missing quote mark for attribute value",
 			\ ]
 
 " To ignore files
