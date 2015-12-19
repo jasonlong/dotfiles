@@ -120,6 +120,8 @@ nnoremap <leader>c :silent !php ~/dev/csscomb/csscomb.php -i %<CR>
 " File types
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead,BufNewFile *.md set syntax=markdown
+au BufRead,BufNewFile *.cocoascript set syntax=javascript
+au BufRead,BufNewFile *.sketchplugin set syntax=javascript
 
 " Open all folds by default
 au BufRead * normal zR
