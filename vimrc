@@ -13,13 +13,13 @@ Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
-Plug 'kchmck/vim-coffee-script'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'tomtom/tcomment_vim'
@@ -29,10 +29,11 @@ Plug 'ervandew/supertab'
 Plug 'justinmk/vim-dirvish'
 
 " Languages
-Plug 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'plasticboy/vim-markdown'
+Plug 'kchmck/vim-coffee-script'
 
 " Colors and color tools
 Plug 'gerw/vim-HiLinkTrace'
@@ -255,7 +256,7 @@ colorscheme lavalamp
 
 " set guifont=Fira\ Code:h14
 " set guifont=Consolas:h17
-set guifont=Hack:h15
+set guifont=Hack:h14
 
 " Always use dark bg in console
 if !has("gui_running")
@@ -280,9 +281,11 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup
 set nowb
-set noswapfile
 set undofile
 set undolevels=100
+
+set swapfile
+set dir=~/tmp
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Moving around, tabs, windows and buffers
@@ -365,7 +368,7 @@ let g:indentLine_enabled = 0
 " Ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>g :Ag!<space>
-let g:agprg="/opt/boxen/homebrew/bin/ag -U --column --ignore-case --ignore vendor/cache/ --ignore vendor/gems/ --ignore vendor/ruby/ --ignore .log --ignore log/ --ignore tmp/"
+let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore vendor/cache/ --ignore vendor/gems/ --ignore vendor/ruby/ --ignore .log --ignore log/ --ignore tmp/"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic

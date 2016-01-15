@@ -1,5 +1,5 @@
 [github]
-  user = jasonlong
+	user = jasonlong
 
 [user]
   name = Jason Long
@@ -67,10 +67,10 @@
 	prompt = false
 
 [credential]
-  helper = /opt/boxen/bin/boxen-git-credential
+	helper = osxkeychain
 
 [core]
-  excludesfile = /opt/boxen/config/git/gitignore
+	excludesfile = /Users/jason/.gitignore
 [push]
 	default = simple
 [filter "media"]
