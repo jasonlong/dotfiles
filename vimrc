@@ -109,6 +109,9 @@ nnoremap <leader><space> :noh<CR>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 map <leader>ew :e %%
 
+" bind K to grep (ag) word under cursor
+nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>
+
 " Faster escape timeout
 set ttimeout
 set ttimeoutlen=100
@@ -391,6 +394,11 @@ let g:syntastic_html_tidy_ignore_errors = [
 			\ "discarding unexpected </svg>",
 			\ "<a> escaping malformed URI reference",
 			\ "plain text isn't allowed in <head> elements",
+      \ "<li> isn't allowed in <body> elements",
+      \ "inserting implicit <ul>",
+      \ "missing </ul> before <div>",
+      \ "trimming empty <li>",
+      \ "trimming empty <ul>",
 			\ "missing quote mark for attribute value",
 			\ ]
 
