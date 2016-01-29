@@ -34,7 +34,7 @@ Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'plasticboy/vim-markdown'
-Plug 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
 " Colors and color tools
 Plug 'gerw/vim-HiLinkTrace'
@@ -254,7 +254,7 @@ set statusline +=%=lines:\ %-5L                          " Lines in the buffer
 " Enable syntax highlighting
 syntax enable
 
-set background=dark
+set background=light
 colorscheme lavalamp
 " colorscheme Tomorrow
 
@@ -407,12 +407,6 @@ let g:syntastic_html_tidy_ignore_errors = [
 " let g:syntastic_ignore_files = ['\m\c\.html.erb$']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-gitgutter
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gitgutter_realtime = 1
-let g:gitgutter_eager = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-textobj-user
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 runtime macros/matchit.vim
@@ -423,9 +417,12 @@ runtime macros/matchit.vim
 nmap <leader>h :HLT<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Emmet
+" vim-gitgutter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:user_emmet_leader_key='<C-a>'
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
+let g:gitgutter_sign_modified_removed = '□'
+let g:gitgutter_sign_modified = '□'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnip
