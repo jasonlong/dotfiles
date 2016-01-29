@@ -27,6 +27,7 @@ Plug 'SirVer/ultisnips'
 Plug 'haya14busa/incsearch.vim'
 Plug 'ervandew/supertab'
 Plug 'justinmk/vim-dirvish'
+Plug 'airblade/vim-gitgutter'
 
 " Languages
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
@@ -405,6 +406,11 @@ let g:syntastic_html_tidy_ignore_errors = [
 " To ignore files
 " let g:syntastic_ignore_files = ['\m\c\.html.erb$']
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-gitgutter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-textobj-user
