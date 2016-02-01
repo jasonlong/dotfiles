@@ -353,6 +353,10 @@ let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .git
       \ --ignore .DS_Store
+      \ --ignore node_modules/
+      \ --ignore vendor/
+      \ --ignore log/
+      \ --ignore tmp/
       \ -g ""'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -372,7 +376,7 @@ let g:indentLine_enabled = 0
 " Ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>g :Ag!<space>
-let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore vendor/cache/ --ignore vendor/gems/ --ignore vendor/ruby/ --ignore .log --ignore log/ --ignore tmp/"
+let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore vendor/ --ignore node_modules/ --ignore .log --ignore log/ --ignore tmp/"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
