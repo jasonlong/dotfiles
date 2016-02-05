@@ -348,16 +348,10 @@ nmap <leader>t :CtrlP<CR>
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>r :CtrlPMRU<CR>
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+let g:ctrlp_use_caching = 0
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_working_path_mode = 'r'
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .DS_Store
-      \ --ignore node_modules/
-      \ --ignore vendor/
-      \ --ignore log/
-      \ --ignore tmp/
-      \ -g ""'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tComment
@@ -376,7 +370,7 @@ let g:indentLine_enabled = 0
 " Ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>g :Ag!<space>
-let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore vendor/ --ignore node_modules/ --ignore .log --ignore log/ --ignore tmp/"
+let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore-dir vendor --ignore-dir node_modules --ignore .log --ignore-dir log --ignore-dir tmp"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
