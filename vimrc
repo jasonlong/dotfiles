@@ -256,11 +256,9 @@ syntax enable
 
 set background=light
 colorscheme lavalamp
-" colorscheme Tomorrow
 
-" set guifont=Fira\ Code:h14
-" set guifont=Consolas:h17
 set guifont=Hack:h14
+set linespace=1
 
 " Always use dark bg in console
 if !has("gui_running")
