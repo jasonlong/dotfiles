@@ -41,7 +41,6 @@ Plug 'gerw/vim-HiLinkTrace'
 Plug 'ap/vim-css-color'
 Plug 'godlygeek/csapprox'
 Plug 'editorconfig/editorconfig-vim'
-
 Plug 'chriskempson/base16-vim'
 
 call plug#end()
@@ -234,7 +233,6 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Statusline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -247,7 +245,6 @@ set statusline +=%y                                      " Filetype
 set statusline +=%=%-14.(%l,%c%V%)                       " Line, column-virtual column
 set statusline +=%=lines:\ %-5L                          " Lines in the buffer
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -258,7 +255,7 @@ set background=light
 colorscheme lavalamp
 
 set guifont=Hack:h14
-set linespace=1
+set linespace=2
 
 " Always use dark bg in console
 if !has("gui_running")
@@ -268,9 +265,9 @@ endif
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
-nmap <F5> :call ToggleBackgroundColour()<CR>
+nmap <F5> :call ToggleBackgroundColor()<CR>
 
-function! ToggleBackgroundColour()
+function! ToggleBackgroundColor()
   if (&background == 'light')
     set background=dark
   else
@@ -314,7 +311,6 @@ endfunction
 " Currently stripping for all filetypes
 autocmd BufWritePre *.* :call <SID>StripTrailingWhitespaces()
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugins
@@ -346,7 +342,6 @@ nmap <leader>t :CtrlP<CR>
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>r :CtrlPMRU<CR>
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
-let g:ctrlp_use_caching = 0
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
