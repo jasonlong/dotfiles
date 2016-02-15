@@ -93,8 +93,8 @@ nnoremap p p=`]
 nnoremap <Leader>d :bp\|bd #<CR>
 
 " Fast buffer switching
-:nnoremap <D-[> :bprevious<CR>
-:nnoremap <D-]> :bnext<CR>
+:nnoremap <D-k> :bprevious<CR>
+:nnoremap <D-j> :bnext<CR>
 
 " Copy paragraphs / blocks of code
 noremap cp yap<S-}>p
@@ -196,11 +196,6 @@ set shiftwidth=2
 
 " Consider more more chars as words for autocomplete
 set iskeyword+=-,$
-
-" Highlight current line
-if has("gui_running")
-  " set cursorline
-endif
 
 " Turn off blinking cursor in command mode
 set gcr=n:blinkon0
