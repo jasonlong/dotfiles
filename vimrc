@@ -1,5 +1,6 @@
 " Temp for reloading lavalamp.vim colorscheme
 autocmd! bufwritepost lavalamp.vim source %
+autocmd! bufwritepost .vimrc source %
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-plug
@@ -10,9 +11,11 @@ Plug 'Yggdroot/indentLine'
 Plug 'justinmk/vim-sneak'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
+Plug 'whatyouhide/vim-textobj-erb'
+Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
@@ -40,7 +43,6 @@ Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'gerw/vim-HiLinkTrace'
 Plug 'ap/vim-css-color'
 Plug 'godlygeek/csapprox'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'chriskempson/base16-vim'
 
 call plug#end()
@@ -279,7 +281,7 @@ set undofile
 set undolevels=100
 
 set swapfile
-set dir=~/tmp
+set dir=~/tmp/vim_swapfiles
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Moving around, tabs, windows and buffers
@@ -346,6 +348,8 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <D-/> gcc
 vmap <D-/> gc
+" Disable ic text object
+let g:tcommentTextObjectInlineComment = ''
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " IndentLine
@@ -365,12 +369,13 @@ let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore-dir vendor --
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_check_on_open = 1
 let g:syntastic_scss_checkers = ['scss_lint']
-let g:syntastic_scss_scss_lint_args = "--config=$HOME/.scss-lint.yml"
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_filetype_map = { "eruby": "html" }
 let g:syntastic_enable_signs   = 1
 let g:syntastic_error_symbol   = '✕'
 let g:syntastic_warning_symbol = '!'
+let g:syntastic_style_error_symbol = '☹'
+let g:syntastic_style_warning_symbol = '☹'
 let g:syntastic_html_tidy_ignore_errors = [
       \ "<poll-include-fragment> is not recognized!",
       \ "discarding unexpected <poll-include-fragment>",
@@ -389,8 +394,16 @@ let g:syntastic_html_tidy_ignore_errors = [
 			\ "missing quote mark for attribute value",
 			\ ]
 
-" To ignore files
-" let g:syntastic_ignore_files = ['\m\c\.html.erb$']
+" Make scss-lint traverse up the tree until it finds
+" a .scss-lint.yml file.
+autocmd FileType scss :call SetScssConfig()
+
+fun! SetScssConfig()
+  let scssConfig = findfile('.scss-lint.yml', '.;')
+  if scssConfig != ''
+    let b:syntastic_scss_scss_lint_args = '--config ' . scssConfig
+  endif
+endf
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-textobj-user
