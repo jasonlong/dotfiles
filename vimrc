@@ -14,9 +14,10 @@ Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'Raimondi/delimitMate'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
-Plug 'whatyouhide/vim-textobj-erb'
+Plug 'whatyouhide/vim-textobj-erb', { 'for': 'ruby' }
 Plug 'whatyouhide/vim-textobj-xmlattr'
-Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+Plug 'jasonlong/vim-textobj-css', { 'for': ['css', 'sass', 'scss'] }
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-endwise'
@@ -357,6 +358,13 @@ let g:tcommentTextObjectInlineComment = ''
 nmap <leader>ig :IndentLinesToggle<CR>
 let g:indentLine_char = '│'
 let g:indentLine_enabled = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" delimitMate
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let delimitMate_expand_space = 1
+let delimitMate_expand_cr = 2
+let delimitMate_balance_matchpairs = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ag
