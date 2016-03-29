@@ -14,9 +14,9 @@ Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'Raimondi/delimitMate'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
-Plug 'whatyouhide/vim-textobj-erb', { 'for': 'ruby' }
+Plug 'whatyouhide/vim-textobj-erb', { 'for': ['ruby', 'eruby'] }
 Plug 'whatyouhide/vim-textobj-xmlattr'
-Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby', 'eruby'] }
 Plug 'jasonlong/vim-textobj-css', { 'for': ['css', 'sass', 'scss'] }
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
@@ -32,6 +32,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'ervandew/supertab'
 Plug 'justinmk/vim-dirvish'
 Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/clever-f.vim'
 
 " Languages
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
@@ -39,6 +40,7 @@ Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'plasticboy/vim-markdown'
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'JulesWang/css.vim' " The default syntax repo, but much more up-to-date
 
 " Colors and color tools
 Plug 'gerw/vim-HiLinkTrace'
@@ -75,6 +77,9 @@ set history=200
 " Set to auto read when a file is changed from the outside
 set autoread
 
+" Tab-complete :b options
+set wildmenu
+
 " Don't line break in the middle of words
 set lbr
 
@@ -95,10 +100,6 @@ nnoremap p p=`]
 " Close buffer, but leave split open
 nnoremap <Leader>d :bp\|bd #<CR>
 
-" Fast buffer switching
-:nnoremap <D-k> :bprevious<CR>
-:nnoremap <D-j> :bnext<CR>
-
 " Copy paragraphs / blocks of code
 noremap cp yap<S-}>p
 
@@ -113,7 +114,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 map <leader>ew :e %%
 
 " bind K to grep (ag) word under cursor
-nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>
+nnoremap K :Ag! "<C-R><C-W>"<CR>
 
 " Faster escape timeout
 set ttimeout
@@ -121,7 +122,20 @@ set ttimeoutlen=100
 set timeoutlen=3000
 
 " CSScomb
-nnoremap <leader>c :silent !php ~/dev/csscomb/csscomb.php -i %<CR>
+au FileType css,scss :call SetCombConfig()
+au FileType css,scss noremap <buffer> <leader>c :call CSScomb()<CR>
+
+fun! SetCombConfig()
+  let combConfig = findfile('.csscomb.json', '.;')
+  if combConfig != ''
+    let b:combConfigParam = "-c " . combConfig
+  endif
+endf
+
+function! CSScomb()
+  execute "silent !csscomb " b:combConfigParam . " " . expand('%')
+  " redraw!
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File types
@@ -215,12 +229,6 @@ nnoremap <s-CR> O<Esc>j
 " <C-a> for increment
 :nnoremap <C-z> <C-x>
 
-" Navigate splits
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
-
 " consistent menu navigation
 inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
@@ -249,11 +257,12 @@ set statusline +=%=lines:\ %-5L                          " Lines in the buffer
 " Enable syntax highlighting
 syntax enable
 
-set background=light
+set background=dark
 colorscheme lavalamp
 
-set guifont=Hack:h14
-set linespace=2
+" set guifont=Hack:h14
+set guifont=Operator\ Mono\ Book:h15
+set linespace=3
 
 " Always use dark bg in console
 if !has("gui_running")
@@ -290,6 +299,20 @@ set dir=~/tmp/vim_swapfiles
 " Treat long lines as break lines
 map j gj
 map k gk
+
+" Navigate splits
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
+" Fast buffer switching
+:nnoremap <D-k> :bprevious<CR>
+:nnoremap <D-j> :bnext<CR>
+
+" Use tab and shift-tab to cycle through windows.
+nnoremap <Tab> <C-W>w
+nnoremap <S-Tab> <C-W>W
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Strip trailing whitespace
@@ -377,11 +400,12 @@ let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore-dir vendor --
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_check_on_open = 1
 let g:syntastic_scss_checkers = ['scss_lint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_filetype_map = { "eruby": "html" }
 let g:syntastic_enable_signs   = 1
-let g:syntastic_error_symbol   = '✕'
-let g:syntastic_warning_symbol = '!'
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_warning_symbol = '⚠️'
 let g:syntastic_style_error_symbol = '☹'
 let g:syntastic_style_warning_symbol = '☹'
 let g:syntastic_html_tidy_ignore_errors = [

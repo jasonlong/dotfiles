@@ -4,6 +4,7 @@
 [user]
   name = Jason Long
   email = jlong@github.com
+	signingkey = A261CDC2
 
 [alias]
   pushy = !sh -c 'export bn=`git rev-parse --abbrev-ref HEAD` && git push --set-upstream origin $bn' -
