@@ -125,16 +125,16 @@ set timeoutlen=3000
 au FileType css,scss :call SetCombConfig()
 au FileType css,scss noremap <buffer> <leader>c :call CSScomb()<CR>
 
-fun! SetCombConfig()
+function! SetCombConfig()
   let combConfig = findfile('.csscomb.json', '.;')
   if combConfig != ''
     let b:combConfigParam = "-c " . combConfig
   endif
-endf
+endfunction
 
 function! CSScomb()
   execute "silent !csscomb " b:combConfigParam . " " . expand('%')
-  " redraw!
+  redraw!
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -289,6 +289,7 @@ set nobackup
 set nowb
 set undofile
 set undolevels=100
+set undodir=~/tmp/vim_undo
 
 set swapfile
 set dir=~/tmp/vim_swapfiles
@@ -366,6 +367,9 @@ nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.log|vendor|node_modules|tmp|log)$'
+  \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tComment
@@ -404,10 +408,10 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_filetype_map = { "eruby": "html" }
 let g:syntastic_enable_signs   = 1
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_error_symbol = '☹'
-let g:syntastic_style_warning_symbol = '☹'
+let g:syntastic_error_symbol = '×'
+let g:syntastic_warning_symbol = '▲'
+let g:syntastic_style_error_symbol = '×'
+let g:syntastic_style_warning_symbol = '×'
 let g:syntastic_html_tidy_ignore_errors = [
       \ "<poll-include-fragment> is not recognized!",
       \ "discarding unexpected <poll-include-fragment>",
