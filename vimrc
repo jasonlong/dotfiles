@@ -86,8 +86,11 @@ set lbr
 " Save when focus lost
 :au FocusLost * silent! wa
 
-let mapleader = ","
-let g:mapleader = ","
+" let mapleader = ","
+" let g:mapleader = ","
+
+let mapleader = " "
+let g:mapleader = " "
 
 " Fast saving
 map <Esc><Esc> :w<CR>
@@ -102,6 +105,10 @@ nnoremap <Leader>d :bp\|bd #<CR>
 
 " Copy paragraphs / blocks of code
 noremap cp yap<S-}>p
+
+" Keep cursor position after yanking (http://ddrscott.github.io/blog/2016/yank-without-jank/)
+vnoremap y myy`y
+vnoremap Y myY`y
 
 " Fast access to : commands
 nnoremap <Space> :
@@ -157,13 +164,14 @@ map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 " Vim UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ignore compiled files
-set wildignore+=*.DS_Store,*~,.git\*,.svn\*,*.swp,*.tmp,*.zip
-set wildignore+=*.gif,*.jpg,*.png,*.sketch,*.psd
+set wildignore+=*/tmp/*,*.swp,*.zip,*.gif,*.jpg,*.png,*.sketch,*.psd,.git/*
+set wildignore+=*.DS_Store,.tmp/*,.log/*,lib/*,node_modules/*,vendor/*
 
 "Always show current position
 set ruler
 
 " Line numbers
+set relativenumber
 set number
 
 " A buffer becomes hidden when it is abandoned
@@ -367,9 +375,11 @@ nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.log|vendor|node_modules|tmp|log)$'
-  \ }
+
+" This lets wildignore options to work
+if exists("g:ctrlp_user_command")
+  unlet g:ctrlp_user_command
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tComment
@@ -397,7 +407,7 @@ let delimitMate_balance_matchpairs = 1
 " Ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>g :Ag!<space>
-let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore-dir vendor --ignore-dir node_modules --ignore .log --ignore-dir log --ignore-dir tmp"
+let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore-dir vendor --ignore-dir node_modules --ignore .log --ignore-dir log --ignore-dir tmp --ignore-dir lib"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
