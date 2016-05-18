@@ -86,11 +86,11 @@ set lbr
 " Save when focus lost
 :au FocusLost * silent! wa
 
-" let mapleader = ","
-" let g:mapleader = ","
+let mapleader = ","
+let g:mapleader = ","
 
-let mapleader = " "
-let g:mapleader = " "
+" let mapleader = " "
+" let g:mapleader = " "
 
 " Fast saving
 map <Esc><Esc> :w<CR>
@@ -372,6 +372,7 @@ nmap <leader>t :CtrlP<CR>
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>r :CtrlPMRU<CR>
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+let g:ctrlp_use_caching = 1
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
