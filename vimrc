@@ -89,9 +89,6 @@ set lbr
 let mapleader = ","
 let g:mapleader = ","
 
-" let mapleader = " "
-" let g:mapleader = " "
-
 " Fast saving
 map <Esc><Esc> :w<CR>
 map <leader>w :w<CR>
@@ -295,12 +292,12 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup
 set nowb
-set undofile
-set undolevels=100
-set undodir=~/tmp/vim_undo
+set noundofile
+" set undolevels=100
+" set undodir=~/tmp/vim_undo
 
-set swapfile
-set dir=~/tmp/vim_swapfiles
+set noswapfile
+" set dir=~/tmp/vim_swapfiles
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Moving around, tabs, windows and buffers
@@ -414,7 +411,8 @@ let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore-dir vendor --
 " Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_check_on_open = 1
-let g:syntastic_scss_checkers = ['scss_lint']
+" let g:syntastic_scss_checkers = ['scss_lint']
+let g:syntastic_scss_checkers = ['stylelint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_filetype_map = { "eruby": "html" }
@@ -443,12 +441,12 @@ let g:syntastic_html_tidy_ignore_errors = [
 
 " Make scss-lint traverse up the tree until it finds
 " a .scss-lint.yml file.
-autocmd FileType scss :call SetScssConfig()
+autocmd FileType scss :call SetStylelintConfig()
 
-fun! SetScssConfig()
-  let scssConfig = findfile('.scss-lint.yml', '.;')
-  if scssConfig != ''
-    let b:syntastic_scss_scss_lint_args = '--config ' . scssConfig
+fun! SetStylelintConfig()
+  let stylelintConfig = findfile('.stylelintrc.json', '.;')
+  if stylelintConfig != ''
+    let b:syntastic_scss_stylelint_args = '--config ' . stylelintConfig
   endif
 endf
 
