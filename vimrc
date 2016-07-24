@@ -10,7 +10,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'Yggdroot/indentLine'
 Plug 'justinmk/vim-sneak'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'Raimondi/delimitMate'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
@@ -126,20 +125,20 @@ set ttimeoutlen=100
 set timeoutlen=3000
 
 " CSScomb
-au FileType css,scss :call SetCombConfig()
-au FileType css,scss noremap <buffer> <leader>c :call CSScomb()<CR>
-
-function! SetCombConfig()
-  let combConfig = findfile('.csscomb.json', '.;')
-  if combConfig != ''
-    let b:combConfigParam = "-c " . combConfig
-  endif
-endfunction
-
-function! CSScomb()
-  execute "silent !csscomb " b:combConfigParam . " " . expand('%')
-  redraw!
-endfunction
+" au FileType css,scss :call SetCombConfig()
+" au FileType css,scss noremap <buffer> <leader>c :call CSScomb()<CR>
+"
+" function! SetCombConfig()
+"   let combConfig = findfile('.csscomb.json', '.;')
+"   if combConfig != ''
+"     let b:combConfigParam = "-c " . combConfig
+"   endif
+" endfunction
+"
+" function! CSScomb()
+"   execute "silent !csscomb " b:combConfigParam . " " . expand('%')
+"   redraw!
+" endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File types
@@ -168,8 +167,10 @@ set wildignore+=*.DS_Store,.tmp/*,.log/*,lib/*,node_modules/*,vendor/*
 set ruler
 
 " Line numbers
-set relativenumber
-set number
+" set relativenumber
+" set number
+set norelativenumber
+set nonumber
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -244,6 +245,10 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
+" Mainly used for navigating Syntastic errors
+nmap <Down> :lnext<CR>
+nmap <Up> :lprevious<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Statusline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -266,7 +271,9 @@ set background=dark
 colorscheme lavalamp
 
 " set guifont=Hack:h14
-set guifont=Operator\ Mono\ Book:h15
+" set guifont=Operator\ Mono\ Book:h15
+" set guifont=Operator\ Mono\ Medium:h16
+set guifont=SF\ Mono\ Medium:h15
 set linespace=3
 
 " Always use dark bg in console
@@ -370,13 +377,12 @@ nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>r :CtrlPMRU<CR>
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 let g:ctrlp_use_caching = 1
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
-" This lets wildignore options to work
+" This lets wildignore options work
 if exists("g:ctrlp_user_command")
-  unlet g:ctrlp_user_command
+  " unlet g:ctrlp_user_command
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -411,7 +417,6 @@ let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore-dir vendor --
 " Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_check_on_open = 1
-" let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_scss_checkers = ['stylelint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_tidy_exec = 'tidy5'
@@ -441,14 +446,23 @@ let g:syntastic_html_tidy_ignore_errors = [
 
 " Make scss-lint traverse up the tree until it finds
 " a .scss-lint.yml file.
-autocmd FileType scss :call SetStylelintConfig()
+autocmd FileType css,scss :call SetStylelintConfig()
 
 fun! SetStylelintConfig()
-  let stylelintConfig = findfile('.stylelintrc.json', '.;')
-  if stylelintConfig != ''
-    let b:syntastic_scss_stylelint_args = '--config ' . stylelintConfig
+  let b:stylelintConfig = findfile('.stylelintrc.json', '.;')
+  if b:stylelintConfig != ''
+    let b:syntastic_scss_stylelint_args = '--config ' . b:stylelintConfig
   endif
 endf
+
+" stylefmt
+au FileType css,scss noremap <buffer> <leader>c :call Stylefmt()<CR>
+
+fun! Stylefmt()
+  execute "silent !stylefmt --config " b:stylelintConfig . " " . expand('%')
+  redraw!
+endf
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-textobj-user
