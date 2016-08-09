@@ -10,13 +10,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'Yggdroot/indentLine'
 Plug 'justinmk/vim-sneak'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'Raimondi/delimitMate'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
 Plug 'whatyouhide/vim-textobj-erb', { 'for': ['ruby', 'eruby'] }
 Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby', 'eruby'] }
-Plug 'jasonlong/vim-textobj-css', { 'for': ['css', 'sass', 'scss'] }
+Plug 'jasonlong/vim-textobj-css'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-endwise'
@@ -44,7 +45,6 @@ Plug 'JulesWang/css.vim' " The default syntax repo, but much more up-to-date
 " Colors and color tools
 Plug 'gerw/vim-HiLinkTrace'
 Plug 'ap/vim-css-color'
-Plug 'godlygeek/csapprox'
 Plug 'chriskempson/base16-vim'
 
 call plug#end()
@@ -167,10 +167,7 @@ set wildignore+=*.DS_Store,.tmp/*,.log/*,lib/*,node_modules/*,vendor/*
 set ruler
 
 " Line numbers
-" set relativenumber
-" set number
-set norelativenumber
-set nonumber
+set number
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -264,22 +261,20 @@ set statusline +=%=lines:\ %-5L                          " Lines in the buffer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable
+syntax off
 
-set background=dark
-colorscheme lavalamp
+set background=light
+
+if has("gui_running")
+  colorscheme lavalamp
+  syntax enable
+endif
 
 " set guifont=Hack:h14
 " set guifont=Operator\ Mono\ Book:h15
 " set guifont=Operator\ Mono\ Medium:h16
-set guifont=SF\ Mono\ Medium:h15
+set guifont=SF\ Mono\ Regular:h13
 set linespace=3
-
-" Always use dark bg in console
-if !has("gui_running")
-  set background=dark
-endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -300,11 +295,7 @@ endfunction
 set nobackup
 set nowb
 set noundofile
-" set undolevels=100
-" set undodir=~/tmp/vim_undo
-
 set noswapfile
-" set dir=~/tmp/vim_swapfiles
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Moving around, tabs, windows and buffers
@@ -377,6 +368,7 @@ nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>r :CtrlPMRU<CR>
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 let g:ctrlp_use_caching = 1
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
@@ -410,7 +402,8 @@ let delimitMate_balance_matchpairs = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>g :Ag!<space>
+nmap <leader>g :LAg!<space>
+let g:ag_lhandler="botright lopen"
 let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore-dir vendor --ignore-dir node_modules --ignore .log --ignore-dir log --ignore-dir tmp --ignore-dir lib"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -421,6 +414,7 @@ let g:syntastic_scss_checkers = ['stylelint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_filetype_map = { "eruby": "html" }
+let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss'] }
 let g:syntastic_enable_signs   = 1
 let g:syntastic_error_symbol = '×'
 let g:syntastic_warning_symbol = '▲'
@@ -444,6 +438,8 @@ let g:syntastic_html_tidy_ignore_errors = [
 			\ "missing quote mark for attribute value",
 			\ ]
 
+nnoremap <leader>l :SyntasticCheck<CR>
+
 " Make scss-lint traverse up the tree until it finds
 " a .scss-lint.yml file.
 autocmd FileType css,scss :call SetStylelintConfig()
@@ -451,18 +447,51 @@ autocmd FileType css,scss :call SetStylelintConfig()
 fun! SetStylelintConfig()
   let b:stylelintConfig = findfile('.stylelintrc.json', '.;')
   if b:stylelintConfig != ''
-    let b:syntastic_scss_stylelint_args = '--config ' . b:stylelintConfig
+    let b:syntastic_scss_stylelint_args = '--c ' . b:stylelintConfig
   endif
 endf
 
 " stylefmt
-au FileType css,scss noremap <buffer> <leader>c :call Stylefmt()<CR>
+" Not really using this at this point
+" au FileType css,scss noremap <buffer> <leader>c :call Stylefmt()<CR>
+" fun! Stylefmt()
+"   execute "silent !stylefmt --config " b:stylelintConfig . " " . expand('%')
+"   redraw!
+" endf
 
-fun! Stylefmt()
-  execute "silent !stylefmt --config " b:stylelintConfig . " " . expand('%')
-  redraw!
+vnoremap <silent> <leader>s :call StylefmtVisual()<CR>
+
+" Mostly borrowed from:
+" https://github.com/kewah/vim-stylefmt/blob/master/plugin/stylefmt.vim
+fun! StylefmtVisual() range
+  " store current cursor position
+  let win_view = winsaveview()
+
+  " get lines from the current selection and store the first line number
+  let range_start = line("'<")
+  let input = getline("'<", "'>")
+
+  let output = system("stylefmt --config " . b:stylelintConfig, join(input, "\n"))
+
+  if v:shell_error
+    echom 'Error while executing stylefmt! no changes made.'
+    echo output
+  else
+    " delete the old lines
+    normal! gvd
+
+    let new_lines = split(l:output, '\n')
+
+    " add new lines to the buffer
+    call append(range_start - 1, new_lines)
+
+    " Clean up: restore previous cursor position
+    call winrestview(win_view)
+    " recreate the visual selection and cancel it, so that the formatted code
+    " can be reselected using gv
+    execute "normal! V" . (len(new_lines)-1) . "j\<esc>"
+  endif
 endf
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-textobj-user
@@ -494,3 +523,4 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:sneak#s_next=1
 let g:sneak#streak=1
+
