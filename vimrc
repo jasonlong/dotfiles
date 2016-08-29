@@ -18,7 +18,7 @@ Plug 'whatyouhide/vim-textobj-erb', { 'for': ['ruby', 'eruby'] }
 Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby', 'eruby'] }
 Plug 'jasonlong/vim-textobj-css'
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -26,7 +26,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 Plug 'SirVer/ultisnips'
 Plug 'haya14busa/incsearch.vim'
 Plug 'ervandew/supertab'
@@ -44,7 +44,6 @@ Plug 'JulesWang/css.vim' " The default syntax repo, but much more up-to-date
 
 " Colors and color tools
 Plug 'gerw/vim-HiLinkTrace'
-Plug 'ap/vim-css-color'
 Plug 'chriskempson/base16-vim'
 
 call plug#end()
@@ -117,28 +116,12 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 map <leader>ew :e %%
 
 " bind K to grep (ag) word under cursor
-nnoremap K :Ag! "<C-R><C-W>"<CR>
+nnoremap K :LAck! "<C-R><C-W>"<CR>
 
 " Faster escape timeout
 set ttimeout
 set ttimeoutlen=100
 set timeoutlen=3000
-
-" CSScomb
-" au FileType css,scss :call SetCombConfig()
-" au FileType css,scss noremap <buffer> <leader>c :call CSScomb()<CR>
-"
-" function! SetCombConfig()
-"   let combConfig = findfile('.csscomb.json', '.;')
-"   if combConfig != ''
-"     let b:combConfigParam = "-c " . combConfig
-"   endif
-" endfunction
-"
-" function! CSScomb()
-"   execute "silent !csscomb " b:combConfigParam . " " . expand('%')
-"   redraw!
-" endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File types
@@ -273,8 +256,9 @@ endif
 " set guifont=Hack:h14
 " set guifont=Operator\ Mono\ Book:h15
 " set guifont=Operator\ Mono\ Medium:h16
-set guifont=SF\ Mono\ Regular:h13
-set linespace=3
+" set guifont=SF\ Mono\ Regular:h13
+set guifont=SF\ Mono\ Medium:h14
+set linespace=7
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -380,10 +364,10 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tComment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <D-/> gcc
-vmap <D-/> gc
-" Disable ic text object
-let g:tcommentTextObjectInlineComment = ''
+" nmap <D-/> gcc
+" vmap <D-/> gc
+" " Disable ic text object
+" let g:tcommentTextObjectInlineComment = ''
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " IndentLine
@@ -400,11 +384,12 @@ let delimitMate_expand_cr = 2
 let delimitMate_balance_matchpairs = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ag
+" Ack
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>g :LAg!<space>
-let g:ag_lhandler="botright lopen"
-let g:ag_prg="/usr/local/bin/ag -U --column --ignore-case --ignore-dir vendor --ignore-dir node_modules --ignore .log --ignore-dir log --ignore-dir tmp --ignore-dir lib"
+nmap <leader>g :LAck!<space>
+" let g:ag_lhandler="botright lopen"
+" let g:ackprg="/usr/local/bin/ag -U --column --ignore-case --ignore-dir vendor --ignore-dir node_modules --ignore .log --ignore-dir log --ignore-dir tmp --ignore-dir lib"
+let g:ackprg="/usr/local/bin/ag --vimgrep --ignore-case --ignore-dir vendor --ignore-dir node_modules --ignore .log --ignore-dir log --ignore-dir tmp --ignore-dir lib"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
@@ -450,14 +435,6 @@ fun! SetStylelintConfig()
     let b:syntastic_scss_stylelint_args = '--c ' . b:stylelintConfig
   endif
 endf
-
-" stylefmt
-" Not really using this at this point
-" au FileType css,scss noremap <buffer> <leader>c :call Stylefmt()<CR>
-" fun! Stylefmt()
-"   execute "silent !stylefmt --config " b:stylelintConfig . " " . expand('%')
-"   redraw!
-" endf
 
 vnoremap <silent> <leader>s :call StylefmtVisual()<CR>
 
