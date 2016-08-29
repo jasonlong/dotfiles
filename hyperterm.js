@@ -5,10 +5,10 @@ module.exports = {
 
     // font family with optional fallbacks
     // fontFamily: '"Operator Mono"',
-    // fontFamily: '"SFMono-Medium"',
-    fontFamily: '"Hack"',
+    fontFamily: '"SFMono-Medium"',
+    // fontFamily: '"Hack"',
 
-    fontWeight: 300,
+    // fontWeight: 500,
 
     // terminal cursor background color (hex)
     cursorColor: '#F81CE5',
@@ -29,6 +29,9 @@ module.exports = {
     termCSS: `
       x-row {
         line-height: 1;
+      }
+      .cursor-node {
+        margin-left: 4px;
       }
     `,
 
