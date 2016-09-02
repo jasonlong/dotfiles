@@ -208,8 +208,8 @@ set smartindent
 filetype indent on
 
 " Insert blank lines above and below
-nnoremap <CR> o<Esc>k
-nnoremap <s-CR> O<Esc>j
+nnoremap <D-CR> o<Esc>k
+nnoremap <S-D-CR> O<Esc>j
 
 " Increment / decrement numbers
 " <C-a> for increment
