@@ -81,6 +81,9 @@ set wildmenu
 " Don't line break in the middle of words
 set lbr
 
+" Wrapped lines keep indentation
+set breakindent
+
 " Save when focus lost
 :au FocusLost * silent! wa
 
@@ -256,8 +259,8 @@ endif
 " set guifont=Hack:h14
 " set guifont=Operator\ Mono\ Book:h15
 " set guifont=Operator\ Mono\ Medium:h16
-" set guifont=SF\ Mono\ Regular:h13
-set guifont=SF\ Mono\ Medium:h14
+set guifont=SF\ Mono\ Regular:h14
+" set guifont=SF\ Mono\ Medium:h14
 set linespace=7
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -354,20 +357,13 @@ nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 let g:ctrlp_use_caching = 1
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_working_path_mode = 'r'
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g "!.git/*"'
+let g:ctrlp_user_command = 'rg --files %s'
 
 " This lets wildignore options work
 if exists("g:ctrlp_user_command")
   " unlet g:ctrlp_user_command
 endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" tComment
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nmap <D-/> gcc
-" vmap <D-/> gc
-" " Disable ic text object
-" let g:tcommentTextObjectInlineComment = ''
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " IndentLine
@@ -386,16 +382,17 @@ let delimitMate_balance_matchpairs = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ack
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>g :LAck!<space>
-" let g:ag_lhandler="botright lopen"
-" let g:ackprg="/usr/local/bin/ag -U --column --ignore-case --ignore-dir vendor --ignore-dir node_modules --ignore .log --ignore-dir log --ignore-dir tmp --ignore-dir lib"
-let g:ackprg="/usr/local/bin/ag --vimgrep --ignore-case --ignore-dir vendor --ignore-dir node_modules --ignore .log --ignore-dir log --ignore-dir tmp --ignore-dir lib"
+nmap <leader>g :Ack!<space>
+" let g:ackprg="/usr/local/bin/ag --vimgrep --ignore-case --ignore-dir vendor --ignore-dir node_modules --ignore .log --ignore-dir log --ignore-dir tmp --ignore-dir lib"
+" let g:ackprg="/usr/local/bin/rg --vimgrep --no-heading --ignore-case --glob "!vendor/* !node_modules/* !.log !log/* !tmp/* !lib/*"
+let g:ackprg="/usr/local/bin/rg --vimgrep --no-heading --ignore-case"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_check_on_open = 1
 let g:syntastic_scss_checkers = ['stylelint']
+let g:syntastic_css_checkers = ['stylelint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_filetype_map = { "eruby": "html" }
@@ -425,8 +422,8 @@ let g:syntastic_html_tidy_ignore_errors = [
 
 nnoremap <leader>l :SyntasticCheck<CR>
 
-" Make scss-lint traverse up the tree until it finds
-" a .scss-lint.yml file.
+" Make stylelint traverse up the tree until it finds
+" a .stylelintrc.json file.
 autocmd FileType css,scss :call SetStylelintConfig()
 
 fun! SetStylelintConfig()
