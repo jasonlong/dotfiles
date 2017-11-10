@@ -27,6 +27,7 @@ call minpac#add('junegunn/fzf.vim')
 call minpac#add('justinmk/vim-sneak')
 call minpac#add('rhysd/clever-f.vim')
 call minpac#add('mhinz/vim-grepper')
+call minpac#add('justinmk/vim-dirvish')
 
 " textobj stuff
 call minpac#add('kana/vim-textobj-user')
@@ -85,7 +86,10 @@ set incsearch                     " Makes search act like search in modern brows
 set lazyredraw                    " Don't redraw while executing macros
 set magic                         " For regular expressions turn magic on
 set showmatch                     " Show matching brackets when text indicator is over them
+set lazyredraw                    " Helps with scrolling performance
 set mouse=a                       " Allow scrolling in terminal
+set guioptions-=r                 " Remove right scrollbar
+set go-=L                         " Remove left scrollbar
 set nobackup
 set nowb
 set noundofile
@@ -121,7 +125,6 @@ map j gj
 map k gk
 
 " Fast saving
-map <Esc><Esc> :w<CR>
 map <leader>w :w<CR>
 
 " Keep indentation when pasting
@@ -214,6 +217,8 @@ nmap <Leader>r :FZFMru<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:grepper = {}
 let g:grepper.tools = ['rg']
+let g:grepper.rg = { 'grepprg': 'rg --no-heading --vimgrep --smart-case' }
+
 nnoremap <leader>g :Grepper<cr>
 nnoremap K :Grepper -cword -noprompt<cr>
 
@@ -237,6 +242,8 @@ let g:sneak#streak=1
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 let g:gitgutter_sign_modified = '•'
+let g:gitgutter_sign_added = '•'
+let g:gitgutter_sign_removed = '•'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE
@@ -259,3 +266,9 @@ autocmd BufEnter * EnableStripWhitespaceOnSave
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_new_list_item_indent = 2
