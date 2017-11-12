@@ -130,6 +130,9 @@ map <leader>w :w<CR>
 " Keep indentation when pasting
 nnoremap p p=`]
 
+" Copy to system clipboard
+vnoremap <C-c> "*yy
+
 " Close buffer, but leave split open
 nnoremap <Leader>d :bp\|bd #<CR>
 
