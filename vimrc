@@ -57,14 +57,13 @@ let mapleader = ","
 autocmd! bufwritepost .vimrc source %
 
 nnoremap <leader>v :e $MYVIMRC<CR>
-map <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+noremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 cd $PWD                           " set pwd to current directory
 set t_Co=256                      " 256 color support for terminal
-set nocompatible                  " no vi compatability
 set history=200                   " Sets how many lines of history VIM has to remember
 set autoread                      " Set to auto read when a file is changed from the outside
 set wildmenu                      " Tab-complete :b options
@@ -97,7 +96,7 @@ set noswapfile
 set mat=2                         " How many tenths of a second to blink when matching brackets
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 set tm=500
-autocmd GUIEnter * set visualbell t_vb=
+autocmd! GUIEnter * set visualbell t_vb=
 
 " Tab handling
 set expandtab
@@ -110,7 +109,7 @@ set iskeyword+=-,$
 " Turn off blinking cursor in command mode
 set gcr=n:blinkon0
 
-set smartindent
+set autoindent
 filetype indent on
 
 filetype on " Enable filetype detection
@@ -121,11 +120,11 @@ filetype plugin on " Enable filetype-specific plugins
 " Keyboard mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines
-map j gj
-map k gk
+noremap j gj
+noremap k gk
 
 " Fast saving
-map <leader>w :w<CR>
+noremap <leader>w :w<CR>
 
 " Keep indentation when pasting
 nnoremap p p=`]
@@ -154,10 +153,6 @@ nmap <leader>c :cclose<CR>
 " Use tab and shift-tab to cycle through windows.
 nnoremap <Tab> <C-W>w
 nnoremap <S-Tab> <C-W>W
-
-" Insert blank lines above and below
-" nnoremap <CR> o<Esc>k
-" nnoremap <S-CR> O<Esc>j
 
 " consistent menu navigation
 inoremap <C-j> <C-n>
@@ -261,7 +256,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-better-whitespace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufEnter * EnableStripWhitespaceOnSave
+autocmd! BufEnter * EnableStripWhitespaceOnSave
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnip
