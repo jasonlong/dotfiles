@@ -100,7 +100,6 @@ autocmd! GUIEnter * set visualbell t_vb=
 
 " Tab handling
 set expandtab
-set tabstop=2
 set shiftwidth=2
 
 " Consider more more chars as words for autocomplete
