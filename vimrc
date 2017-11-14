@@ -86,6 +86,7 @@ set lazyredraw                    " Don't redraw while executing macros
 set magic                         " For regular expressions turn magic on
 set showmatch                     " Show matching brackets when text indicator is over them
 set lazyredraw                    " Helps with scrolling performance
+set inccommand=nosplit            " Live preview of substitutions
 set mouse=a                       " Allow scrolling in terminal
 set guioptions-=r                 " Remove right scrollbar
 set go-=L                         " Remove left scrollbar
