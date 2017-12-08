@@ -39,11 +39,13 @@ call minpac#add('jasonlong/vim-textobj-css')
 " Colors
 call minpac#add('arcticicestudio/nord-vim')
 call minpac#add('jasonlong/nordish-vim')
+call minpac#add('reedes/vim-colors-pencil')
 
 " Languages
 call minpac#add('JulesWang/css.vim') " The default syntax repo, but more up-to-date
 call minpac#add('pangloss/vim-javascript')
 call minpac#add('plasticboy/vim-markdown')
+call minpac#add('mxw/vim-jsx')
 
 command! Pu source $MYVIMRC | call minpac#update()
 command! Pc source $MYVIMRC | call minpac#clean()
@@ -86,7 +88,6 @@ set lazyredraw                    " Don't redraw while executing macros
 set magic                         " For regular expressions turn magic on
 set showmatch                     " Show matching brackets when text indicator is over them
 set lazyredraw                    " Helps with scrolling performance
-set inccommand=nosplit            " Live preview of substitutions
 set mouse=a                       " Allow scrolling in terminal
 set guioptions-=r                 " Remove right scrollbar
 set go-=L                         " Remove left scrollbar
@@ -98,6 +99,9 @@ set mat=2                         " How many tenths of a second to blink when ma
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 set tm=500
 autocmd! GUIEnter * set visualbell t_vb=
+if has('nvim')
+  set inccommand=nosplit          " Live preview of substitutions
+endif
 
 " Tab handling
 set expandtab
@@ -157,6 +161,9 @@ nnoremap <S-Tab> <C-W>W
 " consistent menu navigation
 inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
+
+" Make * work with visual selection
+vnoremap * y/\V<c-r>=escape(@", '\')<cr><cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and fonts
@@ -227,6 +234,13 @@ xmap gs <plug>(GrepperOperator)
 " vim-textobj-user
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 runtime macros/matchit.vim
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" delimitMate
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let delimitMate_expand_space = 1
+let delimitMate_expand_cr = 2
+let delimitMate_balance_matchpairs = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sneak
