@@ -37,7 +37,6 @@ call minpac#add('nelstrom/vim-textobj-rubyblock')
 call minpac#add('jasonlong/vim-textobj-css')
 
 " Colors
-call minpac#add('arcticicestudio/nord-vim')
 call minpac#add('jasonlong/nordish-vim')
 call minpac#add('reedes/vim-colors-pencil')
 
@@ -46,6 +45,7 @@ call minpac#add('JulesWang/css.vim') " The default syntax repo, but more up-to-d
 call minpac#add('pangloss/vim-javascript')
 call minpac#add('plasticboy/vim-markdown')
 call minpac#add('mxw/vim-jsx')
+call minpac#add('fatih/vim-hclfmt') " For Tarraform-type Files
 
 command! Pu source $MYVIMRC | call minpac#update()
 command! Pc source $MYVIMRC | call minpac#clean()
@@ -256,6 +256,12 @@ let g:gitgutter_eager = 1
 let g:gitgutter_sign_modified = '•'
 let g:gitgutter_sign_added = '•'
 let g:gitgutter_sign_removed = '•'
+
+" Remap these as they conflict w/ vim-textobj-css
+omap ih <Plug>GitGutterTextObjectInnerPending
+omap ah <Plug>GitGutterTextObjectOuterPending
+xmap ih <Plug>GitGutterTextObjectInnerVisual
+xmap ah <Plug>GitGutterTextObjectOuterVisual
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE
