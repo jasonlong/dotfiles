@@ -46,6 +46,7 @@ call minpac#add('pangloss/vim-javascript')
 call minpac#add('plasticboy/vim-markdown')
 call minpac#add('mxw/vim-jsx')
 call minpac#add('fatih/vim-hclfmt') " For Tarraform-type Files
+call minpac#add('prettier/vim-prettier')
 
 command! Pu source $MYVIMRC | call minpac#update()
 command! Pc source $MYVIMRC | call minpac#clean()
@@ -119,6 +120,10 @@ filetype indent on
 filetype on " Enable filetype detection
 filetype plugin on " Enable filetype-specific plugins
 :au FocusLost * silent! wa " Save when focus lost
+
+" .gf files == .tf
+autocmd BufRead,BufNewFile *.gf set filetype=tf
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Keyboard mappings
@@ -274,6 +279,56 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" stylefmt
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType css,scss :call SetStylelintConfig()
+au FileType css,scss vnoremap <buffer> <leader>s :call StylefmtVisual()<CR>
+
+fun! SetStylelintConfig()
+  let b:stylelintConfig = findfile('.stylelintrc', '.;')
+  if b:stylelintConfig != ''
+    let b:syntastic_scss_stylelint_args = '--config ' . b:stylelintConfig
+  endif
+endf
+
+function! StylefmtVisual() range
+  " store current cursor position and change the working directory
+  let win_view = winsaveview()
+  let file_wd = expand('%:p:h')
+  let current_wd = getcwd()
+  execute ':lcd' . file_wd
+
+  " get lines from the current selection and store the first line number
+  let range_start = line("'<")
+  let input = getline("'<", "'>")
+
+  let output = system("stylefmt --config " . b:stylelintConfig, join(input, "\n"))
+  echom output
+
+  if v:shell_error
+    echom 'Error while executing stylefmt! no changes made.'
+    echo output
+  else
+    " delete the old lines
+    normal! gvd
+
+    let new_lines = split(l:output, '\n')
+
+    " add new lines to the buffer
+    call append(range_start - 1, new_lines)
+
+    " Clean up: restore previous cursor position
+    call winrestview(win_view)
+    " recreate the visual selection and cancel it, so that the formatted code
+    " can be reselected using gv
+    execute "normal! V" . (len(new_lines)-1) . "j\<esc>"
+  endif
+
+  " Clean up: restore working directory
+  execute ':lcd' . current_wd
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-better-whitespace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd! BufEnter * EnableStripWhitespaceOnSave
@@ -290,3 +345,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_new_list_item_indent = 2
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-prettier
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
