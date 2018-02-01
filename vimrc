@@ -115,6 +115,7 @@ set iskeyword+=-,$
 set gcr=n:blinkon0
 
 set autoindent
+set smartindent
 filetype indent on
 
 filetype on " Enable filetype detection
