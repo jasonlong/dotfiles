@@ -28,6 +28,7 @@ call minpac#add('justinmk/vim-sneak')
 call minpac#add('rhysd/clever-f.vim')
 call minpac#add('mhinz/vim-grepper')
 call minpac#add('justinmk/vim-dirvish')
+call minpac#add('matze/vim-move')
 
 " textobj stuff
 call minpac#add('kana/vim-textobj-user')
