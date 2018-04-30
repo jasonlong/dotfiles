@@ -48,6 +48,7 @@ call minpac#add('plasticboy/vim-markdown')
 call minpac#add('mxw/vim-jsx')
 call minpac#add('fatih/vim-hclfmt') " For Tarraform-type Files
 call minpac#add('prettier/vim-prettier')
+call minpac#add('Chiel92/vim-autoformat') " Using for html-beautify via js-beautify
 
 command! Pu source $MYVIMRC | call minpac#update()
 command! Pc source $MYVIMRC | call minpac#clean()
@@ -275,6 +276,7 @@ xmap ah <Plug>GitGutterTextObjectOuterVisual
 let g:ale_sign_error = '×'
 let g:ale_sign_warning = '▲'
 let g:ale_set_loclist = 0
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -330,6 +332,11 @@ function! StylefmtVisual() range
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-commentary
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-better-whitespace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd! BufEnter * EnableStripWhitespaceOnSave
@@ -348,7 +355,12 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_new_list_item_indent = 2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-move
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:move_key_modifier = 'C'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-prettier
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
