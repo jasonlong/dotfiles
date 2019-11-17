@@ -1,0 +1,1 @@
+/Users/jason/.config/fisherman/pure/installer.fish
