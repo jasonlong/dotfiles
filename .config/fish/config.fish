@@ -1,3 +1,5 @@
+set pure_color_symbol_success (set_color green)
+
 # Tell fzf to not use files ignored by git, etc.
 set -x FZF_DEFAULT_COMMAND 'rg --files'
 
@@ -7,3 +9,6 @@ set -x FZF_DEFAULT_COMMAND 'rg --files'
 
 set -x GOPATH $HOME/golang
 status --is-interactive; and . (rbenv init -|psub)
+
+set PATH ~/bin $PATH
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths

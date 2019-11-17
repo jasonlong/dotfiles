@@ -1,75 +1,180 @@
 function __z -d "Jump to a recent directory."
-  set -l option
-  set -l arg
-  set -l typ ''
-  set -g z_path (command dirname (status -f))
-  set -l target
-
-  getopts $argv | while read -l 1 2
-    switch $1
-      case c clean
-        echo > $Z_DATA
-        printf "%s cleaned!" $Z_DATA
-        return 0
-      case e echo
-        set option "ech"
-        set arg "$2"
-        break
-      case l list
-        set option "list"
-        set arg "$2"
-        break
-      case r rank
-        set typ "rank"
-        set arg "$2"
-        break
-      case t recent
-        set typ "recent"
-        set arg "$2"
-        break
-      case _
-        set arg "$2"
-        break
-      case h help
-        printf "Usage: $Z_CMD  [-celrth] dir\n\n"
-        printf "         -c --clean    Cleans out $Z_DATA\n"
+    function __print_help -d "Print z help."
+        printf "Usage: $Z_CMD  [-celrth] regex1 regex2...\n\n"
+        printf "         -c --clean    Removes directories that no longer exist from $Z_DATA\n"
+        printf "         -d --dir      Opens matching directory using system file manager.\n"
         printf "         -e --echo     Prints best match, no cd\n"
-        printf "         -l --list     List matches, no cd\n"
-        printf "         -r --rank     Search by rank, cd\n"
-        printf "         -t --recent   Search by recency, cd\n"
+        printf "         -l --list     List matches and scores, no cd\n"
+        printf "         -p --purge    Delete all entries from $Z_DATA\n"
+        printf "         -r --rank     Search by rank\n"
+        printf "         -t --recent   Search by recency\n"
+        printf "         -x --delete   Removes the current directory from $Z_DATA\n"
         printf "         -h --help     Print this help\n\n"
-        printf "If installed with fisherman, run `fisher help z` for more info"
-          return 0
-      case \*
-        printf "$Z_CMD: '%s' is not a valid option\n" $1
-        __z --help
-        return 1
+
+        if type -q fisher
+            printf "Run `fisher help z` for more information.\n"
+        end
+    end
+    function __z_legacy_escape_regex
+        # taken from escape_string_pcre2 in fish
+        # used to provide compatibility with fish 2
+        for c in (string split '' $argv)
+            if contains $c (string split '' '.^$*+()?[{}\\|-]')
+                printf \\
+            end
+            printf '%s' $c
         end
     end
 
-    if test 1 -eq (printf "%s" $arg | grep -c "^\/")
-      set target $arg
+    set -l options "h/help" "c/clean" "e/echo" "l/list" "p/purge" "r/rank" "t/recent" "d/directory" "x/delete"
+
+    argparse $options -- $argv
+
+    if set -q _flag_help
+        __print_help
+        return 0
+    else if set -q _flag_clean
+        __z_clean
+        printf "%s cleaned!\n" $Z_DATA
+        return 0
+    else if set -q _flag_purge
+        echo > $Z_DATA
+        printf "%s purged!\n" $Z_DATA
+        return 0
+    else if set -q _flag_delete
+        sed -i -e "\:^$PWD|.*:d" $Z_DATA
+        return 0
+    end
+
+    set -l typ
+
+    if set -q _flag_rank
+        set typ "rank"
+    else if set -q _flag_recent
+        set typ "recent"
+    end
+
+    set -l z_script '
+        function frecent(rank, time) {
+            dx = t-time
+            if( dx < 3600 ) return rank*4
+            if( dx < 86400 ) return rank*2
+            if( dx < 604800 ) return rank/2
+            return rank/4
+        }
+
+        function output(matches, best_match, common) {
+            # list or return the desired directory
+            if( list ) {
+                cmd = "sort -nr"
+                for( x in matches ) {
+                    if( matches[x] ) {
+                        printf "%-10s %s\n", matches[x], x | cmd
+                    }
+                }
+                if( common ) {
+                    printf "%-10s %s\n", "common:", common > "/dev/stderr"
+                }
+            } else {
+                if( common ) best_match = common
+                print best_match
+            }
+        }
+
+        function common(matches) {
+            # find the common root of a list of matches, if it exists
+            for( x in matches ) {
+                if( matches[x] && (!short || length(x) < length(short)) ) {
+                    short = x
+                }
+            }
+            if( short == "/" ) return
+            for( x in matches ) if( matches[x] && index(x, short) != 1 ) {
+                    return
+                }
+            return short
+        }
+
+        BEGIN {
+            hi_rank = ihi_rank = -9999999999
+        }
+        {
+            if( typ == "rank" ) {
+                rank = $2
+            } else if( typ == "recent" ) {
+                rank = $3 - t
+            } else rank = frecent($2, $3)
+            if( $1 ~ q ) {
+                matches[$1] = rank
+            } else if( tolower($1) ~ tolower(q) ) imatches[$1] = rank
+            if( matches[$1] && matches[$1] > hi_rank ) {
+                best_match = $1
+                hi_rank = matches[$1]
+            } else if( imatches[$1] && imatches[$1] > ihi_rank ) {
+                ibest_match = $1
+                ihi_rank = imatches[$1]
+            }
+        }
+
+        END {
+        # prefer case sensitive
+            if( best_match ) {
+                output(matches, best_match, common(matches))
+            } else if( ibest_match ) {
+                output(imatches, ibest_match, common(imatches))
+            }
+        }
+    '
+
+    set -l qs
+    for arg in $argv
+        set -l escaped $arg
+        if string escape --style=regex '' ^/dev/null >/dev/null # use builtin escape if available
+            set escaped (string escape --style=regex $escaped)
+        else
+            set escaped (__z_legacy_escape_regex $escaped)
+        end
+        # Need to escape twice, see https://www.math.utah.edu/docs/info/gawk_5.html#SEC32
+        set escaped (string replace --all \\ \\\\ $escaped)
+        set qs $qs $escaped
+    end
+    set -l q (string join '.*' $qs)
+
+    if set -q _flag_list
+        # Handle list separately as it can print common path information to stderr
+        # which cannot be captured from a subcommand.
+        command awk -v t=(date +%s) -v list="list" -v typ="$typ" -v q="$q" -F "|" $z_script "$Z_DATA"
     else
-      set target (command awk -v t=(date +%s) -v option="$option" -v typ="$typ" -v q="$arg" -F "|" -f $z_path/z.awk "$Z_DATA") 
-    end
+        set target (command awk -v t=(date +%s) -v typ="$typ" -v q="$q" -F "|" $z_script "$Z_DATA")
 
-    if test "$option" = "list"
-      echo "$target" | tr ";" "\n" | sort -nr
-      return 0
-    end
+        if test "$status" -gt 0
+            return
+        end
 
-    if test "$status" -gt 0
-      return
-    end
+        if test -z "$target"
+            printf "'%s' did not match any results\n" "$argv"
+            return 1
+        end
 
-    if test -z "$target"
-      printf "'%s' did not match any results" "$arg"
-      return 1
-    end
+        if set -q _flag_list
+            echo "$target" | tr ";" "\n" | sort -nr
+            return 0
+        end
 
-    if contains -- ech $option
-      printf "%s\n" "$target"
-    else if not contains -- list $option
-      pushd "$target"
+        if set -q _flag_echo
+            printf "%s\n" "$target"
+        else if set -q _flag_directory
+            # Be careful, in msys2, explorer always return 1
+            if test "$OS" = Windows_NT
+                type -q explorer;and explorer "$target"; return 0;
+                echo "Cannot open file explorer"; return 1;
+            else
+                type -q xdg-open;and xdg-open "$target"; and return $status;
+                type -q open;and open "$target"; and return $status;
+                echo "Not sure how to open file manager"; and return 1;
+            end
+        else
+            pushd "$target"
+        end
     end
-  end
+end

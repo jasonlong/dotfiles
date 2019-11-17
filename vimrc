@@ -17,9 +17,10 @@ call minpac#add('tpope/vim-commentary')
 call minpac#add('Raimondi/delimitMate')
 call minpac#add('junegunn/vim-easy-align')
 call minpac#add('ntpeters/vim-better-whitespace')
-call minpac#add('ervandew/supertab')
-call minpac#add('w0rp/ale')
+call minpac#add('dense-analysis/ale')
 call minpac#add('SirVer/ultisnips')
+call minpac#add('djoshea/vim-autoread')
+call minpac#add('Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
 
 " Getting around
 call minpac#add('junegunn/fzf')
@@ -29,6 +30,8 @@ call minpac#add('rhysd/clever-f.vim')
 call minpac#add('mhinz/vim-grepper')
 call minpac#add('justinmk/vim-dirvish')
 call minpac#add('matze/vim-move')
+call minpac#add('sickill/vim-pasta')
+call minpac#add('AndrewRadev/whitespaste.vim')
 
 " textobj stuff
 call minpac#add('kana/vim-textobj-user')
@@ -49,6 +52,7 @@ call minpac#add('mxw/vim-jsx')
 call minpac#add('fatih/vim-hclfmt') " For Tarraform-type Files
 call minpac#add('prettier/vim-prettier')
 call minpac#add('Chiel92/vim-autoformat') " Using for html-beautify via js-beautify
+call minpac#add('leafgarland/typescript-vim')
 
 command! Pu source $MYVIMRC | call minpac#update()
 command! Pc source $MYVIMRC | call minpac#clean()
@@ -109,6 +113,7 @@ endif
 " Tab handling
 set expandtab
 set shiftwidth=2
+set tabstop=2
 
 " Consider more more chars as words for autocomplete
 set iskeyword+=-,$
@@ -138,7 +143,7 @@ noremap k gk
 noremap <leader>w :w<CR>
 
 " Keep indentation when pasting
-nnoremap p p=`]
+" nnoremap p p=`]
 
 " Copy to system clipboard
 vnoremap <C-c> "*yy
@@ -175,13 +180,15 @@ vnoremap * y/\V<c-r>=escape(@", '\')<cr><cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if (has("termguicolors"))
-  set termguicolors
-endif
+" if (has("termguicolors"))
+"   set termguicolors
+" endif
+
+" This seems to fix my vim color problems in Hyper
+set notermguicolors
 
 syntax on
 set background=dark
-" let g:nord_comment_brightness=15 " more contrast for comments
 colorscheme nordish
 
 if has("gui_running")
@@ -256,6 +263,11 @@ let g:sneak#s_next=1
 let g:sneak#streak=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" clever-f
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:clever_f_timeout_ms = 2000
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-gitgutter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_realtime = 1
@@ -278,8 +290,16 @@ let g:ale_sign_warning = '▲'
 let g:ale_set_loclist = 0
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'html': ['prettier'],
+\   'eruby': ['prettier'],
+\}
+
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+nmap <leader>p :ALEFix<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " stylefmt
@@ -301,8 +321,7 @@ function! StylefmtVisual() range
   let current_wd = getcwd()
   execute ':lcd' . file_wd
 
-  " get lines from the current selection and store the first line number
-  let range_start = line("'<")
+  " get lines from the current selection and store the first line("'<")
   let input = getline("'<", "'>")
 
   let output = system("stylefmt --config " . b:stylelintConfig, join(input, "\n"))
@@ -339,14 +358,20 @@ autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-better-whitespace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd! BufEnter * EnableStripWhitespaceOnSave
+let g:strip_whitespace_on_save = 1
+let g:strip_whitespace_confirm = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnip
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Deoplete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-markdown
@@ -358,9 +383,3 @@ let g:vim_markdown_new_list_item_indent = 2
 " vim-move
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:move_key_modifier = 'C'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-prettier
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
