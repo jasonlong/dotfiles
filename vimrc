@@ -42,17 +42,17 @@ call minpac#add('jasonlong/vim-textobj-css')
 
 " Colors
 call minpac#add('jasonlong/nordish-vim')
-call minpac#add('reedes/vim-colors-pencil')
 
 " Languages
 call minpac#add('JulesWang/css.vim') " The default syntax repo, but more up-to-date
 call minpac#add('pangloss/vim-javascript')
 call minpac#add('plasticboy/vim-markdown')
-call minpac#add('mxw/vim-jsx')
-call minpac#add('fatih/vim-hclfmt') " For Tarraform-type Files
 call minpac#add('prettier/vim-prettier')
 call minpac#add('Chiel92/vim-autoformat') " Using for html-beautify via js-beautify
 call minpac#add('leafgarland/typescript-vim')
+
+" Dash (docs)
+call minpac#add('rizzatti/dash.vim')
 
 command! Pu source $MYVIMRC | call minpac#update()
 command! Pc source $MYVIMRC | call minpac#clean()
@@ -180,13 +180,6 @@ vnoremap * y/\V<c-r>=escape(@", '\')<cr><cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" if (has("termguicolors"))
-"   set termguicolors
-" endif
-
-" This seems to fix my vim color problems in Hyper
-set notermguicolors
-
 syntax on
 set background=dark
 colorscheme nordish
@@ -289,6 +282,7 @@ let g:ale_sign_error = '×'
 let g:ale_sign_warning = '▲'
 let g:ale_set_loclist = 0
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_fix_on_save = 1
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -302,58 +296,9 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <leader>p :ALEFix<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" stylefmt
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType css,scss :call SetStylelintConfig()
-au FileType css,scss vnoremap <buffer> <leader>s :call StylefmtVisual()<CR>
-
-fun! SetStylelintConfig()
-  let b:stylelintConfig = findfile('.stylelintrc', '.;')
-  if b:stylelintConfig != ''
-    let b:syntastic_scss_stylelint_args = '--config ' . b:stylelintConfig
-  endif
-endf
-
-function! StylefmtVisual() range
-  " store current cursor position and change the working directory
-  let win_view = winsaveview()
-  let file_wd = expand('%:p:h')
-  let current_wd = getcwd()
-  execute ':lcd' . file_wd
-
-  " get lines from the current selection and store the first line("'<")
-  let input = getline("'<", "'>")
-
-  let output = system("stylefmt --config " . b:stylelintConfig, join(input, "\n"))
-  echom output
-
-  if v:shell_error
-    echom 'Error while executing stylefmt! no changes made.'
-    echo output
-  else
-    " delete the old lines
-    normal! gvd
-
-    let new_lines = split(l:output, '\n')
-
-    " add new lines to the buffer
-    call append(range_start - 1, new_lines)
-
-    " Clean up: restore previous cursor position
-    call winrestview(win_view)
-    " recreate the visual selection and cancel it, so that the formatted code
-    " can be reselected using gv
-    execute "normal! V" . (len(new_lines)-1) . "j\<esc>"
-  endif
-
-  " Clean up: restore working directory
-  execute ':lcd' . current_wd
-endfunction
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-commentary
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
+autocmd FileType jsx setlocal commentstring={/*\ %s\ */}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-better-whitespace
@@ -383,3 +328,14 @@ let g:vim_markdown_new_list_item_indent = 2
 " vim-move
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:move_key_modifier = 'C'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Prettier
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:prettier#autoformat = 1
+" let g:prettier#autoformat_require_pragma = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Dash
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:nmap <silent> <leader>D <Plug>DashSearch
