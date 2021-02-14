@@ -6,6 +6,7 @@ call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 
 " Core
+call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
 call minpac#add('airblade/vim-gitgutter')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('tpope/vim-rhubarb')
@@ -14,13 +15,10 @@ call minpac#add('tpope/vim-repeat')
 call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-vinegar')
 call minpac#add('tpope/vim-commentary')
+call minpac#add('tpope/vim-unimpaired')
 call minpac#add('Raimondi/delimitMate')
-call minpac#add('junegunn/vim-easy-align')
 call minpac#add('ntpeters/vim-better-whitespace')
-call minpac#add('dense-analysis/ale')
-call minpac#add('SirVer/ultisnips')
 call minpac#add('djoshea/vim-autoread')
-call minpac#add('Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
 
 " Getting around
 call minpac#add('junegunn/fzf')
@@ -50,9 +48,6 @@ call minpac#add('plasticboy/vim-markdown')
 call minpac#add('prettier/vim-prettier')
 call minpac#add('Chiel92/vim-autoformat') " Using for html-beautify via js-beautify
 call minpac#add('leafgarland/typescript-vim')
-
-" Dash (docs)
-call minpac#add('rizzatti/dash.vim')
 
 command! Pu source $MYVIMRC | call minpac#update()
 command! Pc source $MYVIMRC | call minpac#clean()
@@ -131,7 +126,6 @@ filetype plugin on " Enable filetype-specific plugins
 " .gf files == .tf
 autocmd BufRead,BufNewFile *.gf set filetype=tf
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Keyboard mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -167,12 +161,13 @@ nmap <silent> <c-l> :wincmd l<CR>
 nmap <leader>c :cclose<CR>
 
 " Use tab and shift-tab to cycle through windows.
-nnoremap <Tab> <C-W>w
-nnoremap <S-Tab> <C-W>W
+" nnoremap <Tab> <C-W>w
+" nnoremap <S-Tab> <C-W>W
 
 " consistent menu navigation
 inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
+
 
 " Make * work with visual selection
 vnoremap * y/\V<c-r>=escape(@", '\')<cr><cr>
@@ -201,16 +196,6 @@ set statusline +=\ %m              " modified flag
 set statusline +=%y                " Filetype
 set statusline +=%=%-14.(%l,%c%V%) " Line, column-virtual column
 set statusline +=%=lines:\ %-5L    " Lines in the buffer
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Easy Align
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" To align around double quote, use `ga"`
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign with a Vim movement
-nmap <Leader>a <Plug>(EasyAlign)
-" vmap <Enter><Enter> :EasyAlign =<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF
@@ -275,25 +260,10 @@ omap ah <Plug>GitGutterTextObjectOuterPending
 xmap ih <Plug>GitGutterTextObjectInnerVisual
 xmap ah <Plug>GitGutterTextObjectOuterVisual
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ALE
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_sign_error = '×'
-let g:ale_sign_warning = '▲'
-let g:ale_set_loclist = 0
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_fix_on_save = 1
-
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'html': ['prettier'],
-\   'eruby': ['prettier'],
-\}
-
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-nmap <leader>p :ALEFix<CR>
+ """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ " prettier
+ """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ let g:prettier#autoformat_require_pragma = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-commentary
@@ -307,18 +277,6 @@ let g:strip_whitespace_on_save = 1
 let g:strip_whitespace_confirm = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" UltiSnip
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Deoplete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
@@ -330,12 +288,60 @@ let g:vim_markdown_new_list_item_indent = 2
 let g:move_key_modifier = 'C'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Prettier
+" coc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:prettier#autoformat = 1
-" let g:prettier#autoformat_require_pragma = 0
+set updatetime=300
+set shortmess+=c
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Dash
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:nmap <silent> <leader>D <Plug>DashSearch
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use K to show documentation in preview window.
+nnoremap <silent> D :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
