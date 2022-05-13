@@ -3,7 +3,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 packadd minpac
 call minpac#init()
-call minpac#add('k-takata/minpac', {'type': 'opt'})
+call minpac#add('k-takata/minpac', {'ttrueype': 'opt'})
 
 " Core
 call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
@@ -14,11 +14,13 @@ call minpac#add('tpope/vim-rails')
 call minpac#add('tpope/vim-repeat')
 call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-vinegar')
-call minpac#add('tpope/vim-commentary')
 call minpac#add('tpope/vim-unimpaired')
+call minpac#add('tpope/vim-commentary')
+call minpac#add('suy/vim-context-commentstring')
 call minpac#add('Raimondi/delimitMate')
 call minpac#add('ntpeters/vim-better-whitespace')
 call minpac#add('djoshea/vim-autoread')
+call minpac#add('vim-airline/vim-airline')
 
 " Getting around
 call minpac#add('junegunn/fzf')
@@ -26,8 +28,8 @@ call minpac#add('junegunn/fzf.vim')
 call minpac#add('justinmk/vim-sneak')
 call minpac#add('rhysd/clever-f.vim')
 call minpac#add('mhinz/vim-grepper')
-call minpac#add('justinmk/vim-dirvish')
-call minpac#add('matze/vim-move')
+call minpac#add('francoiscabrol/ranger.vim')
+call minpac#add('rbgrouleff/bclose.vim')
 call minpac#add('sickill/vim-pasta')
 call minpac#add('AndrewRadev/whitespaste.vim')
 
@@ -39,13 +41,12 @@ call minpac#add('nelstrom/vim-textobj-rubyblock')
 call minpac#add('jasonlong/vim-textobj-css')
 
 " Colors
-call minpac#add('jasonlong/nordish-vim')
+call minpac#add('arcticicestudio/nord-vim')
 
 " Languages
 call minpac#add('JulesWang/css.vim') " The default syntax repo, but more up-to-date
 call minpac#add('pangloss/vim-javascript')
 call minpac#add('plasticboy/vim-markdown')
-call minpac#add('prettier/vim-prettier')
 call minpac#add('Chiel92/vim-autoformat') " Using for html-beautify via js-beautify
 call minpac#add('leafgarland/typescript-vim')
 
@@ -152,22 +153,17 @@ noremap cp yap<S-}>p
 nnoremap <leader><space> :noh<CR>
 
 " Navigate splits
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
 " Close quickfix window
 nmap <leader>c :cclose<CR>
 
-" Use tab and shift-tab to cycle through windows.
-" nnoremap <Tab> <C-W>w
-" nnoremap <S-Tab> <C-W>W
-
 " consistent menu navigation
 inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
-
 
 " Make * work with visual selection
 vnoremap * y/\V<c-r>=escape(@", '\')<cr><cr>
@@ -177,25 +173,20 @@ vnoremap * y/\V<c-r>=escape(@", '\')<cr><cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
 set background=dark
-colorscheme nordish
+colorscheme nord
 
 if has("gui_running")
   set macligatures
-  set guifont=Hasklig\ Medium:h14
+  set guifont=Source\ Code\ Pro:h14
   set linespace=2
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Statusline
+" Airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set laststatus=2
-set statusline =
-set statusline +=[%n]              " buffer number
-set statusline +=\ %F              " Full path to file
-set statusline +=\ %m              " modified flag
-set statusline +=%y                " Filetype
-set statusline +=%=%-14.(%l,%c%V%) " Line, column-virtual column
-set statusline +=%=lines:\ %-5L    " Lines in the buffer
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF
@@ -210,6 +201,13 @@ command! FZFMru call fzf#run({
 nmap <Leader>r :FZFMru<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ranger
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ranger_replace_netrw = 1
+let g:ranger_map_keys = 0
+map <leader>e :Ranger<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Grepper
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:grepper = {}
@@ -217,7 +215,6 @@ let g:grepper.tools = ['rg']
 let g:grepper.rg = { 'grepprg': 'rg --no-heading --vimgrep --smart-case' }
 
 nnoremap <leader>g :Grepper<cr>
-nnoremap K :Grepper -cword -noprompt<cr>
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
@@ -260,15 +257,17 @@ omap ah <Plug>GitGutterTextObjectOuterPending
 xmap ih <Plug>GitGutterTextObjectInnerVisual
 xmap ah <Plug>GitGutterTextObjectOuterVisual
 
- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- " prettier
- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- let g:prettier#autoformat_require_pragma = 0
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-commentary
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType jsx setlocal commentstring={/*\ %s\ */}
+
+" let g:context#commentstring#table['javascript.jsx'] = {
+"           \ 'jsComment' : '// %s',
+"           \ 'jsImport' : '// %s',
+"           \ 'jsxStatment' : '// %s',
+"           \ 'jsxRegion' : '{/*%s*/}',
+" \}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-better-whitespace
@@ -283,11 +282,6 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_new_list_item_indent = 2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-move
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:move_key_modifier = 'C'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " coc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set updatetime=300
@@ -300,6 +294,9 @@ if has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -333,7 +330,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use K to show documentation in preview window.
-nnoremap <silent> D :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -345,3 +342,96 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
