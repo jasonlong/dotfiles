@@ -1,0 +1,20 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export BAT_THEME:vivid\x2dnord
+SETUVAR --export EDITOR:nvim
+SETUVAR --export --path GOPATH:/Users/jason/go/bin
+SETUVAR --export HIGHLIGHT_STYLE:nord
+SETUVAR --export NEXT_PUBLIC_ADMIN_URL:http\x3a//admin\x2eplanetscaledb\x2elocal\x3a3000/admin
+SETUVAR NVM_DIR:/Users/jason/\x2envm
+SETUVAR VIRTUAL_ENV_DISABLE_PROMPT:true
+SETUVAR Z_DATA_DIR:/Users/jason/\x2elocal/share/z
+SETUVAR __fish_initialized:3400
+SETUVAR _fisher_IlanCosman_2F_tide_files:/Users/jason/\x2econfig/fish/functions/_tide_count_left_prompt_height\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_cursor_right\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_cursor_up\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_decolor\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_detect_os\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_git_prompt_set_vars\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_cmd_duration\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_context\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_git_prompt\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_jobs\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_nvm\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_os\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_prompt_char\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_pwd\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_rust\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_status\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_time\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_vi_mode\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_item_virtual_env\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_left_prompt\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_pwd\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_right_prompt\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_sub_bug\x2dreport\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_sub_configure\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_tide_sub_test\x2efish\x1e/Users/jason/\x2econfig/fish/functions/fish_mode_prompt\x2efish\x1e/Users/jason/\x2econfig/fish/functions/fish_prompt\x2efish\x1e/Users/jason/\x2econfig/fish/functions/fish_right_prompt\x2efish\x1e/Users/jason/\x2econfig/fish/functions/tide\x1e/Users/jason/\x2econfig/fish/functions/tide\x2efish\x1e/Users/jason/\x2econfig/fish/conf\x2ed/_tide_init\x2efish\x1e/Users/jason/\x2econfig/fish/completions/tide\x2efish
+SETUVAR _fisher_edc_2F_bass_files:/Users/jason/\x2econfig/fish/functions/__bass\x2epy\x1e/Users/jason/\x2econfig/fish/functions/bass\x2efish
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:/Users/jason/\x2econfig/fish/functions/fisher\x2efish\x1e/Users/jason/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:/Users/jason/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_nvm_list\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e/Users/jason/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e/Users/jason/\x2econfig/fish/functions/nvm\x2efish\x1e/Users/jason/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e/Users/jason/\x2econfig/fish/completions/nvm\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1eIlanCosman/tide\x1eedc/bass\x1ejorgebucaran/nvm\x2efish\x1erbenv/fish\x2drbenv
+SETUVAR _fisher_rbenv_2F_fish_2D_rbenv_files:/Users/jason/\x2econfig/fish/functions/rbenv\x2efish\x1e/Users/jason/\x2econfig/fish/conf\x2ed/rbenv\x2efish\x1e/Users/jason/\x2econfig/fish/completions/rbenv\x2efish
+SETUVAR fish_color_autosuggestion:c1c1c1
+SETUVAR fish_key_bindings:fish_vi_key_bindings
+SETUVAR --export fish_user_paths:/Users/jason/\x2ecargo/bin\x1e/opt/homebrew/bin\x1e/Applications/Visual\x20Studio\x20Code\x2eapp/Contents/Resources/app/bin\x1e/Users/jason/go/bin\x1e/Users/jason/\x2erbenv/bin\x1e/Users/jason/\x2efig/bin\x1e/Users/jason/\x2elocal/bin
