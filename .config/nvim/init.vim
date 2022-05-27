@@ -325,12 +325,6 @@ require('gitsigns').setup{
   end
 }
 EOF
-" nmap <leader>bl :Gitsigns toggle_current_line_blame<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-commentary
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" autocmd FileType tsx setlocal commentstring={/*\ %s\ */}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " treesitter
