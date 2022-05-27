@@ -1,0 +1,13 @@
+{
+  "diagnostic.floatConfig": {
+    "winblend": 10
+  },
+  "diagnostic.level": "warning",
+  "diagnostic.errorSign": "x",
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "eslint.autoFixOnSave": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.file.showHiddenFiles": true
+}
