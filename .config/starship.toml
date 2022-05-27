@@ -1,0 +1,41 @@
+format = "[  ](bg:#8fbcbb fg:#3b4252)$directory($git_branch) $git_metrics\n$character"
+
+[character]
+success_symbol = "[❯](bold #88c0d0)"
+error_symbol = "[❯](bold #bf616a)"
+vicmd_symbol = "[❮](bold #5e81ac)"
+
+[battery]
+disabled = true
+
+[cmd_duration]
+format = "[$duration]($style)"
+style = 'bright-black'
+
+[directory]
+style = "#3b4252"
+format = "[](bg:#3b4252 fg:#8fbcbb)[ $path ](bg:#3b4252 fg:#d8dee9)[](fg:$style)"
+
+[git_branch]
+style = "#2e3440"
+format = "\b[](bg:$style fg:#3b4252)[ $branch ](bg:$style fg:#8fbcbb)[](fg:$style)"
+
+[git_metrics]
+disabled = false
+added_style = "green"
+deleted_style = "red"
+
+[git_status]
+style = "bright-black"
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
+
+[ruby]
+disabled = true
+
+[lua]
+disabled = true
