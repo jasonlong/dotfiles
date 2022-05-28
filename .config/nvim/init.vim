@@ -12,6 +12,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ruifm/gitlinker.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'akinsho/toggleterm.nvim'
 Plug 'jiangmiao/auto-pairs'
@@ -37,7 +39,6 @@ let g:coc_global_extensions = [
       \ 'coc-snippets',
       \ 'coc-react-refactor',
       \ 'coc-html',
-      \ 'coc-explorer',
       \ 'coc-eslint',
       \ 'coc-emmet',
       \ 'coc-svg',
@@ -230,6 +231,14 @@ require('lualine').setup {
 EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nvim-tree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+lua << EOF
+require'nvim-tree'.setup {}
+EOF
+nnoremap <leader>e :NvimTreeToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tailwind
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
@@ -401,7 +410,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-nmap <leader>e <Cmd>CocCommand explorer<CR>
+" nmap <leader>e <Cmd>CocCommand explorer<CR>
 
 " Jump to errors
 " Requires Option keys to map to Esc+ in iTerm (Profiles > Keys)
