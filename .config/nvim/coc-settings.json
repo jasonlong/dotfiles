@@ -7,8 +7,8 @@
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
-  "coc.preferences.formatOnSaveFiletypes": ["*"],
-  "eslint.autoFixOnSave": true,
-  "explorer.icon.enableNerdfont": true,
-  "explorer.file.showHiddenFiles": true
+  "coc.preferences.formatOnSaveFiletypes": [
+    "*"
+  ],
+  "eslint.autoFixOnSave": true
 }
