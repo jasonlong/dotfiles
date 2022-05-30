@@ -124,8 +124,6 @@ set gcr=n:blinkon0
 set autoindent
 filetype plugin indent on
 
-filetype on " Enable filetype detection
-filetype plugin on " Enable filetype-specific plugins
 :au FocusLost * silent! wa " Save when focus lost
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
