@@ -1,0 +1,27 @@
+[user]
+	name = Jason Long
+	email = jason@jasonlong.me
+
+[include]
+	path = /Users/jason/.gitalias.txt
+
+[push]
+	default = current
+
+[core]
+    pager = delta
+	excludesfile = /Users/jason/.gitignore_global
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    syntax-theme = Nord
+    light = false
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default

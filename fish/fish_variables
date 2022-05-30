@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export BAT_THEME:nord
+SETUVAR --export BAT_THEME:Nord
 SETUVAR --export EDITOR:nvim
 SETUVAR --export --path GOPATH:/Users/jason/go/bin
 SETUVAR --export HIGHLIGHT_STYLE:nord
