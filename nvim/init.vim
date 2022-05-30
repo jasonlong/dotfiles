@@ -7,6 +7,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'justinmk/vim-sneak'
 Plug 'jasonlong/nord-vim'
+Plug 'karb94/neoscroll.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ntpeters/vim-better-whitespace'
@@ -62,7 +63,7 @@ autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost init.vim source %
 
 nnoremap <leader>v :e $MYVIMRC<CR>
-noremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+noremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -237,6 +238,15 @@ lua << EOF
 require'nvim-tree'.setup {}
 EOF
 nnoremap <leader>e :NvimTreeToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" neoscroll
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+lua << EOF
+require('neoscroll').setup({
+  easing_function = 'quadratic'
+})
+EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tailwind
