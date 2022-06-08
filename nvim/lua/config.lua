@@ -45,26 +45,26 @@ require('Comment').setup(
 {
   ---@param ctx CommentCtx
   pre_hook = function(ctx)
-      -- Only calculate commentstring for tsx filetypes
-      if vim.bo.filetype == 'typescriptreact' then
-          local U = require('Comment.utils')
+    -- Only calculate commentstring for tsx filetypes
+    if vim.bo.filetype == 'typescriptreact' then
+      local U = require('Comment.utils')
 
-          -- Determine whether to use linewise or blockwise commentstring
-          local type = ctx.ctype == U.ctype.line and '__default' or '__multiline'
+      -- Determine whether to use linewise or blockwise commentstring
+      local type = ctx.ctype == U.ctype.line and '__default' or '__multiline'
 
-          -- Determine the location where to calculate commentstring from
-          local location = nil
-          if ctx.ctype == U.ctype.block then
-              location = require('ts_context_commentstring.utils').get_cursor_location()
-          elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
-              location = require('ts_context_commentstring.utils').get_visual_start_location()
-          end
-
-          return require('ts_context_commentstring.internal').calculate_commentstring({
-              key = type,
-              location = location,
-          })
+      -- Determine the location where to calculate commentstring from
+      local location = nil
+      if ctx.ctype == U.ctype.block then
+        location = require('ts_context_commentstring.utils').get_cursor_location()
+      elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
+        location = require('ts_context_commentstring.utils').get_visual_start_location()
       end
+
+      return require('ts_context_commentstring.internal').calculate_commentstring({
+        key = type,
+        location = location,
+      })
+    end
   end,
 })
 
@@ -83,17 +83,35 @@ vim.diagnostic.config {
   virtual_text = { severity = vim.diagnostic.severity.ERROR }
 }
 
+-- filter out node_modules/@types/react/index.d.ts results when jumping to definitions
+-- https://github.com/typescript-language-server/typescript-language-server/issues/216#issuecomment-1005272952
+local function filter(arr, fn)
+  if type(arr) ~= "table" then
+    return arr
+  end
+
+  local filtered = {}
+  for k, v in pairs(arr) do
+    if fn(v, k, arr) then
+      table.insert(filtered, v)
+    end
+  end
+
+  return filtered
+end
+
+local function filterReactDTS(value)
+  return string.match(value.uri, 'react/index.d.ts') == nil
+end
+
 local opts = { noremap=true, silent=true }
--- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
--- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -111,7 +129,17 @@ local servers = { 'tsserver', 'eslint', 'tailwindcss', 'sumneko_lua' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     capabilities = capabilities,
-    on_attach = on_attach
+    on_attach = on_attach,
+    handlers = {
+      ['textDocument/definition'] = function(err, result, method, ...)
+        if vim.tbl_islist(result) and #result > 1 then
+          local filtered_result = filter(result, filterReactDTS)
+          return vim.lsp.handlers['textDocument/definition'](err, filtered_result, method, ...)
+        end
+
+        vim.lsp.handlers['textDocument/definition'](err, result, method, ...)
+      end
+    }
   }
 end
 
