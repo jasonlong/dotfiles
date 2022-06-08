@@ -37,7 +37,11 @@ vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 
 require('impatient')
 require("luasnip.loaders.from_snipmate").lazy_load()
-require('nvim-tree').setup()
+require('nvim-tree').setup({
+  git = {
+    ignore = false,
+  }
+})
 --require('nvim_comment').setup()
 require('neoscroll').setup()
 
