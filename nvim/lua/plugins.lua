@@ -40,6 +40,10 @@ return require('packer').startup(function()
   use 'akinsho/toggleterm.nvim'
   use 'lewis6991/gitsigns.nvim'
 
+  -- Markdown
+  use 'godlygeek/tabular'
+  use 'preservim/vim-markdown'
+
   -- Autocomplete
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'

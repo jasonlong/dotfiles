@@ -2,6 +2,11 @@ local keymap = vim.api.nvim_set_keymap
 
 vim.g.mapleader = ","
 
+-- init.lua management
+keymap("n", "<leader>v", ":e $MYVIMRC<cr>", {})
+keymap("n", "<leader>V", ":source $MYVIMRC<cr>", {})
+keymap("n", "<leader>pi", ":source $MYVIMRC<cr>:PackerSync<cr>", {})
+
 -- quick write and quit
 keymap("n", "<leader>w", ":w<cr>", {})
 keymap("n", "<leader>q", ":q<cr>", {})
@@ -20,10 +25,6 @@ keymap("n", "<right>", "<C-w>l", {})
 
 -- close quickfix list
 keymap("n", "<leader>c", ":cclose<cr>", {})
-
--- init.lua management
-keymap("n", "<leader>v", ":e $MYVIMRC<cr>", {})
-keymap("n", "<leader>V", ":source $MYVIMRC<cr>", {})
 
 -- Treat long lines as break lines
 vim.cmd([[
