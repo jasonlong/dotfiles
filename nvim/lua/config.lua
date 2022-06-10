@@ -8,8 +8,9 @@ set.iskeyword:append("-")
 set.clipboard = "unnamedplus"
 set.smarttab = true
 set.tabstop = 2
-set.expandtab = true
+set.softtabstop = 2
 set.shiftwidth = 2
+set.expandtab = true
 set.autoindent = true
 set.incsearch = true
 set.number = true
