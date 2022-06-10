@@ -23,6 +23,10 @@ keymap("n", "<up>", "<C-w>k", {})
 keymap("n", "<left>", "<C-w>h", {})
 keymap("n", "<right>", "<C-w>l", {})
 
+-- Move lines up/down (visual mode)
+keymap("v", "J", ":m '>+1<cr>gv=gv", {})
+keymap("v", "K", ":m '<-2<cr>gv=gv", {})
+
 -- close quickfix list
 keymap("n", "<leader>c", ":cclose<cr>", {})
 
