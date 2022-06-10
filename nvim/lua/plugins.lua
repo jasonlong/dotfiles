@@ -30,8 +30,6 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'jasonlong/nord-vim'
   use 'jiangmiao/auto-pairs'
-  -- use 'terrortylor/nvim-comment'
-  -- use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'lewis6991/impatient.nvim'
   use 'karb94/neoscroll.nvim'
   use 'justinmk/vim-sneak'
@@ -39,10 +37,6 @@ return require('packer').startup(function()
   -- Git
   use 'akinsho/toggleterm.nvim'
   use 'lewis6991/gitsigns.nvim'
-
-  -- Markdown
-  use 'godlygeek/tabular'
-  use 'preservim/vim-markdown'
 
   -- Autocomplete
   use 'neovim/nvim-lspconfig'
