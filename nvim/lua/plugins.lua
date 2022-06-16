@@ -27,6 +27,7 @@ return require('packer').startup(function()
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'nvim-treesitter/playground'
   use 'tpope/vim-surround'
+  use 'ThePrimeagen/harpoon'
   use 'wbthomason/packer.nvim'
   use 'jasonlong/nord-vim'
   use 'jiangmiao/auto-pairs'
