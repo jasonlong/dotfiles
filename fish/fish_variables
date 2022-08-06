@@ -1,9 +1,13 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export BAT_THEME:Nord
+SETUVAR --export BUN_INSTALL:/Users/jason/\x2ebun
+SETUVAR --export CHTSH_CONF:/Users/jason/\x2econfig/cht\x2esh/cht\x2esh\x2econf
+SETUVAR --export CHTSH_QUERY_OPTIONS:style\x3dnative
 SETUVAR --export EDITOR:nvim
 SETUVAR --export --path GOPATH:/Users/jason/go/bin
 SETUVAR --export HIGHLIGHT_STYLE:nord
+SETUVAR --export LESS:\x2dR
 SETUVAR --export NEXT_PUBLIC_ADMIN_URL:http\x3a//admin\x2eplanetscaledb\x2elocal\x3a3000/admin
 SETUVAR NVM_DIR:/Users/jason/\x2envm
 SETUVAR VIRTUAL_ENV_DISABLE_PROMPT:true
@@ -41,3 +45,4 @@ SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
 SETUVAR --export fish_user_paths:/Users/jason/\x2ecargo/bin\x1e/opt/homebrew/bin\x1e/Applications/Visual\x20Studio\x20Code\x2eapp/Contents/Resources/app/bin\x1e/Users/jason/go/bin\x1e/Users/jason/\x2erbenv/bin\x1e/Users/jason/\x2efig/bin\x1e/Users/jason/\x2elocal/bin
+SETUVAR nvm_data:/Users/jason/\x2elocal/share/nvm

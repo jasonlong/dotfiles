@@ -4,6 +4,7 @@ set.updatetime = 0
 set.encoding="utf-8"
 set.fileencoding="utf-8"
 set.smartindent = true
+set.autoindent = true
 set.iskeyword:append("-")
 set.clipboard = "unnamedplus"
 set.smarttab = true
@@ -11,7 +12,6 @@ set.tabstop = 2
 set.softtabstop = 2
 set.shiftwidth = 2
 set.expandtab = true
-set.autoindent = true
 set.incsearch = true
 set.number = true
 set.cmdheight = 1
@@ -27,7 +27,6 @@ vim.cmd [[set smartcase]]
 vim.cmd [[set lazyredraw]]
 vim.cmd [[set magic]]
 vim.cmd [[set noerrorbells]]
-vim.cmd [[set formatoptions-=cro]]
 vim.cmd [[set complete+=kspell]]
 vim.cmd [[set completeopt=menu,menuone,noselect]]
 vim.cmd [[set mouse=a]]
@@ -36,11 +35,30 @@ vim.cmd [[lcd $PWD]]
 -- Fix eslint errors when saving
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 
+-- Set formatoptions on each file open since it'll get overwritten by other plugins
+vim.cmd [[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o ]]
+
+vim.opt.formatoptions = {
+  ["1"] = true,
+  ["2"] = true, -- Use indent from 2nd line of a paragraph
+  q = true, -- continue comments with gq"
+  c = false, -- Auto-wrap comments using textwidth
+  r = false, -- Continue comments when pressing Enter
+  n = true, -- Recognize numbered lists
+  t = false, -- autowrap lines using text width value
+  j = true, -- remove a comment leader when joining lines.
+  l = true,
+  v = true,
+}
+
 require('impatient')
 require("luasnip.loaders.from_snipmate").lazy_load()
 require('nvim-tree').setup({
   git = {
     ignore = false,
+  },
+  update_focused_file = {
+    enable  = true
   }
 })
 --require('nvim_comment').setup()
@@ -356,3 +374,6 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   }
 }
+
+-- Copilot
+vim.cmd [[let g:copilot_no_tab_map = v:true]]
