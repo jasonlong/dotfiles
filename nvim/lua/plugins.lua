@@ -34,6 +34,7 @@ return require('packer').startup(function()
   use 'lewis6991/impatient.nvim'
   use 'karb94/neoscroll.nvim'
   use 'justinmk/vim-sneak'
+  use 'github/copilot.vim'
 
   -- Git
   use 'akinsho/toggleterm.nvim'

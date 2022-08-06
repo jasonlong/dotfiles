@@ -11,6 +11,10 @@ keymap("n", "<leader>pi", ":source $MYVIMRC<cr>:PackerSync<cr>", {})
 keymap("n", "<leader>w", ":w<cr>", {})
 keymap("n", "<leader>q", ":q<cr>", {})
 
+-- close all buffers except current one
+-- keymap("n", "<leader>bd", ":bd|e#<cr>", {})
+keymap("n", "<leader>bd", ":<c-u>up <bar> %bd <bar> e#<cr>", {})
+
 -- nvim-tree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", {})
 
@@ -70,3 +74,8 @@ nnoremap <silent><C-;> :lua require("harpoon.ui").nav_file(4)<CR>
 
 -- toggleterm
 keymap("n", "<leader>t", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+
+-- Copilot
+vim.cmd([[
+imap <silent><script><expr> <right> copilot#Accept("\<CR>")
+]])
