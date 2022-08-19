@@ -23,6 +23,13 @@ return require('packer').startup(function()
           require('Comment').setup()
       end
   }
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {}
+    end
+  }
 
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'nvim-treesitter/playground'
@@ -35,6 +42,7 @@ return require('packer').startup(function()
   use 'karb94/neoscroll.nvim'
   use 'justinmk/vim-sneak'
   use 'github/copilot.vim'
+  use 'windwp/nvim-ts-autotag'
 
   -- Git
   use 'akinsho/toggleterm.nvim'
