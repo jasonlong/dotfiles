@@ -142,7 +142,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -238,6 +238,9 @@ require'nvim-treesitter.configs'.setup {
   },
   context_commentstring = {
     enable = true
+  },
+  autotag = {
+    enable = true,
   }
 }
 
@@ -319,16 +322,20 @@ cmp.setup({
 })
 
 -- Telescope
+local telescope = require("telescope")
 local actions = require('telescope.actions')
+local trouble = require("trouble.providers.telescope")
 require('telescope').setup{
   defaults = {
     mappings = {
       i = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
+        ["<c-t>"] = trouble.open_with_trouble,
         ["<esc>"] = actions.close
       },
       n = {
+        ["<c-t>"] = trouble.open_with_trouble,
         ["q"] = actions.close
       }
     }
