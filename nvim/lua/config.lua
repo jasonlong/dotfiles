@@ -51,6 +51,7 @@ vim.opt.formatoptions = {
   v = true,
 }
 
+-- require('nvim-web-devicons').setup({})
 require('impatient')
 require("luasnip.loaders.from_snipmate").lazy_load()
 require('nvim-tree').setup({
@@ -59,6 +60,12 @@ require('nvim-tree').setup({
   },
   update_focused_file = {
     enable  = true
+  },
+  view = {
+    float = {
+      enable = true,
+      quit_on_focus_loss = true
+    }
   }
 })
 --require('nvim_comment').setup()
@@ -95,9 +102,11 @@ require('Comment').setup(
 vim.cmd [[colorscheme nord]]
 
 -- Sneak
-vim.cmd [[let g:sneak#s_next=1]]
-vim.cmd [[let g:sneak#streak=1]]
-vim.cmd [[let g:sneak#use_ic_scs = 1]]
+-- vim.cmd [[let g:sneak#s_next=1]]
+-- vim.cmd [[let g:sneak#streak=1]]
+-- vim.cmd [[let g:sneak#use_ic_scs = 1]]
+
+require('leap').set_default_keymaps()
 
 -- lspconfig
 vim.diagnostic.config {
