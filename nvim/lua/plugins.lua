@@ -1,16 +1,16 @@
 return require('packer').startup(function()
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
   use {
-    'kyazdani42/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
     requires = {
-      'kyazdani42/nvim-web-devicons'
+      'nvim-tree/nvim-web-devicons'
     }
   }
   use {
@@ -25,12 +25,13 @@ return require('packer').startup(function()
   }
   use {
     "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    requires = "nvim-tree/nvim-web-devicons",
     config = function()
       require("trouble").setup {}
     end
   }
 
+  use 'nvim-tree/nvim-web-devicons'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'nvim-treesitter/playground'
   use 'tpope/vim-surround'
@@ -40,7 +41,7 @@ return require('packer').startup(function()
   use 'jiangmiao/auto-pairs'
   use 'lewis6991/impatient.nvim'
   use 'karb94/neoscroll.nvim'
-  use 'justinmk/vim-sneak'
+  use 'ggandor/leap.nvim'
   use 'github/copilot.vim'
   use 'windwp/nvim-ts-autotag'
 

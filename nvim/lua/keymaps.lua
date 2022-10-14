@@ -40,11 +40,6 @@ noremap j gj
 noremap k gk
 ]])
 
--- Keep indentation when pasting
-vim.cmd([[
-nnoremap p p=`]
-]])
-
 -- Close buffer, but leave split open
 keymap("n", "<leader>d", ":bp<bar>sp<bar>bn<bar>bd<cr>", {})
 
