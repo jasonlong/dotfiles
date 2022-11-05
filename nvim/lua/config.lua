@@ -100,11 +100,12 @@ require('Comment').setup(
 
 -- colors
 vim.cmd [[colorscheme nord]]
-
--- Sneak
--- vim.cmd [[let g:sneak#s_next=1]]
--- vim.cmd [[let g:sneak#streak=1]]
--- vim.cmd [[let g:sneak#use_ic_scs = 1]]
+vim.g.nord_contrast = false
+vim.g.nord_disable_background = true
+vim.g.nord_italic = false
+vim.g.nord_uniform_diff_background = true
+vim.g.nord_bold = false
+require('nord').set()
 
 require('leap').set_default_keymaps()
 
