@@ -158,7 +158,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = { 'tsserver', 'eslint', 'tailwindcss', 'sumneko_lua' }
+local servers = { 'tsserver', 'eslint', 'ruby_ls', 'tailwindcss', 'lua_ls' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     capabilities = capabilities,
