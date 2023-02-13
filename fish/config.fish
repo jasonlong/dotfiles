@@ -25,3 +25,6 @@ set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
 set -Ux BUN_INSTALL "/Users/jason/.bun"
 set -px --path PATH "/Users/jason/.bun/bin"
 
+# Laravel Valet
+set -px --path PATH "/Users/jason/.composer/vendor/bin"
+
