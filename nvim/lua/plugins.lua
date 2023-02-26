@@ -44,6 +44,7 @@ return require('packer').startup(function()
   use 'ggandor/leap.nvim'
   use 'github/copilot.vim'
   use 'windwp/nvim-ts-autotag'
+  use 'virchau13/tree-sitter-astro'
 
   -- Git
   use 'akinsho/toggleterm.nvim'

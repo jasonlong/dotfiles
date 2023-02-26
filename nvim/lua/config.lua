@@ -35,6 +35,8 @@ vim.cmd [[lcd $PWD]]
 -- Fix eslint errors when saving
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 
+vim.cmd [[autocmd BufRead,BufEnter *.astro set filetype=astro]]
+
 -- Set formatoptions on each file open since it'll get overwritten by other plugins
 vim.cmd [[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o ]]
 
@@ -158,7 +160,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = { 'tsserver', 'eslint', 'ruby_ls', 'tailwindcss', 'lua_ls' }
+local servers = { 'tsserver', 'eslint', 'ruby_ls', 'tailwindcss', 'lua_ls', 'astro' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     capabilities = capabilities,
