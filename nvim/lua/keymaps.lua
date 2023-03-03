@@ -40,6 +40,16 @@ noremap j gj
 noremap k gk
 ]])
 
+-- Don't yank into system clipboard when changing text
+vim.cmd([[
+noremap cw "_cw
+noremap caw "_caw
+noremap ci' "_ci'
+noremap ci" "_ci"
+noremap ci} "_ci}
+noremap ci) "_ci)
+]])
+
 -- Close buffer, but leave split open
 keymap("n", "<leader>d", ":bp<bar>sp<bar>bn<bar>bd<cr>", {})
 
