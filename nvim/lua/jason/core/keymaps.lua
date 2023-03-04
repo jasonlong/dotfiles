@@ -81,9 +81,9 @@ nnoremap <silent><C-;> :lua require("harpoon.ui").nav_file(4)<CR>
 keymap("n", "<leader>t", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
 
 -- Copilot
-vim.cmd([[
-imap <silent><script><expr> <right> copilot#Accept("\<CR>")
-]])
+-- vim.cmd([[
+-- imap <silent><script><expr> <right> copilot#Accept("\<CR>")
+-- ]])
 
 -- Trouble
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
