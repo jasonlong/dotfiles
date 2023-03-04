@@ -69,7 +69,6 @@ return packer.startup(function(use)
   use 'ThePrimeagen/harpoon'
   use 'shaunsingh/nord.nvim'
   use 'jiangmiao/auto-pairs'
-  use 'lewis6991/impatient.nvim'
   use 'karb94/neoscroll.nvim'
   use 'ggandor/leap.nvim'
   use 'github/copilot.vim'
