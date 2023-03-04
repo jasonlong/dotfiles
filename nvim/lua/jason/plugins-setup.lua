@@ -1,4 +1,4 @@
--- auto install packer if not installed
+-- auto install packer if not installed {{{
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -25,6 +25,7 @@ local status, packer = pcall(require, "packer")
 if not status then
   return
 end
+--}}}
 
 return packer.startup(function(use)
   use("wbthomason/packer.nvim")
@@ -84,6 +85,7 @@ return packer.startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
+  use 'onsails/lspkind.nvim'
 
   -- Snippets
   use("L3MON4D3/LuaSnip") 
