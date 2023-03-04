@@ -33,3 +33,4 @@ vim.cmd [[set complete+=kspell]]
 vim.cmd [[set completeopt=menu,menuone,noselect]]
 vim.cmd [[set mouse=a]]
 vim.cmd [[lcd $PWD]]
+
