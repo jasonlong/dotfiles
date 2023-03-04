@@ -33,7 +33,7 @@ vim.cmd [[set mouse=a]]
 vim.cmd [[lcd $PWD]]
 
 -- Fix eslint errors when saving
-vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
+vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js,*.astro EslintFixAll]]
 
 vim.cmd [[autocmd BufRead,BufEnter *.astro set filetype=astro]]
 
@@ -355,6 +355,7 @@ require('telescope').setup{
   pickers = {
     find_files = {
       theme = "dropdown",
+      find_command = {"rg", "--files", "--hidden", "--ignore", "-u", "--glob=!**/.git/*", "--glob=!**/node_modules/*"},    
     },
     buffers = {
       theme = "dropdown",
@@ -396,3 +397,36 @@ require'nvim-treesitter.configs'.setup {
 
 -- Copilot
 vim.cmd [[let g:copilot_no_tab_map = v:true]]
+
+-- null-ls
+local null_ls = require("null-ls")
+
+null_ls.setup {
+  sources = {
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.diagnostics.eslint_d.with({
+      diagnostics_format = '[eslint] #{m}\n(#{c})'
+    }),
+    null_ls.builtins.diagnostics.fish
+  },
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          lsp_formatting(bufnr)
+        end,
+      })
+    end
+  end
+}
+
+vim.api.nvim_create_user_command(
+  'DisableLspFormatting',
+  function()
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = 0 })
+  end,
+  { nargs = 0 }
+)
