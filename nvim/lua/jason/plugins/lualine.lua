@@ -7,7 +7,7 @@ nord7 = "#8fbcbb"
 nord8 = "#88c0d0"
 nord14 = "#ebcb8b"
 
-local nord = require'lualine.themes.nord'
+local nord = require("lualine.themes.nord")
 
 nord.normal.a.fg = nord1
 nord.normal.a.bg = nord7
@@ -32,25 +32,25 @@ nord.inactive.b.bg = nord1
 nord.inactive.c.fg = nord5
 nord.inactive.c.bg = nord2
 
-require('lualine').setup {
-  options = {
-    theme = nord,
-    component_separators = { left = '·'},
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = { {'filename', path = 1} },
-    lualine_x = {'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = { {'filename', path = 1} },
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  }
-}
+require("lualine").setup({
+	options = {
+		theme = nord,
+		component_separators = { left = "·" },
+	},
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = { "branch", "diff", "diagnostics" },
+		lualine_c = { { "filename", path = 1 } },
+		lualine_x = { "filetype" },
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { { "filename", path = 1 } },
+		lualine_x = { "location" },
+		lualine_y = {},
+		lualine_z = {},
+	},
+})
