@@ -1,6 +1,6 @@
-local keymap = vim.api.nvim_set_keymap
-
 vim.g.mapleader = ","
+
+local keymap = vim.api.nvim_set_keymap
 
 -- init.lua management
 keymap("n", "<leader>v", ":e $MYVIMRC<cr>", {})

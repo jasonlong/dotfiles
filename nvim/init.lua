@@ -1,12 +1,14 @@
-local modules = {
-  "plugins",
-  "config",
-  "keymaps"
-}
+require("jason.plugins-setup")
 
-for _, module in ipairs(modules) do
-  local ok, err = pcall(require, module)
-  if not ok then
-    return
-  end
-end
+require("jason.core.options")
+require("jason.core.keymaps")
+require("jason.core.colorscheme")
+require("jason.core.colorscheme")
+
+require("jason.plugins.comment")
+require("jason.plugins.gitsigns")
+require("jason.plugins.lualine")
+require("jason.plugins.nvim-tree")
+require("jason.plugins.telescope")
+require("jason.plugins.toggleterm")
+require("jason.plugins.treesitter")
