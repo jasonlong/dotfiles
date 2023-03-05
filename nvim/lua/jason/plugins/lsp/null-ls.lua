@@ -15,13 +15,16 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	-- setup formatters & linters
 	sources = {
-		formatting.prettier, -- js/ts formatter
+		formatting.prettier.with({
+			extra_filetypes = { "astro" },
+		}), -- js/ts formatter
 		formatting.stylua, -- lua formatter
 		diagnostics.eslint_d.with({ -- js/ts linter
 			-- only enable eslint if root has .eslintrc.js
 			condition = function(utils)
 				return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
 			end,
+			extra_filetypes = { "astro" },
 		}),
 	},
 	-- configure format on save
