@@ -11,9 +11,7 @@ saga.setup({
 	definition = {
 		edit = "<CR>",
 	},
-	ui = {
-		colors = {
-			normal_bg = "#022746",
-		},
+	symbol_in_winbar = {
+		enable = false,
 	},
 })
