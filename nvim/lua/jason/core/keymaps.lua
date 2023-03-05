@@ -18,6 +18,9 @@ keymap("n", "<leader>bd", ":<c-u>up <bar> %bd <bar> e#<cr>", {})
 -- nvim-tree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", {})
 
+-- do
+keymap("n", "<leader>d", ":DoEdit<cr>", {})
+
 -- Turn off highlighting
 keymap("n", "<leader><space>", ":noh<cr>", {})
 
@@ -51,7 +54,7 @@ noremap ci) "_ci)
 ]])
 
 -- Close buffer, but leave split open
-keymap("n", "<leader>d", ":bp<bar>sp<bar>bn<bar>bd<cr>", {})
+keymap("n", "<leader>bd", ":bp<bar>sp<bar>bn<bar>bd<cr>", {})
 
 -- Copy paragraphs / blocks of code
 vim.cmd([[
@@ -78,7 +81,7 @@ nnoremap <silent><C-;> :lua require("harpoon.ui").nav_file(4)<CR>
 ]])
 
 -- toggleterm
-keymap("n", "<leader>t", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+keymap("n", "<leader>t", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 
 -- Copilot
 -- vim.cmd([[
@@ -86,21 +89,9 @@ keymap("n", "<leader>t", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, sile
 -- ]])
 
 -- Trouble
-vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "gr", "<cmd>Trouble lsp_references<cr>",
-  {silent = true, noremap = true}
-)
+vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "gr", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
