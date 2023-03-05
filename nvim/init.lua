@@ -16,6 +16,7 @@ require("jason.plugins.telescope")
 require("jason.plugins.toggleterm")
 require("jason.plugins.treesitter")
 require("jason.plugins.autopairs")
+require("jason.plugins.do")
 
 require("jason.plugins.lsp.mason")
 require("jason.plugins.lsp.lspsaga")

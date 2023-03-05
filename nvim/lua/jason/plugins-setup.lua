@@ -70,6 +70,7 @@ return packer.startup(function(use)
 	use("karb94/neoscroll.nvim")
 	use("ggandor/leap.nvim")
 	use("github/copilot.vim")
+	use("nocksock/do.nvim")
 
 	-- Git
 	use("akinsho/toggleterm.nvim")
