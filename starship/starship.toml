@@ -1,9 +1,10 @@
 format = "[  ](bg:#8fbcbb fg:#3b4252)$directory($git_branch) $git_metrics\n$character"
 
 [character]
-success_symbol = "[❯](bold #88c0d0)"
-error_symbol = "[❯](bold #bf616a)"
-vicmd_symbol = "[❮](bold #5e81ac)"
+# For a bold prompt, use (bold #hexcolor). Don't need it with JetBrains Mono
+success_symbol = "[❯](#88c0d0)"
+error_symbol = "[❯](#bf616a)"
+vicmd_symbol = "[❮](#5e81ac)"
 
 [battery]
 disabled = true
