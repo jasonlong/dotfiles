@@ -11,15 +11,16 @@ keymap("n", "<leader>pi", ":source $MYVIMRC<cr>:PackerSync<cr>", {})
 keymap("n", "<leader>w", ":w<cr>", {})
 keymap("n", "<leader>q", ":q<cr>", {})
 
+-- close buffer
+keymap("n", "<leader>dd", ":bp<bar>sp<bar>bn<bar>bd<cr>", {})
 -- close all buffers except current one
--- keymap("n", "<leader>bd", ":bd|e#<cr>", {})
-keymap("n", "<leader>bd", ":<c-u>up <bar> %bd <bar> e#<cr>", {})
+keymap("n", "<leader>da", ":<c-u>up <bar> %bd <bar> e#<cr>", {})
 
 -- nvim-tree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", {})
 
 -- do
-keymap("n", "<leader>d", ":DoEdit<cr>", {})
+keymap("n", "<leader>td", ":DoEdit<cr>", {})
 
 -- Turn off highlighting
 keymap("n", "<leader><space>", ":noh<cr>", {})
