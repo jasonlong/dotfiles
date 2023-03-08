@@ -58,6 +58,14 @@ return packer.startup(function(use)
 			require("trouble").setup({})
 		end,
 	})
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+			require("which-key").setup({})
+		end,
+	})
 
 	use("nvim-tree/nvim-web-devicons")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
