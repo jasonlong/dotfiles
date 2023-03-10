@@ -19,9 +19,6 @@ keymap("n", "<leader>da", ":<c-u>up <bar> %bd <bar> e#<cr>", {})
 -- nvim-tree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", {})
 
--- do
-keymap("n", "<leader>td", ":DoEdit<cr>", {})
-
 -- Turn off highlighting
 keymap("n", "<leader><space>", ":noh<cr>", {})
 
