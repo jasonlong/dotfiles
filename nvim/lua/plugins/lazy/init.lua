@@ -4,19 +4,6 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
 	},
 	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	},
-	{
-		"folke/trouble.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({})
-		end,
-	},
-	{
 		"folke/which-key.nvim",
 		config = function()
 			vim.o.timeout = true
@@ -74,6 +61,6 @@ return {
 	"jose-elias-alvarez/null-ls.nvim",
 	"jayp0521/mason-null-ls.nvim",
 
-	-- auto closing
-	"windwp/nvim-autopairs", -- autoclose parens, brackets, quotes, etc...
+	-- auto closing parens, etc.
+	"windwp/nvim-autopairs",
 }

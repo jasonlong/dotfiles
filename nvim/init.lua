@@ -14,15 +14,15 @@ vim.opt.rtp:prepend(lazypath)
 -- Set leader before loading lazy
 vim.g.mapleader = ","
 
-require("lazy").setup("plugins")
+require("lazy").setup("plugins.lazy")
 
 require("core.options")
 require("core.keymaps")
 require("core.colorscheme")
 
-require("lualine")
+require("plugins.lualine")
 
-require("lsp.lspconfig")
-require("lsp.lspsaga")
-require("lsp.mason")
-require("lsp.null-ls")
+require("plugins.lsp.lspconfig")
+require("plugins.lsp.lspsaga")
+require("plugins.lsp.mason")
+require("plugins.lsp.null-ls")
