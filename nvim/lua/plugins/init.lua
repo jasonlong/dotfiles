@@ -4,12 +4,6 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
 	},
 	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
-	{
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup()
@@ -79,16 +73,6 @@ return {
 	-- formatting & linting
 	"jose-elias-alvarez/null-ls.nvim",
 	"jayp0521/mason-null-ls.nvim",
-
-	-- treesitter configuration
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = function()
-			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-			ts_update()
-		end,
-		dependencies = { "windwp/nvim-ts-autotag" },
-	},
 
 	-- auto closing
 	"windwp/nvim-autopairs", -- autoclose parens, brackets, quotes, etc...
