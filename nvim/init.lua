@@ -19,6 +19,9 @@ require("lazy").setup("plugins")
 require("core.options")
 require("core.keymaps")
 require("core.colorscheme")
+
+require("lualine")
+
 require("lsp.lspconfig")
 require("lsp.lspsaga")
 require("lsp.mason")
