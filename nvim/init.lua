@@ -21,6 +21,8 @@ require("core.keymaps")
 require("core.colorscheme")
 
 require("plugins.lualine")
+require("plugins.autopairs")
+require("plugins.nvim-cmp")
 
 require("plugins.lsp.lspconfig")
 require("plugins.lsp.lspsaga")

@@ -16,8 +16,6 @@ keymap("n", "<leader>dd", ":bp<bar>sp<bar>bn<bar>bd<cr>", {})
 -- close all buffers except current one
 keymap("n", "<leader>da", ":<c-u>up <bar> %bd <bar> e#<cr>", {})
 
--- nvim-tree
-
 -- Turn off highlighting
 keymap("n", "<leader><space>", ":noh<cr>", {})
 
@@ -58,13 +56,6 @@ vim.cmd([[
 noremap cp yap<S-}>p
 ]])
 
--- Telescope
--- vim.cmd([[
--- nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
--- nnoremap <leader>g <cmd>lua require('telescope.builtin').live_grep()<cr>
--- nnoremap <space> <cmd>lua require('telescope.builtin').buffers()<cr>
--- ]])
-
 -- Harpoon
 vim.cmd([[
 nnoremap <silent><leader>m :lua require("harpoon.mark").add_file()<CR>
@@ -78,7 +69,7 @@ nnoremap <silent><C-;> :lua require("harpoon.ui").nav_file(4)<CR>
 ]])
 
 -- toggleterm
-keymap("n", "<leader>t", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+-- keymap("n", "<leader>t", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 
 -- Copilot
 -- vim.cmd([[

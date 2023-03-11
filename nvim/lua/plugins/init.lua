@@ -13,14 +13,18 @@ return {
 	},
 	"nvim-tree/nvim-web-devicons",
 	"JoosepAlviste/nvim-ts-context-commentstring",
+	"nvim-treesitter/playground",
 	"virchau13/tree-sitter-astro",
 	"tpope/vim-surround",
 	"ThePrimeagen/harpoon",
 	"shaunsingh/nord.nvim",
 	"jiangmiao/auto-pairs",
-	"ggandor/leap.nvim",
+	"karb94/neoscroll.nvim",
 	"github/copilot.vim",
-	"nocksock/do.nvim",
+
+	-- Git
+	"akinsho/toggleterm.nvim",
+	"lewis6991/gitsigns.nvim",
 
 	-- Autocomplete
 	"hrsh7th/cmp-nvim-lsp",
@@ -31,7 +35,6 @@ return {
 	"onsails/lspkind.nvim",
 
 	-- Snippets
-	-- "L3MON4D3/LuaSnip",
 	"saadparwaiz1/cmp_luasnip",
 	"rafamadriz/friendly-snippets",
 
