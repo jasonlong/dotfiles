@@ -60,11 +60,11 @@ noremap cp yap<S-}>p
 ]])
 
 -- Telescope
-vim.cmd([[
-nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>g <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <space> <cmd>lua require('telescope.builtin').buffers()<cr>
-]])
+-- vim.cmd([[
+-- nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
+-- nnoremap <leader>g <cmd>lua require('telescope.builtin').live_grep()<cr>
+-- nnoremap <space> <cmd>lua require('telescope.builtin').buffers()<cr>
+-- ]])
 
 -- Harpoon
 vim.cmd([[
