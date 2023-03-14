@@ -32,12 +32,6 @@ yabai -m rule --add app="^iTerm 2$" space=2
 yabai -m rule --add app="^Cron$" space=3
 yabai -m rule --add app="^Figma$" space=4
 
-# leondreamed/yabai-master-stack-plugin
-# yabai -m signal --add event=window_created action='ymsp window-created'
-# yabai -m signal --add event=application_launched action='ymsp window-created'
-# yabai -m signal --add event=window_moved action='ymsp window-moved'
-# ymsp on-yabai-start
-
 # focus windows
 alt + j : ymsp focus-down-window
 alt + k : ymsp focus-up-window
