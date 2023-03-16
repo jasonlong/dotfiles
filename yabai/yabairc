@@ -28,9 +28,15 @@ yabai -m rule --add app="^zoom.us$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
 yabai -m rule --add app="^CARROT Weather$" manage=off
 yabai -m rule --add app="^CleanMyMac X$" manage=off
+yabai -m rule --add app="^Transmission$" manage=off
+yabai -m rule --add app="^Parcel$" manage=off
+yabai -m rule --add app="^Copilot$" manage=off
 yabai -m rule --add app="^iTerm 2$" space=2
 yabai -m rule --add app="^Cron$" space=3
 yabai -m rule --add app="^Figma$" space=4
+
+# Ivory media windows
+yabai -m rule --add app="^Ivory$" title="Ivory" manage=off
 
 # focus windows
 alt + j : ymsp focus-down-window
