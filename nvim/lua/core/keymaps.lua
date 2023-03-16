@@ -68,9 +68,6 @@ nnoremap <silent><right> :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <silent><C-;> :lua require("harpoon.ui").nav_file(4)<CR>
 ]])
 
--- toggleterm
--- keymap("n", "<leader>t", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-
 -- Copilot
 -- vim.cmd([[
 -- imap <silent><script><expr> <right> copilot#Accept("\<CR>")
