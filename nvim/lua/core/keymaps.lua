@@ -68,11 +68,6 @@ nnoremap <silent><right> :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <silent><C-;> :lua require("harpoon.ui").nav_file(4)<CR>
 ]])
 
--- Copilot
--- vim.cmd([[
--- imap <silent><script><expr> <right> copilot#Accept("\<CR>")
--- ]])
-
 -- Trouble
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", { silent = true, noremap = true })
