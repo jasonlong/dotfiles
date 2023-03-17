@@ -4,4 +4,6 @@ vim.g.nord_italic = false
 vim.g.nord_uniform_diff_background = true
 vim.g.nord_bold = false
 
-require('nord').set()
+require("nord").set()
+
+vim.cmd([[highlight! MiniIndentscopeSymbol guibg=NONE guifg=#3b4252]])
