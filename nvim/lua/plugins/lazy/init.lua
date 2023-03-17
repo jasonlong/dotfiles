@@ -17,7 +17,6 @@ return {
 	"tpope/vim-surround",
 	"ThePrimeagen/harpoon",
 	"shaunsingh/nord.nvim",
-	"jiangmiao/auto-pairs",
 	"github/copilot.vim",
 	"nocksock/do.nvim",
 
