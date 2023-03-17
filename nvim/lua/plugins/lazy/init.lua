@@ -18,7 +18,6 @@ return {
 	"ThePrimeagen/harpoon",
 	"shaunsingh/nord.nvim",
 	"jiangmiao/auto-pairs",
-	"ggandor/leap.nvim",
 	"github/copilot.vim",
 	"nocksock/do.nvim",
 
