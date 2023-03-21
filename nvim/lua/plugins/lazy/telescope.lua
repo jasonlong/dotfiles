@@ -1,6 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
+	event = "VimEnter",
 	keys = {
 		{ "<leader>f", "<cmd>lua require('telescope.builtin').find_files()<cr>" },
 		{ "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>" },

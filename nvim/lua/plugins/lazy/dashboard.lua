@@ -14,6 +14,8 @@ local logo = {
 	"       *@@#:     .+@@@@#+.    ",
 	"       :-.     .+%@#+-.       ",
 	"",
+	"",
+	"",
 }
 local footer = {
 	"",
@@ -21,13 +23,19 @@ local footer = {
 }
 
 return {
-	"glepnir/dashboard-nvim",
+	"jasonlong/dashboard-nvim",
 	event = "VimEnter",
 	config = function()
 		require("dashboard").setup({
 			config = {
 				header = logo,
+				disable_move = true,
 				packages = { enable = false },
+				project = {
+					enable = true,
+					limit = 8,
+					action = ":Telescope find_files cwd=",
+				},
 				shortcut = {
 					{ desc = " Plugins", group = "@property", action = "Lazy update", key = "p" },
 					{

@@ -2,15 +2,21 @@ return {
 	"echasnovski/mini.nvim",
 	version = false,
 	config = function()
-		require("mini.indentscope").setup()
 		require("mini.jump2d").setup()
 		require("mini.surround").setup()
 		require("mini.pairs").setup()
 
+		local indent = require("mini.indentscope")
+		indent.setup({
+			draw = {
+				animation = require("mini.indentscope").gen_animation.none(),
+			},
+		})
+
 		local animate = require("mini.animate")
 		animate.setup({
 			cursor = {
-				timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
+				enable = false,
 			},
 			scroll = {
 				timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
