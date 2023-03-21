@@ -34,6 +34,7 @@ yabai -m rule --add app="^Copilot$" manage=off
 yabai -m rule --add app="^iTerm 2$" space=2
 yabai -m rule --add app="^Cron$" space=3
 yabai -m rule --add app="^Figma$" space=4
+yabai -m rule --add app="^Insta360 Link Controller$" space=4
 
 # Ivory media windows
 yabai -m rule --add app="^Ivory$" title="Ivory" manage=off
