@@ -1,5 +1,3 @@
-vim.g.mapleader = ","
-
 local keymap = vim.api.nvim_set_keymap
 
 -- init.lua management
@@ -57,16 +55,13 @@ noremap cp yap<S-}>p
 ]])
 
 -- Harpoon
-vim.cmd([[
-nnoremap <silent><leader>m :lua require("harpoon.mark").add_file()<CR>
-" These mapping are really for <C-h>, <C-j>, <C-k>, <C-l> and use directions
-" because of my Karabiner mapping for <C-j> being down system wide, etc.
-nnoremap <silent><left> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap <silent><down> :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <silent><up> :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <silent><right> :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <silent><C-;> :lua require("harpoon.ui").nav_file(4)<CR>
-]])
+-- These mapping are really for <C-h>, <C-j>, <C-k>, <C-l> and use directions
+keymap("n", "<leader>'", ":lua require('harpoon.mark').add_file()<cr>", {})
+keymap("n", "<left>", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", {})
+keymap("n", "<down>", ":lua require('harpoon.ui').nav_file(1)<cr>", {})
+keymap("n", "<up>", ":lua require('harpoon.ui').nav_file(2)<cr>", {})
+keymap("n", "<right>", ":lua require('harpoon.ui').nav_file(3)<cr>", {})
+keymap("n", "<C-;>", ":lua require('harpoon.ui').nav_file(4)<cr>", {})
 
 -- Trouble
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
