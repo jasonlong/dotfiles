@@ -5,7 +5,7 @@ return {
 	keys = {
 		{ "<leader>f", "<cmd>lua require('telescope.builtin').find_files()<cr>" },
 		{ "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>" },
-		{ "<space>", "<cmd>lua require('telescope.builtin').buffers()<cr>" },
+		{ "<leader><leader>", "<cmd>lua require('telescope.builtin').buffers()<cr>" },
 	},
 	config = function()
 		local telescope = require("telescope")

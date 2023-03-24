@@ -31,18 +31,9 @@ yabai -m rule --add app="^CleanMyMac X$" manage=off
 yabai -m rule --add app="^Transmission$" manage=off
 yabai -m rule --add app="^Parcel$" manage=off
 yabai -m rule --add app="^Copilot$" manage=off
+yabai -m rule --add app="^Insta360 Link Controller$" manage=off
+yabai -m rule --add app="^Reeder$" manage=off
+
 yabai -m rule --add app="^iTerm 2$" space=2
 yabai -m rule --add app="^Cron$" space=3
 yabai -m rule --add app="^Figma$" space=4
-yabai -m rule --add app="^Insta360 Link Controller$" space=4
-
-# Ivory media windows
-yabai -m rule --add app="^Ivory$" title="Ivory" manage=off
-
-# focus windows
-alt + j : ymsp focus-down-window
-alt + k : ymsp focus-up-window
-
-# adjust number of master windows
-alt + shift - i : ymsp increase-master-window-count
-alt + shift - d : ymsp decrease-master-window-count
