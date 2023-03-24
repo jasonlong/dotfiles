@@ -9,41 +9,41 @@ alt - l : yabai -m window --focus east
 # -- Modifying the Layout --
 
 # rotate layout clockwise
-shift + alt - r : yabai -m space --rotate 270
+ctrl + alt - r : yabai -m space --rotate 270
 
 # flip along y-axis
-shift + alt - y : yabai -m space --mirror y-axis
+ctrl + alt - y : yabai -m space --mirror y-axis
 
 # flip along x-axis
-shift + alt - x : yabai -m space --mirror x-axis
+ctrl + alt - x : yabai -m space --mirror x-axis
 
 # toggle split type
-shift + alt - s : yabai -m window --toggle split
+ctrl + alt - s : yabai -m window --toggle split
 
 # toggle window float
-shift + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+ctrl + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # -- Modifying Window Size --
 
 # maximize a window
-shift + alt - m : yabai -m window --toggle zoom-fullscreen
+ctrl + alt - m : yabai -m window --toggle zoom-fullscreen
 
 # balance out tree of windows (resize to occupy same area)
-shift + alt - e : yabai -m space --balance
+ctrl + alt - e : yabai -m space --balance
 
 # -- Moving Windows Around --
 
 # swap windows
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - h : yabai -m window --swap west
-shift + alt - l : yabai -m window --swap east
+ctrl + alt - j : yabai -m window --swap south
+ctrl + alt - k : yabai -m window --swap north
+ctrl + alt - h : yabai -m window --swap west
+ctrl + alt - l : yabai -m window --swap east
 
 # move window and split
-ctrl + alt - j : yabai -m window --warp south
-ctrl + alt - k : yabai -m window --warp north
-ctrl + alt - h : yabai -m window --warp west
-ctrl + alt - l : yabai -m window --warp east
+shift + alt - j : yabai -m window --warp south
+shift + alt - k : yabai -m window --warp north
+shift + alt - h : yabai -m window --warp west
+shift + alt - l : yabai -m window --warp east
 
 # move window to prev and next space
 shift + alt - p : yabai -m window --space prev;
@@ -59,6 +59,6 @@ shift + alt - 5 : yabai -m window --space 5;
 # -- Starting/Stopping/Restarting Yabai --
 
 # stop/start/restart yabai
-ctrl + alt - q : brew services stop yabai
-ctrl + alt - s : brew services start yabai
-ctrl + alt - r : brew services restart yabai
+shift + alt - q : brew services stop yabai
+shift + alt - s : brew services start yabai
+shift + alt - r : brew services restart yabai

@@ -16,7 +16,6 @@ return {
 	"nvim-treesitter/playground",
 	"virchau13/tree-sitter-astro",
 	"tpope/vim-surround",
-	"ThePrimeagen/harpoon",
 	"shaunsingh/nord.nvim",
 	"jiangmiao/auto-pairs",
 	"karb94/neoscroll.nvim",
