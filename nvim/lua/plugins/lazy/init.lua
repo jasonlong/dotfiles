@@ -15,7 +15,6 @@ return {
 	"JoosepAlviste/nvim-ts-context-commentstring",
 	"virchau13/tree-sitter-astro",
 	"tpope/vim-surround",
-	"ThePrimeagen/harpoon",
 	"shaunsingh/nord.nvim",
 	"github/copilot.vim",
 	"nocksock/do.nvim",
