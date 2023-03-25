@@ -23,7 +23,6 @@ mason_lspconfig.setup({
 	-- list of servers for mason to install
 	ensure_installed = {
 		"astro",
-		"cssls",
 		"emmet_ls",
 		"html",
 		"lua_ls",
