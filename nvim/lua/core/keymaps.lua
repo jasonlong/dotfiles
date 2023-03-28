@@ -22,18 +22,20 @@ map("n", "<M-k>", "<C-w>k", {})
 map("n", "<M-h>", "<C-w>h", {})
 map("n", "<M-l>", "<C-w>l", {})
 
--- Move lines up/down (visual mode)
-map("v", "J", ":m '>+1<cr>gv=gv", {})
-map("v", "K", ":m '<-2<cr>gv=gv", {})
+-- Move Lines
+map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- close quickfix list
 map("n", "<leader>c", ":cclose<cr>", {})
 
 -- Treat long lines as break lines
-vim.cmd([[
-noremap j gj
-noremap k gk
-]])
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Don't yank into system clipboard when changing text
 vim.cmd([[
@@ -60,6 +62,16 @@ vim.cmd([[
 noremap cp yap<S-}>p
 ]])
 
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+map("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+
 -- Harpoon
 map("n", "<leader>ah'", ":lua require('harpoon.mark').add_file()<cr>", {})
 map("n", "<leader>am", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", {})
@@ -69,7 +81,7 @@ map("n", "<leader>ad", ":lua require('harpoon.ui').nav_file(3)<cr>", {})
 map("n", "<leader>af", ":lua require('harpoon.ui').nav_file(4)<cr>", {})
 
 -- Trouble
-map("n", "<leader>tt", "<cmd>Trouble<cr>", { silent = true, noremap = true })
+map("n", "<leader>tt", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
 map("n", "<leader>tw", "<cmd>Trouble workspace_diagnostics<cr>", { silent = true, noremap = true })
 map("n", "<leader>td", "<cmd>Trouble document_diagnostics<cr>", { silent = true, noremap = true })
 map("n", "<leader>tl", "<cmd>Trouble loclist<cr>", { silent = true, noremap = true })
