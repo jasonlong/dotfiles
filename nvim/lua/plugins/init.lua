@@ -22,7 +22,7 @@ return {
 	"github/copilot.vim",
 
 	-- Git
-	"akinsho/toggleterm.nvim",
+	-- "akinsho/toggleterm.nvim",
 	"lewis6991/gitsigns.nvim",
 
 	-- Autocomplete

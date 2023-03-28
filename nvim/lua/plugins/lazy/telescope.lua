@@ -8,7 +8,6 @@ return {
 		{ "<leader><leader>", "<cmd>lua require('telescope.builtin').buffers()<cr>" },
 	},
 	config = function()
-		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 		local trouble = require("trouble.providers.telescope")
 		require("telescope").setup({
