@@ -3,9 +3,9 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	event = "VimEnter",
 	keys = {
-		{ "<leader>f", "<cmd>lua require('telescope.builtin').find_files()<cr>" },
-		{ "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>" },
-		{ "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<cr>" },
+		{ "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>" },
+		{ "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>" },
+		{ "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>" },
 	},
 	config = function()
 		local actions = require("telescope.actions")
