@@ -47,14 +47,10 @@ noremap ci} "_ci}
 noremap ci) "_ci)
 ]])
 
--- Close buffer, but leave split open
-map("n", "<leader>bd", ":bp<bar>sp<bar>bn<bar>bd<cr>", {})
-
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
-
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Copy paragraphs / blocks of code
