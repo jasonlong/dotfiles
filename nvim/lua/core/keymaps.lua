@@ -69,7 +69,7 @@ map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- Harpoon
-map("n", "<leader>ah'", ":lua require('harpoon.mark').add_file()<cr>", {})
+map("n", "<leader>ah", ":lua require('harpoon.mark').add_file()<cr>", {})
 map("n", "<leader>am", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", {})
 map("n", "<leader>aa", ":lua require('harpoon.ui').nav_file(1)<cr>", {})
 map("n", "<leader>as", ":lua require('harpoon.ui').nav_file(2)<cr>", {})

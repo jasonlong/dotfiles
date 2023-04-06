@@ -40,7 +40,7 @@ return {
 				},
 				buffers = {
 					theme = "dropdown",
-					sort_lastused = true,
+					-- sort_lastused = true,
 				},
 				live_grep = {
 					theme = "dropdown",
