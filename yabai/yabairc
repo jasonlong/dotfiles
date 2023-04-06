@@ -35,5 +35,4 @@ yabai -m rule --add app="^Insta360 Link Controller$" manage=off
 yabai -m rule --add app="^Reeder$" manage=off
 
 yabai -m rule --add app="^iTerm 2$" space=2
-yabai -m rule --add app="^Cron$" space=3
-yabai -m rule --add app="^Figma$" space=4
+yabai -m rule --add app="^Figma$" space=3
