@@ -21,7 +21,7 @@ style = 'bright-black'
 # style = "#3b4252"
 style = "#444a73"
 # format = "[](bg:#3b4252 fg:#8fbcbb)[ $path ](bg:#3b4252 fg:#d8dee9)[](fg:$style)"
-format = "[](bg:$style fg:#82aaff)[ $path ](bg:$style fg:#d8dee9)[](fg:$style)"
+format = "[](bg:$style fg:#82aaff)[ $path ](bg:$style fg:#c8d3f5)[](fg:$style)"
 
 [git_branch]
 # style = "#1e2030"

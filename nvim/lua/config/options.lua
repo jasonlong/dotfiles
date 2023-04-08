@@ -23,6 +23,8 @@ opt.number = true
 opt.cmdheight = 1
 opt.signcolumn = "yes"
 
+-- vim.cmd([[let $NVIM_TUI_ENABLE_TRUE_COLOR=1]])
+
 vim.cmd([[set termguicolors]])
 vim.cmd([[set nocompatible]])
 vim.cmd([[set breakindent]])

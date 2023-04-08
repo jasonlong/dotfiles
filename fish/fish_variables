@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export BAT_THEME:Nord
+SETUVAR --export BAT_THEME:ansi
 SETUVAR --export BUN_INSTALL:/Users/jason/\x2ebun
 SETUVAR --export CHTSH_CONF:/Users/jason/\x2econfig/cht\x2esh/cht\x2esh\x2econf
 SETUVAR --export CHTSH_QUERY_OPTIONS:style\x3dnative
