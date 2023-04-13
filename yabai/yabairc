@@ -28,6 +28,7 @@ yabai -m rule --add app="^zoom.us$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
 yabai -m rule --add app="^CARROT Weather$" manage=off
 yabai -m rule --add app="^CleanMyMac X$" manage=off
+yabai -m rule --add app="^CleanShot X$" manage=off
 yabai -m rule --add app="^Transmission$" manage=off
 yabai -m rule --add app="^Parcel$" manage=off
 yabai -m rule --add app="^Copilot$" manage=off
