@@ -44,3 +44,4 @@ vim.cmd([[lcd $PWD]])
 -- Override LazyVim default options
 opt.confirm = false
 opt.list = false
+opt.conceallevel = 0
