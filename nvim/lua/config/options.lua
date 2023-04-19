@@ -45,3 +45,4 @@ vim.cmd([[lcd $PWD]])
 opt.confirm = false
 opt.list = false
 opt.conceallevel = 0
+opt.relativenumber = false
