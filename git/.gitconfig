@@ -1,6 +1,7 @@
 [user]
 	name = Jason Long
 	email = jason@jasonlong.me
+	signingkey = /Users/jason/.ssh/id_ed25519.pub
 
 [include]
 	path = /Users/jason/.gitalias.txt
@@ -27,3 +28,7 @@
     colorMoved = default
 [pull]
 	rebase = true
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
