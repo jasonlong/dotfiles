@@ -36,6 +36,7 @@ return {
         "regex",
         "ruby",
         "rust",
+        "svelte",
         "tsx",
         "typescript",
         "vim",
