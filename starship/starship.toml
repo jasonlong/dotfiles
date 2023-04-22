@@ -1,5 +1,5 @@
 # format = "[  ](bg:#8fbcbb fg:#3b4252)$directory($git_branch) $git_metrics\n$character"
-format = "[  ](bg:#82aaff fg:#2f334d)$directory($git_branch) $git_metrics\n$character"
+format = "[:::](bg:#82aaff fg:#2f334d)$directory($git_branch) $git_metrics\n$character"
 
 [character]
 # For a bold prompt, use (bold #hexcolor). Don't need it with JetBrains Mono
