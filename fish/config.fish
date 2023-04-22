@@ -62,3 +62,7 @@ set -px --path PATH "/Users/jason/.composer/vendor/bin"
 # set -g fish_pager_color_completion $foreground
 # set -g fish_pager_color_description $comment
 # set -g fish_pager_color_selected_background --background=$selection
+
+# Setting PATH for Python 3.11
+# The original version is saved in /Users/jason/.config/fish/config.fish.pysave
+set -x PATH "/Library/Frameworks/Python.framework/Versions/3.11/bin" "$PATH"
