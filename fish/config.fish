@@ -15,17 +15,17 @@ set fish_greeting
 status --is-interactive; and source (rbenv init -|psub)
 
 direnv hook fish | source
-atuin init fish | source
 zoxide init fish | source
 starship init fish | source
 
-set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
+# Atuin
+set -gx ATUIN_NOBIND true
+atuin init fish | source
+bind \cr _atuin_search
+bind -M insert \cr _atuin_search
 
 # Bun
 set -Ux BUN_INSTALL "/Users/jason/.bun"
 set -px --path PATH "/Users/jason/.bun/bin"
-
-# Laravel Valet
-set -px --path PATH "/Users/jason/.composer/vendor/bin"
 
 set -x PATH "/Library/Frameworks/Python.framework/Versions/3.11/bin" "$PATH"
