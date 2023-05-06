@@ -7,7 +7,10 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "tokyonight_moon"
-config.font = wezterm.font("BerkeleyMono Nerd Font", { italic = false })
+config.font = wezterm.font_with_fallback({
+	{ family = "Berkeley Mono", italic = false },
+	{ family = "Symbols Nerd Font Mono", scale = 0.75 },
+})
 config.font_size = 15.0
 config.line_height = 1.15
 
