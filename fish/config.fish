@@ -29,3 +29,6 @@ set -Ux BUN_INSTALL "/Users/jason/.bun"
 set -px --path PATH "/Users/jason/.bun/bin"
 
 set -x PATH "/Library/Frameworks/Python.framework/Versions/3.11/bin" "$PATH"
+
+# Doom Emacs
+set -px --path PATH "/Users/jason/.config/emacs/bin"

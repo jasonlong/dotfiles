@@ -13,6 +13,22 @@ config.font = wezterm.font_with_fallback({
 })
 config.font_size = 15.0
 config.line_height = 1.15
+config.font_rules = {
+	{
+    intensity = 'Normal',
+    italic = true,
+    font = wezterm.font_with_fallback({
+      {family = 'Berkeley Mono', style = "Normal"},
+    }),
+  },
+	{
+    intensity = 'Bold',
+    italic = true,
+    font = wezterm.font_with_fallback({
+      {family = 'Berkeley Mono', italic = false},
+    }),
+  }
+}
 
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
