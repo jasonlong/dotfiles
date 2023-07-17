@@ -1,10 +1,10 @@
-format = "[:::](bg:#82aaff fg:#2f334d)$directory($git_branch) $git_metrics\n$character"
+format = "[:::](bg:#8fbcbb fg:#3b4252)$directory($git_branch) $git_metrics\n$character"
 
 [character]
 # For a bold prompt, use (bold #hexcolor). Don't need it with JetBrains Mono
-success_symbol = "[❯](#c3e88d)"
-error_symbol = "[❯](#ff757f)"
-vicmd_symbol = "[❮](#0db9d7)"
+success_symbol = "[❯](bold #88c0d0)"
+error_symbol = "[❯](bold #bf616a)"
+vicmd_symbol = "[❮](bold #5e81ac)"
 
 [battery]
 disabled = true
@@ -14,12 +14,12 @@ format = "[$duration]($style)"
 style = 'bright-black'
 
 [directory]
-style = "#444a73"
-format = "[](bg:$style fg:#82aaff)[ $path ](bg:$style fg:#c8d3f5)[](fg:$style)"
+style = "#3b4252"
+format = "[](bg:#3b4252 fg:#8fbcbb)[ $path ](bg:#3b4252 fg:#d8dee9)[](fg:$style)"
 
 [git_branch]
-style = "#2f334d"
-format = "\b[](bg:$style fg:#444a73)[ $branch ](bg:$style fg:#82aaff)[](fg:$style)"
+style = "#2e3440"
+format = "\b[](bg:$style fg:#3b4252)[ $branch ](bg:$style fg:#8fbcbb)[](fg:$style)"
 
 [git_metrics]
 disabled = false
