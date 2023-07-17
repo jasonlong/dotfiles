@@ -6,8 +6,14 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.color_scheme = "tokyonight_moon"
--- config.color_scheme = "nord"
+-- config.color_scheme = "tokyonight_moon"
+config.color_scheme = "nord"
+
+config.colors = {
+	background = "#232730",
+	cursor_bg = "#4C566A",
+	cursor_border = "#4C566A",
+}
 
 config.font = wezterm.font_with_fallback({
 	{ family = "Berkeley Mono", italic = false },
@@ -36,7 +42,7 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.macos_window_background_blur = 40
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.90
 config.window_close_confirmation = "NeverPrompt"
 
 config.window_padding = {
