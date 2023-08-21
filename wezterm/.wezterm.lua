@@ -41,7 +41,7 @@ config.font_rules = {
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
-config.macos_window_background_blur = 40
+config.macos_window_background_blur = 100
 config.window_background_opacity = 0.90
 config.window_close_confirmation = "NeverPrompt"
 
