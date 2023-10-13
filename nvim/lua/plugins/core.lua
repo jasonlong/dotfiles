@@ -2,15 +2,7 @@ return {
   -- disable some plugins
   { "RRethy/vim-illuminate", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
-  { "SmiteshP/nvim-navic", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
-
-  -- {
-  --   "LazyVim/LazyVim",
-  --   opts = {
-  --     colorscheme = "nord",
-  --   },
-  -- },
 
   {
     "echasnovski/mini.surround",
