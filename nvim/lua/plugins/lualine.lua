@@ -38,7 +38,6 @@ return {
 
     require("lualine").setup({
       options = {
-        -- theme = "tokyonight",
         theme = nord,
         component_separators = { left = "·" },
       },
