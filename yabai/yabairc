@@ -26,15 +26,16 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Activity Monitor$" manage=off
 yabai -m rule --add app="^zoom.us$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
-yabai -m rule --add app="^CARROT Weather$" manage=off
+yabai -m rule --add app="^Hello Weather$" manage=off
 yabai -m rule --add app="^CleanMyMac X$" manage=off
 yabai -m rule --add app="^CleanShot X$" manage=off
 yabai -m rule --add app="^Transmission$" manage=off
 yabai -m rule --add app="^Parcel$" manage=off
 yabai -m rule --add app="^Copilot$" manage=off
 yabai -m rule --add app="^Insta360 Link Controller$" manage=off
-yabai -m rule --add app="^Reeder$" manage=off
 yabai -m rule --add app="^Kap$" manage=off
+yabai -m rule --add app="^Fig$" manage=off
+yabai -m rule --add app="^Sip$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 
 yabai -m rule --add app="^iTerm 2$" space=2

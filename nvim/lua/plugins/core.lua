@@ -3,6 +3,7 @@ return {
   { "RRethy/vim-illuminate", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
+  { "nvim-treesitter/nvim-treesitter-context", enabled = false },
 
   {
     "echasnovski/mini.surround",
@@ -51,20 +52,4 @@ return {
       stages = "static",
     },
   },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   event = "InsertEnter",
-  --   config = function()
-  --     require("copilot").setup({
-  --       suggestion = {
-  --         enabled = true,
-  --         auto_trigger = true,
-  --         keymap = {
-  --           accept = "<right>",
-  --         },
-  --       },
-  --     })
-  --   end,
-  -- },
 }
