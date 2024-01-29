@@ -10,11 +10,11 @@ end
 -- config.color_scheme = "nord"
 config.color_scheme = "Poimandres Storm"
 
--- config.colors = {
--- 	background = "#232730",
--- 	cursor_bg = "#4C566A",
--- 	cursor_border = "#4C566A",
--- }
+config.colors = {
+	background = "#252b37",
+	cursor_bg = "#607487",
+	cursor_border = "#607487",
+}
 
 config.font = wezterm.font_with_fallback({
 	{ family = "Berkeley Mono", italic = false },
@@ -43,7 +43,7 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.macos_window_background_blur = 100
-config.window_background_opacity = 0.90
+config.window_background_opacity = 1.00
 config.window_close_confirmation = "NeverPrompt"
 
 config.window_padding = {
