@@ -40,7 +40,7 @@ black = "#101010"
 # For a bold prompt, use (bold #hexcolor). Don't need it with JetBrains Mono
 success_symbol = "[❯](bold lower-mint)"
 error_symbol = "[❯](bold hot-red)"
-vicmd_symbol = "[❮](bold lower-blue)"
+vicmd_symbol = "[↔](bold bright-yellow)"
 
 [battery]
 disabled = true
