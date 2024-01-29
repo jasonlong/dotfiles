@@ -7,13 +7,14 @@ if wezterm.config_builder then
 end
 
 -- config.color_scheme = "tokyonight_moon"
-config.color_scheme = "nord"
+-- config.color_scheme = "nord"
+config.color_scheme = "Poimandres Storm"
 
-config.colors = {
-	background = "#232730",
-	cursor_bg = "#4C566A",
-	cursor_border = "#4C566A",
-}
+-- config.colors = {
+-- 	background = "#232730",
+-- 	cursor_bg = "#4C566A",
+-- 	cursor_border = "#4C566A",
+-- }
 
 config.font = wezterm.font_with_fallback({
 	{ family = "Berkeley Mono", italic = false },
