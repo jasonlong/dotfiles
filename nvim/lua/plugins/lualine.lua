@@ -38,7 +38,7 @@ return {
   --
   require("lualine").setup({
     options = {
-      -- theme = nord,
+      theme = poimandres,
       component_separators = { left = "·" },
     },
     sections = {
