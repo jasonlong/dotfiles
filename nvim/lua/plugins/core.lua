@@ -6,6 +6,12 @@ return {
   { "nvim-treesitter/nvim-treesitter-context", enabled = false },
 
   {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "poimandres",
+    },
+  },
+  {
     "echasnovski/mini.surround",
     opts = {
       mappings = {
