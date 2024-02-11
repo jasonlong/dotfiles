@@ -41,11 +41,6 @@ vim.cmd([[set completeopt=menu,menuone,noselect]])
 vim.cmd([[set mouse=a]])
 vim.cmd([[lcd $PWD]])
 
--- vim.cmd([[set foldmethod=expr]])
--- vim.cmd([[set foldcolumn=1]])
--- vim.cmd([[set foldlevel=20]])
--- vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]])
-
 -- Override LazyVim default options
 opt.confirm = false
 opt.list = false
