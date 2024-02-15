@@ -39,6 +39,7 @@ vim.cmd([[set noerrorbells]])
 vim.cmd([[set complete+=kspell]])
 vim.cmd([[set completeopt=menu,menuone,noselect]])
 vim.cmd([[set mouse=a]])
+vim.cmd([[set pumblend=5]]) -- Transpareny of the popup menus
 vim.cmd([[lcd $PWD]])
 
 -- Override LazyVim default options
