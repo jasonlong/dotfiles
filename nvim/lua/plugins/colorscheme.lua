@@ -2,7 +2,7 @@ return {
   {
     "jasonlong/poimandres.nvim",
     -- name = "poimandres",
-    -- dir = "~/.config/nvim/colors/poimandres.nvim",
+    -- dir = "~/dev/poimandres.nvim",
     lazy = false,
     opts = {
       style = "storm",
