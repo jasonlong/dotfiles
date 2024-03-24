@@ -6,8 +6,6 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
--- config.color_scheme = "tokyonight_moon"
--- config.color_scheme = "nord"
 config.color_scheme = "Poimandres Storm"
 
 config.colors = {
@@ -20,7 +18,7 @@ config.font = wezterm.font_with_fallback({
 	{ family = "Berkeley Mono", italic = false },
 	{ family = "Symbols Nerd Font Mono", scale = 0.75 },
 })
-config.font_size = 15.0
+config.font_size = 14.0
 config.line_height = 1.15
 config.font_rules = {
 	{

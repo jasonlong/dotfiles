@@ -1,8 +1,8 @@
 return {
   {
-    "jasonlong/poimandres.nvim",
-    -- name = "poimandres",
-    -- dir = "~/dev/poimandres.nvim",
+    -- "jasonlong/poimandres.nvim",
+    name = "poimandres",
+    dir = "~/dev/poimandres.nvim",
     lazy = false,
     opts = {
       style = "storm",

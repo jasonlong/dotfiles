@@ -2,30 +2,26 @@
 	name = Jason Long
 	email = jason@jasonlong.me
 	signingkey = 294F16D94B93318D
-
 [include]
 	path = /Users/jason/.gitalias.txt
-
 [push]
 	default = current
-
+	autoSetupRemote = true
 [core]
-    pager = delta
+  pager = delta
 	excludesfile = /Users/jason/.gitignore_global
-
+  editor = nvim 
 [interactive]
-    diffFilter = delta --color-only
-
+  diffFilter = delta --color-only
 [delta]
-    navigate = true  # use n and N to move between diff sections
-    syntax-theme = Nord
-    light = false
-
+  navigate = true  # use n and N to move between diff sections
+  syntax-theme = Nord
+  light = false
 [merge]
-    conflictstyle = diff3
-
+  conflictstyle = zdiff3
 [diff]
-    colorMoved = default
+  colorMoved = default
+  algorithm = histogram
 [pull]
 	rebase = true
 [commit]
