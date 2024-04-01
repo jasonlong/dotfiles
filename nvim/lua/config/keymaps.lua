@@ -30,3 +30,11 @@ vim.keymap.set("n", "<leader>W", ":wall<cr>", { desc = "Write all buffers" })
 local neogit = require("neogit")
 
 vim.keymap.set("n", "<leader>gg", neogit.open, { desc = "Open Neogit" })
+
+-- todo-comments
+vim.keymap.del("n", "<leader>xt")
+vim.keymap.del("n", "<leader>xT")
+
+-- gitlinker
+vim.keymap.set({ "n", "v" }, "<leader>gl", "<cmd>GitLink! current_branch<cr>", { desc = "Open current branch" })
+vim.keymap.set({ "n", "v" }, "<leader>gL", "<cmd>GitLink! default_branch<cr>", { desc = "Open default branch" })
