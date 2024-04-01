@@ -16,3 +16,17 @@ vim.keymap.set("i", "<S-down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" 
 vim.keymap.set("i", "<S-up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 vim.keymap.set("v", "<S-down>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 vim.keymap.set("v", "<S-up>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+
+-- Unmap keymaps that manage splits
+vim.keymap.del("n", "<leader>w-")
+vim.keymap.del("n", "<leader>w|")
+vim.keymap.del("n", "<leader>wd")
+vim.keymap.del("n", "<leader>ww")
+
+-- quicker saving
+vim.keymap.set("n", "<leader>w", ":w<cr>", { desc = "Write buffer" })
+vim.keymap.set("n", "<leader>W", ":wall<cr>", { desc = "Write all buffers" })
+
+local neogit = require("neogit")
+
+vim.keymap.set("n", "<leader>gg", neogit.open, { desc = "Open Neogit" })

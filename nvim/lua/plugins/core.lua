@@ -4,6 +4,7 @@ return {
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
   { "nvim-treesitter/nvim-treesitter-context", enabled = false },
+  { "kdheepak/lazygit.nvim", enabled = false },
 
   {
     "LazyVim/LazyVim",
