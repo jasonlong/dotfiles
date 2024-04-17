@@ -17,7 +17,7 @@ return {
       desc = "Harpoon quick menu",
     },
     {
-      "<tab>h",
+      "<tab>j",
       function()
         require("harpoon"):list():select(1)
       end,
