@@ -4,7 +4,7 @@ return {
     {
       "<leader>H",
       function()
-        require("harpoon"):list():append()
+        require("harpoon"):list():add()
       end,
       desc = "Harpoon file",
     },
@@ -17,28 +17,28 @@ return {
       desc = "Harpoon quick menu",
     },
     {
-      "qh",
+      "<tab>h",
       function()
         require("harpoon"):list():select(1)
       end,
       desc = "Harpoon to file 1",
     },
     {
-      "qk",
+      "<tab>k",
       function()
         require("harpoon"):list():select(2)
       end,
       desc = "Harpoon to file 2",
     },
     {
-      "ql",
+      "<tab>l",
       function()
         require("harpoon"):list():select(3)
       end,
       desc = "Harpoon to file 3",
     },
     {
-      "q;",
+      "<tab>;",
       function()
         require("harpoon"):list():select(4)
       end,
