@@ -1,0 +1,55 @@
+font-family = Berkeley Mono
+font-style = Regular
+font-size = 14
+
+# Leading
+adjust-cell-height = 15%
+
+macos-option-as-alt = true
+window-colorspace = display-p3
+window-padding-x = 12 
+window-padding-y = 2 
+
+cursor-color = #607487
+background = #252b37
+background-opacity = 0.95
+background-blur-radius = 20
+
+mouse-hide-while-typing = true
+mouse-shift-capture = true
+
+# Cursor style
+cursor-style = block
+cursor-style-blink = false
+
+# Clipboard settings
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = clipboard
+clipboard-trim-trailing-spaces = true
+
+# Poimandres Storm theme
+# black
+palette = 0=#1B1E28
+palette = 8=#506477
+# red
+palette = 1=#D0679D
+palette = 9=#D0679D
+# green
+palette = 2=#5DE4C7
+palette = 10=#5DE4C7
+# yellow
+palette = 3=#FFFAC2
+palette = 11=#FFFAC2
+# blue
+palette = 4=#89DDFF
+palette = 12=#ADD7FF
+# purple
+palette = 5=#FCC5E9
+palette = 13=#FCC5E9
+# aqua
+palette = 6=#89DDFF
+palette = 14=#ADD7FF
+# white
+palette = 7=#ffffff
+palette = 15=#ffffff
