@@ -17,28 +17,28 @@ return {
       desc = "Harpoon quick menu",
     },
     {
-      "<tab>j",
+      "<A-6>",
       function()
         require("harpoon"):list():select(1)
       end,
       desc = "Harpoon to file 1",
     },
     {
-      "<tab>k",
+      "<A-7>",
       function()
         require("harpoon"):list():select(2)
       end,
       desc = "Harpoon to file 2",
     },
     {
-      "<tab>l",
+      "<A-8>",
       function()
         require("harpoon"):list():select(3)
       end,
       desc = "Harpoon to file 3",
     },
     {
-      "<tab>;",
+      "<A-9>",
       function()
         require("harpoon"):list():select(4)
       end,
