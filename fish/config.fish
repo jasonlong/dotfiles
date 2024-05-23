@@ -31,3 +31,5 @@ set -px --path PATH "/Users/jason/.bun/bin"
 set -x PATH "/Library/Frameworks/Python.framework/Versions/3.11/bin" "$PATH"
 fish_add_path "/Users/jason/.local/share/bob/nvim-bin"
 
+# thefuck
+thefuck --alias | source

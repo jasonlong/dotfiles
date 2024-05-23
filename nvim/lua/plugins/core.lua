@@ -5,6 +5,8 @@ return {
   { "akinsho/bufferline.nvim", enabled = false },
   { "nvim-treesitter/nvim-treesitter-context", enabled = false },
   { "kdheepak/lazygit.nvim", enabled = false },
+  -- mini.ai is nice, but is very broken for tag text objects
+  { "echasnovski/mini.ai", enabled = false },
 
   {
     "LazyVim/LazyVim",
