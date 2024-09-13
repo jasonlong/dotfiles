@@ -10,6 +10,12 @@ vim.keymap.del("i", "<A-k>")
 vim.keymap.del("v", "<A-j>")
 vim.keymap.del("v", "<A-k>")
 
+-- Unmap window moving keymaps
+vim.keymap.del("n", "<C-h>")
+vim.keymap.del("n", "<C-j>")
+vim.keymap.del("n", "<C-k>")
+vim.keymap.del("n", "<C-l>")
+
 vim.keymap.set("n", "<S-down>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 vim.keymap.set("n", "<S-up>", "<cmd>m .-2<cr>==", { desc = "Move up" })
 vim.keymap.set("i", "<S-down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
@@ -18,13 +24,14 @@ vim.keymap.set("v", "<S-down>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 vim.keymap.set("v", "<S-up>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Unmap keymaps that manage splits
-vim.keymap.del("n", "<leader>w-")
-vim.keymap.del("n", "<leader>w|")
-vim.keymap.del("n", "<leader>wd")
-vim.keymap.del("n", "<leader>ww")
+-- vim.keymap.del("n", "<leader>w-")
+-- vim.keymap.del("n", "<leader>w|")
+-- vim.keymap.del("n", "<leader>wd")
+-- vim.keymap.del("n", "<leader>ww")
+-- vim.keymap.del("n", "<leader>wm")
 
 -- quicker saving
-vim.keymap.set("n", "<leader>w", ":w<cr>", { desc = "Write buffer" })
+vim.keymap.set("n", "<leader>ww", ":w<cr>", { desc = "Write buffer" })
 vim.keymap.set("n", "<leader>W", ":wall<cr>", { desc = "Write all buffers" })
 
 local neogit = require("neogit")

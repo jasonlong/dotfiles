@@ -1,14 +1,16 @@
 {
   "extras": [
     "lazyvim.plugins.extras.coding.copilot",
+    "lazyvim.plugins.extras.coding.copilot-chat",
     "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.editor.dial",
-    "lazyvim.plugins.extras.editor.trouble-v3",
-    "lazyvim.plugins.extras.lang.tailwind"
+    "lazyvim.plugins.extras.editor.harpoon2",
+    "lazyvim.plugins.extras.lang.tailwind",
+    "lazyvim.plugins.extras.ui.mini-animate"
   ],
   "news": {
-    "NEWS.md": "4964"
+    "NEWS.md": "6520"
   },
-  "version": 4
+  "version": 6
 }
