@@ -12,6 +12,18 @@ return {
           },
         },
       },
+      emmet_language_server = {
+        init_options = {
+          syntaxProfiles = {
+            html = {
+              attr_quotes = "single",
+            },
+            typescriptreact = {
+              attr_quotes = "single",
+            },
+          },
+        },
+      },
       cssls = {
         settings = {
           css = {
