@@ -59,4 +59,4 @@ SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
 SETUVAR --export fish_user_paths:/opt/homebrew/opt/mysql\x408\x2e0/bin\x1e/Users/jason/\x2elocal/share/bob/nvim\x2dbin\x1e/opt/homebrew/sbin\x1e/Users/jason/\x2ecargo/bin\x1e/opt/homebrew/bin\x1e/Applications/Visual\x20Studio\x20Code\x2eapp/Contents/Resources/app/bin\x1e/Users/jason/go/bin\x1e/Users/jason/\x2erbenv/bin\x1e/Users/jason/\x2efig/bin\x1e/Users/jason/\x2elocal/bin
-SETUVAR nvm_default_version:v18\x2e20\x2e5
+SETUVAR nvm_default_version:v22\x2e12\x2e0
