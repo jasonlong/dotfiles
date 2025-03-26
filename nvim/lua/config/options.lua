@@ -47,3 +47,6 @@ opt.confirm = false
 opt.list = false
 opt.conceallevel = 0
 opt.relativenumber = false
+
+vim.g.lazyvim_eslint_auto_format = true
+vim.g.lazyvim_prettier_needs_config = false
