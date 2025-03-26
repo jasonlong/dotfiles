@@ -34,3 +34,13 @@
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [init]
 	defaultBranch = main
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+; [fetch]
+; 	prune = true
+; 	pruneTags = true
+; 	all = true
+[help]
+	autocorrect = prompt
