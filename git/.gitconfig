@@ -1,7 +1,7 @@
 [user]
 	name = Jason Long
 	email = jason@jasonlong.me
-	signingkey = 294F16D94B93318D
+  signingkey = 16A6ADCE72646D7B
 [include]
 	path = /Users/jason/.gitalias.txt
 [push]
@@ -10,7 +10,7 @@
 [core]
   pager = delta
 	excludesfile = /Users/jason/.gitignore_global
-  editor = nvim 
+  editor = nvim
 [interactive]
   diffFilter = delta --color-only
 [delta]
@@ -27,10 +27,10 @@
 [commit]
 	gpgsign = true
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [init]
 	defaultBranch = main
