@@ -1,34 +1,31 @@
-palette = "poimandres"
+palette = "poimandres-storm"
 
-format = "[:::](bg:bright-mint fg:bg)$directory($git_branch) $git_metrics\n$character"
+format = """
+[](bright-mint)\
+[ ](bg:bright-mint fg:bg)\
+[](bg:lower-mint fg:bright-mint)\
+$directory\
+[](bg:blueish-green fg:lower-mint)\
+$git_branch\
+[](bg:focus fg:blueish-green)\
+$git_metrics\
+[ ](fg:focus)\n$character
+"""
 
-[palettes.poimandres]
+[palettes.poimandres-storm]
 bright-yellow = "#fffac2"
 bright-mint = "#5de4c7"
 lower-mint = "#5fb3a1"
 blueish-green = "#42675a"
-
 lower-blue = "#89ddff"
 light-blue = "#add7ff"
 desaturated-blue = "#91b4d5"
 bluishGray-brighter = "#7390aa"
-
 hot-red = "#d0679d"
 pink = "#f087bd"
 gray = "#a6accd"
-
-# darker-gray = "#767c9d"
-# bluish-gray = "#506477"
-# selection = "#30354b"
-# focus = "#303340"
-# bg = "#1b1e28"
-
-off-white = "#e4f0fb"
-
 white = "#ffffff"
-# black = '#000000'
-
-# Storm overrides
+off-white = "#e4f0fb"
 darker-gray = "#868cad"
 bluish-gray = "#607487"
 selection = "#33394a"
@@ -37,8 +34,7 @@ bg = "#252b37"
 black = "#101010"
 
 [character]
-# For a bold prompt, use (bold #hexcolor). Don't need it with JetBrains Mono
-success_symbol = "[❯](bold lower-mint)"
+success_symbol = "[❯](bold bright-mint)"
 error_symbol = "[❯](bold hot-red)"
 vicmd_symbol = "[↔](bold bright-yellow)"
 
@@ -49,18 +45,20 @@ disabled = true
 format = "[$duration](gray)"
 
 [directory]
-format = "[](bg:focus fg:bright-mint)[ $path ](bg:focus fg:white)[](fg:focus)"
+format = "[ $path ](bg:lower-mint fg:bg)"
 
 [git_branch]
-format = "\b[](bg:selection fg:focus)[ $branch ](bg:selection fg:lower-blue)[](fg:selection)"
+disabled = false
+format = "[ $branch ](bg:blueish-green fg:off-white)"
 
 [git_metrics]
 disabled = false
-added_style = "bright-mint"
-deleted_style = "hot-red"
+# added_style = "bright-mint"
+# deleted_style = "hot-red"
+format = "([ +$added ](bg:focus fg:bright-mint))([ -$deleted ](bg:focus fg:hot-red))"
 
-[git_status]
-style = "gray"
+# [git_status]
+# style = "gray"
 
 [nodejs]
 disabled = true
