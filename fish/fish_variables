@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export ANTHROPIC_API_KEY:sk\x2dant\x2dapi03\x2dCMWmGm0KJteSwNLACnowaZJ7oXk0pzK5J4urcR\x2dvWIxFZgQbI0Hpf75M_OUUoeBshogHlVEaRhBlyjcStqLzRw\x2dxizRHgAA
 SETUVAR --export BAT_THEME:Nord
 SETUVAR --export BUN_INSTALL:/Users/jason/\x2ebun
 SETUVAR --export CHTSH_CONF:/Users/jason/\x2econfig/cht\x2esh/cht\x2esh\x2econf
