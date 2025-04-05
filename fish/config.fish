@@ -33,3 +33,4 @@ fish_add_path "/Users/jason/.local/share/bob/nvim-bin"
 
 # thefuck
 thefuck --alias | source
+alias claude="/Users/jason/.claude/local/claude"
