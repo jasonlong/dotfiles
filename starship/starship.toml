@@ -45,7 +45,7 @@ disabled = true
 format = "[$duration](gray)"
 
 [directory]
-format = "[ $path ](bg:lower-mint fg:bg)"
+format = "[ $path ](bg:lower-mint fg:black)"
 
 [git_branch]
 disabled = false
