@@ -11,6 +11,7 @@ SETUVAR --export HIGHLIGHT_STYLE:nord
 SETUVAR --export LESS:\x2dR
 SETUVAR --export NEXT_PUBLIC_ADMIN_URL:http\x3a//admin\x2eplanetscaledb\x2elocal\x3a3000/admin
 SETUVAR NVM_DIR:/Users/jason/\x2envm
+SETUVAR --export OPENAI_API_KEY:sk\x2dproj\x2daIq_91oIUG36wzf0p8hbfUmf4YaNliGmQlmNQmEI9QGbqkOrJmFSvaQP0dU3GMfuWoTScKBu5XT3BlbkFJl9XFfV\x2dGgsQHRKG5ndjEgBXajO4bJ47CPCVF1wfrnPVH_eYuhW5deYrkqqfVszaxw_XXSh2ccA
 SETUVAR VIRTUAL_ENV_DISABLE_PROMPT:true
 SETUVAR Z_DATA_DIR:/Users/jason/\x2elocal/share/z
 SETUVAR __fish_initialized:3800
@@ -59,5 +60,5 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3d3654a7
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR --export fish_user_paths:/opt/homebrew/opt/mysql\x408\x2e0/bin\x1e/Users/jason/\x2elocal/share/bob/nvim\x2dbin\x1e/opt/homebrew/sbin\x1e/Users/jason/\x2ecargo/bin\x1e/opt/homebrew/bin\x1e/Applications/Visual\x20Studio\x20Code\x2eapp/Contents/Resources/app/bin\x1e/Users/jason/go/bin\x1e/Users/jason/\x2erbenv/bin\x1e/Users/jason/\x2efig/bin\x1e/Users/jason/\x2elocal/bin
+SETUVAR --export fish_user_paths:/opt/homebrew/opt/postgresql\x4017/bin\x1e/Users/jason/\x2eps\x2dtoolbox/bin\x1e/opt/homebrew/opt/mysql\x408\x2e0/bin\x1e/Users/jason/\x2elocal/share/bob/nvim\x2dbin\x1e/opt/homebrew/sbin\x1e/Users/jason/\x2ecargo/bin\x1e/opt/homebrew/bin\x1e/Applications/Visual\x20Studio\x20Code\x2eapp/Contents/Resources/app/bin\x1e/Users/jason/go/bin\x1e/Users/jason/\x2erbenv/bin\x1e/Users/jason/\x2efig/bin\x1e/Users/jason/\x2elocal/bin
 SETUVAR nvm_default_version:v22\x2e12\x2e0

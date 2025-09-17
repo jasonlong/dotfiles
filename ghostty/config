@@ -53,3 +53,4 @@ palette = 14=#ADD7FF
 # white
 palette = 7=#ffffff
 palette = 15=#ffffff
+keybind = shift+enter=text:\n

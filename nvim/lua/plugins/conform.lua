@@ -7,6 +7,7 @@ return {
       typescript = { "prettierd", "eslint_d" },
       javascriptreact = { "prettierd", "eslint_d" },
       typescriptreact = { "prettierd", "eslint_d" },
+      markdown = {},
     },
     -- format_on_save = {
     --   -- Recommended: increase timeout if first save is slow and you aren't pre-starting

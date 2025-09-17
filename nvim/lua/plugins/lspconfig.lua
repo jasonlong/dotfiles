@@ -26,6 +26,7 @@ return {
         },
       },
       emmet_language_server = {
+        filetypes = { "html", "typescriptreact", "javascriptreact" },
         init_options = {
           syntaxProfiles = {
             html = {
