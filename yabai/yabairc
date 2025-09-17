@@ -41,3 +41,8 @@ yabai -m rule --add app="^Finder$" manage=off
 
 yabai -m rule --add app="^iTerm 2$" space=2
 yabai -m rule --add app="^Figma$" space=3
+
+# Fix ghostty tabs not taking up a slot in yabai layout
+yabai -m signal --add app='^Ghostty$' event=window_created action='yabai -m space --layout bsp'
+yabai -m signal --add app='^Ghostty$' event=window_destroyed action='yabai -m space --layout bsp'
+

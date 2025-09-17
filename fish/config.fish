@@ -3,7 +3,6 @@ fish_vi_key_bindings
 alias g='git'
 alias ss='script/server'
 alias rc='rails console'
-alias python='python4'
 alias api='cd ~/dev/api-bb/'
 alias app='cd ~/dev/app-bb/'
 alias v='nvim'
@@ -34,3 +33,5 @@ fish_add_path "/Users/jason/.local/share/bob/nvim-bin"
 # thefuck
 thefuck --alias | source
 alias claude="/Users/jason/.claude/local/claude"
+fish_add_path $HOME/.local/bin
+direnv hook fish | source
