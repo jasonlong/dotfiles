@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export ANTHROPIC_API_KEY:sk\x2dant\x2dapi03\x2dCMWmGm0KJteSwNLACnowaZJ7oXk0pzK5J4urcR\x2dvWIxFZgQbI0Hpf75M_OUUoeBshogHlVEaRhBlyjcStqLzRw\x2dxizRHgAA
+SETUVAR --export AVANTE_ANTHROPIC_API_KEY:sk\x2dant\x2dapi03\x2deV3kHB1g3bGt1gKXvZilRREQu6InwXmH7vVUdSY0P2pk_paRC7osLUWZ8tc1PjtLzOGhJve0yspeITezzq6n7A\x2dtKXmygAA
 SETUVAR --export BAT_THEME:Nord
 SETUVAR --export BUN_INSTALL:/Users/jason/\x2ebun
 SETUVAR --export CHTSH_CONF:/Users/jason/\x2econfig/cht\x2esh/cht\x2esh\x2econf
@@ -12,6 +13,7 @@ SETUVAR --export LESS:\x2dR
 SETUVAR --export NEXT_PUBLIC_ADMIN_URL:http\x3a//admin\x2eplanetscaledb\x2elocal\x3a3000/admin
 SETUVAR NVM_DIR:/Users/jason/\x2envm
 SETUVAR --export OPENAI_API_KEY:sk\x2dproj\x2daIq_91oIUG36wzf0p8hbfUmf4YaNliGmQlmNQmEI9QGbqkOrJmFSvaQP0dU3GMfuWoTScKBu5XT3BlbkFJl9XFfV\x2dGgsQHRKG5ndjEgBXajO4bJ47CPCVF1wfrnPVH_eYuhW5deYrkqqfVszaxw_XXSh2ccA
+SETUVAR --export --path PATH:/Library/Frameworks/Python\x2eframework/Versions/3\x2e11/bin\x1e/Users/jason/\x2ebun/bin\x1e/Users/jason/\x2erbenv/shims\x1e/Users/jason/\x2erbenv/shims\x1e/Users/jason/\x2elocal/share/nvm/v22\x2e12\x2e0/bin\x1e/opt/homebrew/opt/postgresql\x4017/bin\x1e/Users/jason/\x2eps\x2dtoolbox/bin\x1e/opt/homebrew/opt/mysql\x408\x2e0/bin\x1e/Users/jason/\x2elocal/share/bob/nvim\x2dbin\x1e/opt/homebrew/sbin\x1e/Users/jason/\x2ecargo/bin\x1e/opt/homebrew/bin\x1e/Applications/Visual\x20Studio\x20Code\x2eapp/Contents/Resources/app/bin\x1e/Users/jason/go/bin\x1e/Users/jason/\x2erbenv/bin\x1e/Users/jason/\x2efig/bin\x1e/Users/jason/\x2elocal/bin\x1e/usr/local/bin\x1e/System/Cryptexes/App/usr/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/local/bin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/bin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/appleinternal/bin\x1e/Library/Apple/usr/bin\x1e/usr/local/MacGPG2/bin\x1e/Applications/Ghostty\x2eapp/Contents/MacOS\x1eUnknown\x20command\x1e\x20\x22bin\x22\x1e\x2e\x1eTo\x20see\x20a\x20list\x20of\x20supported\x20npm\x20commands\x2c\x20run\x1e\x2e\x1e\x20\x20npm\x20help
 SETUVAR VIRTUAL_ENV_DISABLE_PROMPT:true
 SETUVAR Z_DATA_DIR:/Users/jason/\x2elocal/share/z
 SETUVAR __fish_initialized:3800
@@ -60,5 +62,5 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3d3654a7
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR --export fish_user_paths:/opt/homebrew/opt/postgresql\x4017/bin\x1e/Users/jason/\x2eps\x2dtoolbox/bin\x1e/opt/homebrew/opt/mysql\x408\x2e0/bin\x1e/Users/jason/\x2elocal/share/bob/nvim\x2dbin\x1e/opt/homebrew/sbin\x1e/Users/jason/\x2ecargo/bin\x1e/opt/homebrew/bin\x1e/Applications/Visual\x20Studio\x20Code\x2eapp/Contents/Resources/app/bin\x1e/Users/jason/go/bin\x1e/Users/jason/\x2erbenv/bin\x1e/Users/jason/\x2efig/bin\x1e/Users/jason/\x2elocal/bin
+SETUVAR --export fish_user_paths:/opt/homebrew/opt/postgresql\x4017/bin\x1e/Users/jason/\x2eps\x2dtoolbox/bin\x1e/opt/homebrew/opt/mysql\x408\x2e0/bin\x1e/Users/jason/\x2elocal/share/bob/nvim\x2dbin\x1e/opt/homebrew/sbin\x1e/Users/jason/\x2ecargo/bin\x1e/opt/homebrew/bin\x1e/Applications/Visual\x20Studio\x20Code\x2eapp/Contents/Resources/app/bin\x1e/Users/jason/go/bin\x1e/Users/jason/\x2erbenv/bin\x1e/Users/jason/\x2efig/bin\x1e/Users/jason/\x2elocal/bin\x1e/Applications/Ghostty\x2eapp/Contents/MacOS
 SETUVAR nvm_default_version:v22\x2e12\x2e0

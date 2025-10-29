@@ -53,12 +53,7 @@ format = "[ $branch ](bg:blueish-green fg:off-white)"
 
 [git_metrics]
 disabled = false
-# added_style = "bright-mint"
-# deleted_style = "hot-red"
 format = "([ +$added ](bg:focus fg:bright-mint))([ -$deleted ](bg:focus fg:hot-red))"
-
-# [git_status]
-# style = "gray"
 
 [nodejs]
 disabled = true

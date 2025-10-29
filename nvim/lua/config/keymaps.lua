@@ -47,8 +47,8 @@ vim.keymap.set({ "n", "v" }, "<leader>gl", "<cmd>GitLink! current_branch<cr>", {
 vim.keymap.set({ "n", "v" }, "<leader>gL", "<cmd>GitLink! default_branch<cr>", { desc = "Open default branch" })
 
 -- codecompanion
-vim.keymap.set({ "n", "v" }, "<leader>ai", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+-- vim.keymap.set({ "n", "v" }, "<leader>ai", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+-- vim.keymap.set({ "n", "v" }, "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
 
 -- require("which-key").register({
 --   { "<leader>a", group = "CodeCompanion" },

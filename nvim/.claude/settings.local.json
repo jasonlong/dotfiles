@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(nvim:*)",
+      "WebSearch",
+      "Read(//Users/jason/.local/share/nvim/lazy/avante.nvim/**)",
+      "WebFetch(domain:www.lazyvim.org)"
+    ]
+  },
+  "enableAllProjectMcpServers": false
+}
