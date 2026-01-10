@@ -1,0 +1,3 @@
+{
+  "local": { "prefix": "l", "body": "local $1 = $0" }
+}
