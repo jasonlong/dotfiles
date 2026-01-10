@@ -9,6 +9,7 @@ alias v='nvim'
 alias lg='lazygit'
 alias t='tmux-sessionizer'
 alias h='cht.sh'
+alias oc='opencode'
 
 set fish_greeting
 status --is-interactive; and source (rbenv init -|psub)
@@ -35,3 +36,4 @@ thefuck --alias | source
 alias claude="/Users/jason/.claude/local/claude"
 fish_add_path $HOME/.local/bin
 direnv hook fish | source
+alias cc='claude --dangerously-skip-permissions'
