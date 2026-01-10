@@ -10,8 +10,8 @@ window-colorspace = display-p3
 window-padding-x = 12 
 window-padding-y = 2 
 
-cursor-color = #506477
-background = #1b1e28
+cursor-color = #607487
+background = #252b37
 background-opacity = 0.97
 background-blur-radius = 20
 
@@ -28,7 +28,7 @@ clipboard-write = allow
 copy-on-select = clipboard
 clipboard-trim-trailing-spaces = true
 
-# Poimandres theme
+# Poimandres Storm theme
 # black
 palette = 0=#1B1E28
 palette = 8=#506477
@@ -53,4 +53,3 @@ palette = 14=#ADD7FF
 # white
 palette = 7=#ffffff
 palette = 15=#ffffff
-keybind = shift+enter=text:\n

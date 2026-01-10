@@ -1,7 +1,7 @@
 return {
-  "yetone/avante.nvim",
-
-  opts = {
-    provider = "claude",
-  },
+  -- "yetone/avante.nvim",
+  --
+  -- opts = {
+  --   provider = "claude",
+  -- },
 }
