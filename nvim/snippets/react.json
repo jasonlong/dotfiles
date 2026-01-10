@@ -1,0 +1,7 @@
+[
+  {
+    "prefix": "cl",
+    "body": "className='$0'",
+    "desc": "JSX className attribute"
+  }
+]
