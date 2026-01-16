@@ -1,0 +1,62 @@
+palette = "mellifluous-light"
+
+format = """
+[](seg1)\
+[ ](bg:seg1 fg:white)\
+[](bg:seg2 fg:seg1)\
+$directory\
+[](bg:seg3 fg:seg2)\
+$git_branch\
+[](bg:seg4 fg:seg3)\
+$git_metrics\
+[ ](fg:seg4)\n$character
+"""
+
+[palettes.mellifluous-light]
+bg = "#ece8e4"
+fg = "#221e1a"
+white = "#ece8e4"
+red = "#b34545"
+green = "#5a7a2a"
+yellow = "#a67a3a"
+blue = "#5a5a99"
+cyan = "#4a8a7a"
+# Gradient segments (dark to light)
+seg1 = "#221e1a"
+seg2 = "#a0a0a0"
+seg3 = "#dcd6d0"
+seg4 = "#ece8e4"
+
+[character]
+success_symbol = "[❯](bold cyan)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[↔](bold yellow)"
+
+[battery]
+disabled = true
+
+[cmd_duration]
+format = "[$duration](#a0a0a0)"
+
+[directory]
+format = "[ $path ](bg:seg2 fg:white)"
+
+[git_branch]
+disabled = false
+format = "[ $branch ](bg:seg3 fg:fg)"
+
+[git_metrics]
+disabled = false
+format = "([ +$added ](bg:seg4 fg:green))([ -$deleted ](bg:seg4 fg:red))"
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
+
+[ruby]
+disabled = true
+
+[lua]
+disabled = true

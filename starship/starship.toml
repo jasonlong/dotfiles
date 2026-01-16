@@ -1,59 +1,53 @@
-palette = "poimandres-storm"
+palette = "mellifluous-dark"
 
 format = """
-[](bright-mint)\
-[ ](bg:bright-mint fg:bg)\
-[](bg:lower-mint fg:bright-mint)\
+[](seg1)\
+[ ](bg:seg1 fg:black)\
+[](bg:seg2 fg:seg1)\
 $directory\
-[](bg:blueish-green fg:lower-mint)\
+[](bg:seg3 fg:seg2)\
 $git_branch\
-[](bg:focus fg:blueish-green)\
+[](bg:seg4 fg:seg3)\
 $git_metrics\
-[ ](fg:focus)\n$character
+[ ](fg:seg4)\n$character
 """
 
-[palettes.poimandres-storm]
-bright-yellow = "#fffac2"
-bright-mint = "#5de4c7"
-lower-mint = "#5fb3a1"
-blueish-green = "#42675a"
-lower-blue = "#89ddff"
-light-blue = "#add7ff"
-desaturated-blue = "#91b4d5"
-bluishGray-brighter = "#7390aa"
-hot-red = "#d0679d"
-pink = "#f087bd"
-gray = "#a6accd"
-white = "#ffffff"
-off-white = "#e4f0fb"
-darker-gray = "#868cad"
-bluish-gray = "#607487"
-selection = "#33394a"
-focus = "#404350"
-bg = "#252b37"
-black = "#101010"
+[palettes.mellifluous-dark]
+bg = "#1a1a1a"
+fg = "#dadada"
+black = "#1a1a1a"
+red = "#d29393"
+green = "#b3b393"
+yellow = "#cbaa89"
+blue = "#a8a1be"
+cyan = "#c0af8c"
+# Gradient segments (light to dark)
+seg1 = "#dadada"
+seg2 = "#5b5b5b"
+seg3 = "#2d2d2d"
+seg4 = "#1a1a1a"
 
 [character]
-success_symbol = "[❯](bold bright-mint)"
-error_symbol = "[❯](bold hot-red)"
-vicmd_symbol = "[↔](bold bright-yellow)"
+success_symbol = "[❯](bold cyan)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[↔](bold yellow)"
 
 [battery]
 disabled = true
 
 [cmd_duration]
-format = "[$duration](gray)"
+format = "[$duration](#5b5b5b)"
 
 [directory]
-format = "[ $path ](bg:lower-mint fg:black)"
+format = "[ $path ](bg:seg2 fg:fg)"
 
 [git_branch]
 disabled = false
-format = "[ $branch ](bg:blueish-green fg:off-white)"
+format = "[ $branch ](bg:seg3 fg:fg)"
 
 [git_metrics]
 disabled = false
-format = "([ +$added ](bg:focus fg:bright-mint))([ -$deleted ](bg:focus fg:hot-red))"
+format = "([ +$added ](bg:seg4 fg:green))([ -$deleted ](bg:seg4 fg:red))"
 
 [nodejs]
 disabled = true
@@ -66,4 +60,3 @@ disabled = true
 
 [lua]
 disabled = true
-

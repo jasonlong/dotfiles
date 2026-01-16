@@ -31,58 +31,66 @@ local now_if_args = _G.Config.now_if_args
 --
 -- Add these plugins now if file (and not 'mini.starter') is shown after startup.
 now_if_args(function()
-  add({
-    source = 'nvim-treesitter/nvim-treesitter',
-    -- Update tree-sitter parser after plugin is updated
-    hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
-  })
-  add({
-    source = 'nvim-treesitter/nvim-treesitter-textobjects',
-    -- Use `main` branch since `master` branch is frozen, yet still default
-    -- It is needed for compatibility with 'nvim-treesitter' `main` branch
-    checkout = 'main',
-  })
+	add({
+		source = "nvim-treesitter/nvim-treesitter",
+		-- Update tree-sitter parser after plugin is updated
+		hooks = {
+			post_checkout = function()
+				vim.cmd("TSUpdate")
+			end,
+		},
+	})
+	add({
+		source = "nvim-treesitter/nvim-treesitter-textobjects",
+		-- Use `main` branch since `master` branch is frozen, yet still default
+		-- It is needed for compatibility with 'nvim-treesitter' `main` branch
+		checkout = "main",
+	})
 
-  -- Define languages which will have parsers installed and auto enabled
-  local languages = {
-    -- These are already pre-installed with Neovim. Used as an example.
-    'lua',
-    'vimdoc',
-    'markdown',
-    -- Frontend web development
-    'html',
-    'css',
-    'javascript',
-    'typescript',
-    'tsx',
-    'json',
-    -- Add here more languages with which you want to use tree-sitter
-    -- To see available languages:
-    -- - Execute `:=require('nvim-treesitter').get_available()`
-    -- - Visit 'SUPPORTED_LANGUAGES.md' file at
-    --   https://github.com/nvim-treesitter/nvim-treesitter/blob/main
-  }
-  local isnt_installed = function(lang)
-    return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0
-  end
-  local to_install = vim.tbl_filter(isnt_installed, languages)
-  if #to_install > 0 then require('nvim-treesitter').install(to_install) end
+	-- Define languages which will have parsers installed and auto enabled
+	local languages = {
+		-- These are already pre-installed with Neovim. Used as an example.
+		"lua",
+		"vimdoc",
+		"markdown",
+		-- Frontend web development
+		"html",
+		"css",
+		"javascript",
+		"typescript",
+		"tsx",
+		"json",
+		-- Add here more languages with which you want to use tree-sitter
+		-- To see available languages:
+		-- - Execute `:=require('nvim-treesitter').get_available()`
+		-- - Visit 'SUPPORTED_LANGUAGES.md' file at
+		--   https://github.com/nvim-treesitter/nvim-treesitter/blob/main
+	}
+	local isnt_installed = function(lang)
+		return #vim.api.nvim_get_runtime_file("parser/" .. lang .. ".*", false) == 0
+	end
+	local to_install = vim.tbl_filter(isnt_installed, languages)
+	if #to_install > 0 then
+		require("nvim-treesitter").install(to_install)
+	end
 
-  -- Enable tree-sitter after opening a file for a target language
-  local filetypes = {}
-  for _, lang in ipairs(languages) do
-    for _, ft in ipairs(vim.treesitter.language.get_filetypes(lang)) do
-      table.insert(filetypes, ft)
-    end
-  end
-  local ts_start = function(ev) vim.treesitter.start(ev.buf) end
-  _G.Config.new_autocmd('FileType', filetypes, ts_start, 'Start tree-sitter')
+	-- Enable tree-sitter after opening a file for a target language
+	local filetypes = {}
+	for _, lang in ipairs(languages) do
+		for _, ft in ipairs(vim.treesitter.language.get_filetypes(lang)) do
+			table.insert(filetypes, ft)
+		end
+	end
+	local ts_start = function(ev)
+		vim.treesitter.start(ev.buf)
+	end
+	_G.Config.new_autocmd("FileType", filetypes, ts_start, "Start tree-sitter")
 
-  -- Context-aware commentstring (for JSX, TSX, HTML, etc.)
-  add('JoosepAlviste/nvim-ts-context-commentstring')
-  require('ts_context_commentstring').setup({
-    enable_autocmd = false,
-  })
+	-- Context-aware commentstring (for JSX, TSX, HTML, etc.)
+	add("JoosepAlviste/nvim-ts-context-commentstring")
+	require("ts_context_commentstring").setup({
+		enable_autocmd = false,
+	})
 end)
 
 -- Language servers ===========================================================
@@ -101,21 +109,21 @@ end)
 --
 -- Add it now if file (and not 'mini.starter') is shown after startup.
 now_if_args(function()
-  add('neovim/nvim-lspconfig')
+	add("neovim/nvim-lspconfig")
 
-  -- Use `:h vim.lsp.enable()` to automatically enable language server based on
-  -- the rules provided by 'nvim-lspconfig'.
-  -- Use `:h vim.lsp.config()` or 'after/lsp/' directory to configure servers.
-  -- Install servers via Mason: `:MasonInstall typescript-language-server html-lsp
-  -- css-lsp tailwindcss-language-server eslint-lsp emmet-language-server`
-  vim.lsp.enable({
-    'ts_ls',           -- TypeScript/JavaScript (covers JSX/TSX/React)
-    'html',            -- HTML
-    'cssls',           -- CSS
-    'tailwindcss',     -- Tailwind CSS
-    'eslint',          -- ESLint diagnostics and auto-fix
-    'emmet_language_server', -- Emmet abbreviations
-  })
+	-- Use `:h vim.lsp.enable()` to automatically enable language server based on
+	-- the rules provided by 'nvim-lspconfig'.
+	-- Use `:h vim.lsp.config()` or 'after/lsp/' directory to configure servers.
+	-- Install servers via Mason: `:MasonInstall typescript-language-server html-lsp
+	-- css-lsp tailwindcss-language-server eslint-lsp emmet-language-server`
+	vim.lsp.enable({
+		"ts_ls", -- TypeScript/JavaScript (covers JSX/TSX/React)
+		"html", -- HTML
+		"cssls", -- CSS
+		"tailwindcss", -- Tailwind CSS
+		"eslint", -- ESLint diagnostics and auto-fix
+		"emmet_language_server", -- Emmet abbreviations
+	})
 end)
 
 -- Formatting =================================================================
@@ -130,32 +138,31 @@ end)
 -- Install formatters: `npm install -g @fsouza/prettierd eslint_d`
 -- Or via Mason: `:MasonInstall prettierd eslint_d`
 later(function()
-  add('stevearc/conform.nvim')
+	add("stevearc/conform.nvim")
 
-  -- See also:
-  -- - `:h Conform`
-  -- - `:h conform-options`
-  -- - `:h conform-formatters`
-  require('conform').setup({
-    -- Format on save
-    format_on_save = {
-      timeout_ms = 2000,
-      lsp_fallback = true,
-    },
-    -- Map of filetype to formatters
-    -- Prettier first for formatting, then eslint for auto-fixes
-    formatters_by_ft = {
-      javascript = { 'prettierd', 'eslint_d' },
-      typescript = { 'prettierd', 'eslint_d' },
-      javascriptreact = { 'prettierd', 'eslint_d' },
-      typescriptreact = { 'prettierd', 'eslint_d' },
-      html = { 'prettierd' },
-      css = { 'prettierd' },
-      json = { 'prettierd' },
-      markdown = { 'prettierd' },
-      lua = { 'stylua' },
-    },
-  })
+	-- See also:
+	-- - `:h Conform`
+	-- - `:h conform-options`
+	-- - `:h conform-formatters`
+	require("conform").setup({
+		-- Format after save (async, non-blocking)
+		format_after_save = {
+			lsp_fallback = true,
+		},
+		-- Map of filetype to formatters
+		-- Prettier first for formatting, then eslint for auto-fixes
+		formatters_by_ft = {
+			javascript = { "prettierd", "eslint_d" },
+			typescript = { "prettierd", "eslint_d" },
+			javascriptreact = { "prettierd", "eslint_d" },
+			typescriptreact = { "prettierd", "eslint_d" },
+			html = { "prettierd" },
+			css = { "prettierd" },
+			json = { "prettierd" },
+			markdown = { "prettierd" },
+			lua = { "stylua" },
+		},
+	})
 end)
 
 -- Snippets ===================================================================
@@ -167,7 +174,9 @@ end)
 -- snippet files. They are organized in 'snippets/' directory (mostly) per language.
 -- 'mini.snippets' is designed to work with it as seamlessly as possible.
 -- See `:h MiniSnippets.gen_loader.from_lang()`.
-later(function() add('rafamadriz/friendly-snippets') end)
+later(function()
+	add("rafamadriz/friendly-snippets")
+end)
 
 -- Mason =======================================================================
 
@@ -180,8 +189,18 @@ later(function() add('rafamadriz/friendly-snippets') end)
 --
 -- Use `:Mason` to open the Mason UI, `:MasonInstall <package>` to install.
 MiniDeps.now(function()
-  add('mason-org/mason.nvim')
-  require('mason').setup()
+	add("mason-org/mason.nvim")
+	require("mason").setup()
+end)
+
+-- Leap ========================================================================
+
+-- Fast motion plugin. Jump to any location by typing 2 characters.
+-- Usage: `<CR>` to start leap, then type 2 characters to jump
+later(function()
+	add("ggandor/leap.nvim")
+
+	vim.keymap.set("n", ";", "<Plug>(leap)", { desc = "Leap" })
 end)
 
 -- Neogit ======================================================================
@@ -191,16 +210,18 @@ end)
 --
 -- Usage: `:Neogit` or `<Leader>gn` to open
 later(function()
-  add({
-    source = 'NeogitOrg/neogit',
-    depends = {
-      'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim',
-    },
-  })
-  require('neogit').setup()
+	add({
+		source = "NeogitOrg/neogit",
+		depends = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+		},
+	})
+	require("neogit").setup({
+		use_per_project_settings = false, -- avoids vim.uv.cwd() nil error
+	})
 
-  vim.keymap.set('n', '<Leader>gg', '<Cmd>Neogit<CR>', { desc = 'Neogit' })
+	vim.keymap.set("n", "<Leader>gg", "<Cmd>Neogit<CR>", { desc = "Neogit" })
 end)
 
 -- Beautiful, usable, well maintained color schemes outside of 'mini.nvim' and

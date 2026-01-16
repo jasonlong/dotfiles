@@ -1,0 +1,24 @@
+# Mellifluous Light
+background = #ece8e4
+foreground = #221e1a
+cursor-color = #6a5a4a
+cursor-text = #ece8e4
+selection-background = #dcd6d0
+selection-foreground = #221e1a
+
+palette = 0=#ece8e4
+palette = 1=#b34545
+palette = 2=#5a7a2a
+palette = 3=#a67a3a
+palette = 4=#5a5a99
+palette = 5=#8a4a7a
+palette = 6=#4a8a7a
+palette = 7=#221e1a
+palette = 8=#a0a0a0
+palette = 9=#cc4d33
+palette = 10=#2d8f24
+palette = 11=#b8960a
+palette = 12=#703e8f
+palette = 13=#a32965
+palette = 14=#2a8a7a
+palette = 15=#1a1a1a

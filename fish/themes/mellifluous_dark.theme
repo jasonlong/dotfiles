@@ -1,0 +1,39 @@
+# Mellifluous Dark
+fish_color_autosuggestion 5b5b5b
+fish_color_cancel -r
+fish_color_command b3b393
+fish_color_comment 5b5b5b
+fish_color_cwd c0af8c
+fish_color_cwd_root d29393
+fish_color_end c0af8c
+fish_color_error d29393
+fish_color_escape a8a1be
+fish_color_history_current --bold
+fish_color_host dadada
+fish_color_host_remote cbaa89
+fish_color_keyword a8a1be
+fish_color_match --background=2d2d2d
+fish_color_normal dadada
+fish_color_operator a8a1be
+fish_color_option c0af8c
+fish_color_param dadada
+fish_color_quote cbaa89
+fish_color_redirection a8a1be
+fish_color_search_match --background=2d2d2d
+fish_color_selection --background=2d2d2d
+fish_color_status d29393
+fish_color_user b3b393
+fish_color_valid_path --underline
+fish_pager_color_background
+fish_pager_color_completion dadada
+fish_pager_color_description 5b5b5b
+fish_pager_color_prefix a8a1be --bold
+fish_pager_color_progress 1a1a1a --background=c0af8c
+fish_pager_color_secondary_background
+fish_pager_color_secondary_completion
+fish_pager_color_secondary_description
+fish_pager_color_secondary_prefix
+fish_pager_color_selected_background --background=2d2d2d
+fish_pager_color_selected_completion
+fish_pager_color_selected_description
+fish_pager_color_selected_prefix
