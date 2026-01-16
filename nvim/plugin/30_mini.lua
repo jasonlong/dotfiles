@@ -51,36 +51,6 @@ now(function()
 		end
 	end
 
-	-- Custom highlight overrides (called on colorscheme change)
-	local function apply_custom_highlights()
-		local is_dark = vim.o.background == "dark"
-		local bg = is_dark and "#1a1a1a" or "#ece8e4"
-		local fg = is_dark and "#dadada" or "#221e1a"
-		local muted = is_dark and "#5b5b5b" or "#a0a0a0"
-		local cursorline_bg = is_dark and "#222222" or "#e4e0dc"
-		local indent_fg = is_dark and "#2d2d2d" or "#dcd6d0"
-
-		vim.api.nvim_set_hl(0, "SignColumn", { bg = bg })
-		vim.api.nvim_set_hl(0, "LineNr", { fg = muted, bg = bg })
-		vim.api.nvim_set_hl(0, "FoldColumn", { bg = bg })
-		vim.api.nvim_set_hl(0, "Comment", { fg = muted, italic = true })
-		vim.api.nvim_set_hl(0, "CursorLine", { bg = cursorline_bg })
-		vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = indent_fg })
-		local yellow = is_dark and "#cbaa89" or "#a67a3a"
-		vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { fg = yellow, bg = bg })
-		-- Remove bg from headings
-		for i = 1, 6 do
-			local hl = vim.api.nvim_get_hl(0, { name = "@markup.heading." .. i })
-			hl.bg = nil
-			vim.api.nvim_set_hl(0, "@markup.heading." .. i, hl)
-		end
-	end
-
-	-- Apply on colorscheme change
-	vim.api.nvim_create_autocmd("ColorScheme", {
-		callback = apply_custom_highlights,
-	})
-
 	set_theme_from_appearance()
 
 	require("mellifluous").setup({
@@ -89,10 +59,43 @@ now(function()
 			comments = { italic = true },
 			keywords = { bold = true },
 		},
+		highlight_overrides = {
+			dark = function(hl, colors)
+				local bg = "#1a1a1a"
+				local muted = "#5b5b5b"
+				hl.set("SignColumn", { bg = bg })
+				hl.set("LineNr", { fg = muted, bg = bg })
+				hl.set("FoldColumn", { bg = bg })
+				hl.set("Comment", { fg = muted, italic = true })
+				hl.set("CursorLine", { bg = "#222222" })
+				hl.set("MiniIndentscopeSymbol", { fg = "#2d2d2d" })
+				hl.set("MiniStatuslineFilename", { fg = "#cbaa89", bg = bg })
+				for i = 1, 6 do
+					local h = hl.get("@markup.heading." .. i) or {}
+					h.bg = nil
+					hl.set("@markup.heading." .. i, h)
+				end
+			end,
+			light = function(hl, colors)
+				local bg = "#ece8e4"
+				local muted = "#a0a0a0"
+				hl.set("SignColumn", { bg = bg })
+				hl.set("LineNr", { fg = muted, bg = bg })
+				hl.set("FoldColumn", { bg = bg })
+				hl.set("Comment", { fg = muted, italic = true })
+				hl.set("CursorLine", { bg = "#e4e0dc" })
+				hl.set("MiniIndentscopeSymbol", { fg = "#dcd6d0" })
+				hl.set("MiniStatuslineFilename", { fg = "#a67a3a", bg = bg })
+				for i = 1, 6 do
+					local h = hl.get("@markup.heading." .. i) or {}
+					h.bg = nil
+					hl.set("@markup.heading." .. i, h)
+				end
+			end,
+		},
 	})
 
 	vim.cmd("colorscheme mellifluous")
-	apply_custom_highlights()
 end)
 
 -- Alternative: Poimandres colorscheme (dark only)

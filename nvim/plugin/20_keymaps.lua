@@ -26,6 +26,9 @@ nmap('<Esc>', '<Cmd>nohlsearch<CR>', 'Clear search highlight')
 nmap('<Leader>ww', '<Cmd>w<CR>', 'Write buffer')
 nmap('<Leader>W', '<Cmd>wall<CR>', 'Write all buffers')
 
+-- Quicker quitting
+nmap('<Leader>qq', '<Cmd>qa<CR>', 'Quit all')
+
 -- Many general mappings are created by 'mini.basics'. See 'plugin/30_mini.lua'
 
 -- stylua: ignore start
