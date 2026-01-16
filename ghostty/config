@@ -7,11 +7,12 @@ adjust-cell-height = 15%
 
 macos-option-as-alt = true
 window-colorspace = display-p3
-window-padding-x = 12 
-window-padding-y = 2 
+window-padding-x = 12
+window-padding-y = 2
 
-cursor-color = #506477
-background = #1b1e28
+# Theme: auto-switches based on macOS appearance
+theme = dark:oksolar-dark,light:oksolar-light
+
 background-opacity = 0.97
 background-blur-radius = 20
 
@@ -28,29 +29,4 @@ clipboard-write = allow
 copy-on-select = clipboard
 clipboard-trim-trailing-spaces = true
 
-# Poimandres theme
-# black
-palette = 0=#1B1E28
-palette = 8=#506477
-# red
-palette = 1=#D0679D
-palette = 9=#D0679D
-# green
-palette = 2=#5DE4C7
-palette = 10=#5DE4C7
-# yellow
-palette = 3=#FFFAC2
-palette = 11=#FFFAC2
-# blue
-palette = 4=#89DDFF
-palette = 12=#ADD7FF
-# purple
-palette = 5=#FCC5E9
-palette = 13=#FCC5E9
-# aqua
-palette = 6=#89DDFF
-palette = 14=#ADD7FF
-# white
-palette = 7=#ffffff
-palette = 15=#ffffff
 keybind = shift+enter=text:\n

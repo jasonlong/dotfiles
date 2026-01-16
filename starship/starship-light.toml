@@ -1,8 +1,8 @@
-palette = "mellifluous-dark"
+palette = "mellifluous-light"
 
 format = """
 [](seg1)\
-[ ](bg:seg1 fg:black)\
+[ ](bg:seg1 fg:white)\
 [](bg:seg2 fg:seg1)\
 $directory\
 [](bg:seg3 fg:seg2)\
@@ -12,20 +12,20 @@ $git_metrics\
 [ ](fg:seg4)\n$character
 """
 
-[palettes.mellifluous-dark]
-bg = "#1a1a1a"
-fg = "#dadada"
-black = "#1a1a1a"
-red = "#d29393"
-green = "#b3b393"
-yellow = "#cbaa89"
-blue = "#a8a1be"
-cyan = "#c0af8c"
-# Gradient segments (light to dark)
-seg1 = "#dadada"
-seg2 = "#5b5b5b"
-seg3 = "#2d2d2d"
-seg4 = "#1a1a1a"
+[palettes.mellifluous-light]
+bg = "#ece8e4"
+fg = "#221e1a"
+white = "#ece8e4"
+red = "#b34545"
+green = "#5a7a2a"
+yellow = "#a67a3a"
+blue = "#5a5a99"
+cyan = "#4a8a7a"
+# Gradient segments (dark to light)
+seg1 = "#221e1a"
+seg2 = "#a0a0a0"
+seg3 = "#dcd6d0"
+seg4 = "#ece8e4"
 
 [character]
 success_symbol = "[❯](bold cyan)"
@@ -36,10 +36,10 @@ vicmd_symbol = "[↔](bold yellow)"
 disabled = true
 
 [cmd_duration]
-format = "[$duration](#5b5b5b)"
+format = "[$duration](#a0a0a0)"
 
 [directory]
-format = "[ $path ](bg:seg2 fg:fg)"
+format = "[ $path ](bg:seg2 fg:white)"
 
 [git_branch]
 disabled = false
