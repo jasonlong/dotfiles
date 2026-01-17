@@ -11,7 +11,7 @@ window-padding-x = 12
 window-padding-y = 2
 
 # Theme: auto-switches based on macOS appearance
-theme = dark:oksolar-dark,light:oksolar-light
+theme = dark:poimandres-dark,light:poimandres-light
 
 background-opacity = 0.97
 background-blur-radius = 20

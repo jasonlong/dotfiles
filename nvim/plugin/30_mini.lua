@@ -36,8 +36,12 @@ local now_if_args = _G.Config.now_if_args
 -- - 'plugin/40_plugins.lua' honorable mentions - other good color schemes
 now(function()
 	MiniDeps.add({
-		source = "ramojus/mellifluous.nvim",
+		source = "poimandres.nvim",
+		checkout = "main",
 	})
+	MiniDeps.later(function()
+		vim.fn.system({ "ln", "-sf", vim.fn.expand("~/dev/poimandres.nvim"), MiniDeps.path("poimandres.nvim") })
+	end)
 
 	-- Detect macOS appearance and set background
 	local function set_theme_from_appearance()
@@ -53,63 +57,20 @@ now(function()
 
 	set_theme_from_appearance()
 
-	require("mellifluous").setup({
-		colorset = "mellifluous",
+	require("poimandres").setup({
 		styles = {
-			comments = { italic = true },
-			keywords = { bold = true },
-		},
-		highlight_overrides = {
-			dark = function(hl, colors)
-				local bg = "#1a1a1a"
-				local muted = "#5b5b5b"
-				hl.set("SignColumn", { bg = bg })
-				hl.set("LineNr", { fg = muted, bg = bg })
-				hl.set("FoldColumn", { bg = bg })
-				hl.set("Comment", { fg = muted, italic = true })
-				hl.set("CursorLine", { bg = "#222222" })
-				hl.set("MiniIndentscopeSymbol", { fg = "#2d2d2d" })
-				hl.set("MiniStatuslineFilename", { fg = "#cbaa89", bg = bg })
-				for i = 1, 6 do
-					local h = hl.get("@markup.heading." .. i) or {}
-					h.bg = nil
-					hl.set("@markup.heading." .. i, h)
-				end
-			end,
-			light = function(hl, colors)
-				local bg = "#ece8e4"
-				local muted = "#a0a0a0"
-				hl.set("SignColumn", { bg = bg })
-				hl.set("LineNr", { fg = muted, bg = bg })
-				hl.set("FoldColumn", { bg = bg })
-				hl.set("Comment", { fg = muted, italic = true })
-				hl.set("CursorLine", { bg = "#e4e0dc" })
-				hl.set("MiniIndentscopeSymbol", { fg = "#dcd6d0" })
-				hl.set("MiniStatuslineFilename", { fg = "#a67a3a", bg = bg })
-				for i = 1, 6 do
-					local h = hl.get("@markup.heading." .. i) or {}
-					h.bg = nil
-					hl.set("@markup.heading." .. i, h)
-				end
-			end,
+			comments = { italic = false },
+			keywords = { italic = false },
 		},
 	})
 
-	vim.cmd("colorscheme mellifluous")
+	-- Load appropriate variant based on background
+	if vim.o.background == "light" then
+		vim.cmd("colorscheme poimandres-light")
+	else
+		vim.cmd("colorscheme poimandres")
+	end
 end)
-
--- Alternative: Poimandres colorscheme (dark only)
--- now(function()
--- 	MiniDeps.add({ source = "olivercederborg/poimandres.nvim" })
--- 	require("poimandres").setup()
--- 	vim.cmd("colorscheme poimandres")
--- end)
-
--- You can try these other 'mini.hues'-based color schemes (uncomment with `gcc`):
--- now(function() vim.cmd('colorscheme minispring') end)
--- now(function() vim.cmd('colorscheme minisummer') end)
--- now(function() vim.cmd('colorscheme miniautumn') end)
--- now(function() vim.cmd('colorscheme randomhue') end)
 
 -- Common configuration presets. Example usage:
 -- - `<C-s>` in Insert mode - save and go to Normal mode
