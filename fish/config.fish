@@ -3,11 +3,11 @@ fish_vi_key_bindings
 # Auto-switch theme based on macOS appearance
 set -l appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
 if test "$appearance" = "Dark"
-    fish_config theme choose mellifluous_dark
-    set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship.toml
+    fish_config theme choose poimandres_dark
+    set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-poimandres-dark.toml
 else
-    fish_config theme choose mellifluous_light
-    set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-light.toml
+    fish_config theme choose poimandres_light
+    set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-poimandres-light.toml
 end
 
 alias g='git'
