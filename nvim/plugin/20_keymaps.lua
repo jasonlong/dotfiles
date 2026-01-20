@@ -29,6 +29,46 @@ nmap('<Leader>W', '<Cmd>wall<CR>', 'Write all buffers')
 -- Quicker quitting
 nmap('<Leader>qq', '<Cmd>qa<CR>', 'Quit all')
 
+-- Comment matching bracket lines (opening and closing)
+nmap('gco', function()
+	local original_line = vim.fn.line('.')
+	local original_col = vim.fn.col('.')
+	local MiniComment = require('mini.comment')
+
+	-- Check if current line is commented
+	local line_text = vim.fn.getline(original_line)
+	local is_commented = line_text:match('^%s*//') ~= nil or line_text:match('^%s*{/%*') ~= nil
+
+	-- If commented, uncomment temporarily to find the real bracket
+	if is_commented then
+		MiniComment.toggle_lines(original_line, original_line)
+	end
+
+	-- Find matching bracket
+	vim.cmd('normal! %')
+	local match_line = vim.fn.line('.')
+
+	-- If we didn't move, no matching bracket found
+	if match_line == original_line then
+		-- Restore comment if we removed it
+		if is_commented then
+			MiniComment.toggle_lines(original_line, original_line)
+		end
+		vim.notify('No matching bracket found', vim.log.levels.WARN)
+		return
+	end
+
+	-- Toggle comments on both lines
+	MiniComment.toggle_lines(match_line, match_line)
+	vim.fn.cursor(original_line, original_col)
+
+	-- If we uncommented earlier, we need to comment again (since we want to toggle)
+	-- If we didn't uncomment, just toggle normally
+	if not is_commented then
+		MiniComment.toggle_lines(original_line, original_line)
+	end
+end, 'Comment outer bracket lines')
+
 -- Many general mappings are created by 'mini.basics'. See 'plugin/30_mini.lua'
 
 -- stylua: ignore start

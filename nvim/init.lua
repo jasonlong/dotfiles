@@ -42,6 +42,9 @@
 -- - "See 'path/to/file'" means see open file at described path and read it.
 -- - `:SomeCommand ...` or `:lua ...` means execute mentioned command.
 
+-- Capture startup time
+vim.g.start_time = vim.loop.hrtime()
+
 -- Bootstrap 'mini.nvim' manually in a way that it gets managed by 'mini.deps'
 local mini_path = vim.fn.stdpath('data') .. '/site/pack/deps/start/mini.nvim'
 if not vim.loop.fs_stat(mini_path) then
