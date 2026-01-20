@@ -35,40 +35,31 @@ local now_if_args = _G.Config.now_if_args
 -- - `:h MiniHues-examples` - how to define highlighting with 'mini.hues'
 -- - 'plugin/40_plugins.lua' honorable mentions - other good color schemes
 now(function()
-	MiniDeps.add({
-		source = "poimandres.nvim",
-		checkout = "main",
-	})
-	MiniDeps.later(function()
-		vim.fn.system({ "ln", "-sf", vim.fn.expand("~/dev/poimandres.nvim"), MiniDeps.path("poimandres.nvim") })
-	end)
+	vim.opt.runtimepath:prepend(vim.fn.expand("~/dev/poimandres.nvim"))
 
-	-- Detect macOS appearance and set background
-	local function set_theme_from_appearance()
-		local handle = io.popen("defaults read -g AppleInterfaceStyle 2>/dev/null")
-		local result = handle:read("*a")
-		handle:close()
-		if result:match("Dark") then
-			vim.o.background = "dark"
-		else
-			vim.o.background = "light"
-		end
-	end
+	local handle = io.popen("defaults read -g AppleInterfaceStyle 2>/dev/null")
+	local result = handle:read("*a")
+	handle:close()
+	vim.o.background = result:match("Dark") and "dark" or "light"
 
-	set_theme_from_appearance()
+	require("poimandres").setup()
 
-	require("poimandres").setup({
-		styles = {
-			comments = { italic = false },
-			keywords = { italic = false },
-		},
-	})
+	local variant = vim.o.background == "light" and "poimandres-light" or "poimandres"
+	vim.cmd("colorscheme " .. variant)
 
-	-- Load appropriate variant based on background
 	if vim.o.background == "light" then
-		vim.cmd("colorscheme poimandres-light")
-	else
-		vim.cmd("colorscheme poimandres")
+		local light_fg = "#F6F7F7"
+		local modes = {
+			{ "MiniStatuslineModeNormal", "#2d7ba8" },
+			{ "MiniStatuslineModeInsert", "#20808d" },
+			{ "MiniStatuslineModeVisual", "#2d7ba8" },
+			{ "MiniStatuslineModeReplace", "#bf505c" },
+			{ "MiniStatuslineModeCommand", "#9b6c22" },
+			{ "MiniStatuslineModeOther", "#5578a0" },
+		}
+		for _, mode in ipairs(modes) do
+			vim.api.nvim_set_hl(0, mode[1], { fg = light_fg, bg = mode[2], bold = true })
+		end
 	end
 end)
 
@@ -151,17 +142,8 @@ end)
 --
 -- See also:
 -- - `:h MiniNotify.config` for some of common configuration examples.
-now(function()
+later(function()
 	require("mini.notify").setup()
-end)
-
--- Session management. A thin wrapper around `:h mksession` that consistently
--- manages session files. Example usage:
--- - `<Leader>sn` - start new session
--- - `<Leader>sr` - read previously started session
--- - `<Leader>sd` - delete previously started session
-now(function()
-	require("mini.sessions").setup()
 end)
 
 -- Start screen. This is what is shown when you open Neovim like `nvim`.
@@ -175,15 +157,36 @@ end)
 -- - `:h MiniStarter-lifecycle` - how to work with Starter buffer
 now(function()
 	local starter = require("mini.starter")
+
 	starter.setup({
+		evaluate_single = true,
 		items = {
-			starter.sections.recent_files(5, false, false),
 			{
-				name = "Update plugins",
+				name = "Edit new buffer",
+				action = "enew",
+				section = "Builtin actions",
+			},
+			{
+				name = "Update dependencies",
 				action = "DepsUpdate",
 				section = "Builtin actions",
 			},
-			starter.sections.builtin_actions(),
+			{
+				name = "Quit Neovim",
+				action = "qall",
+				section = "Builtin actions",
+			},
+			starter.sections.recent_files(10, false),
+			starter.sections.recent_files(10, true),
+		},
+		footer = function()
+			local ms = (vim.loop.hrtime() - vim.g.start_time) / 1000000
+			return string.format("⚡ Startup time: %.2f ms", ms)
+		end,
+		content_hooks = {
+			starter.gen_hook.adding_bullet(),
+			starter.gen_hook.indexing("all", { "Builtin actions" }),
+			starter.gen_hook.padding(3, 2),
 		},
 	})
 end)
@@ -402,9 +405,9 @@ end)
 -- - `:h MiniColors-color-spaces` - list of supported color sapces
 --
 -- Enabled for interactive colorscheme tweaking. Run :lua MiniColors.interactive()
-later(function()
-	require("mini.colors").setup()
-end)
+-- later(function()
+-- 	require("mini.colors").setup()
+-- end)
 
 -- Comment lines. Provides functionality to work with commented lines.
 -- Uses `:h 'commentstring'` option to infer comment structure.

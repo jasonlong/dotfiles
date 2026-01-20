@@ -188,7 +188,7 @@ end)
 -- If you need them to work elsewhere, consider using other package managers.
 --
 -- Use `:Mason` to open the Mason UI, `:MasonInstall <package>` to install.
-MiniDeps.now(function()
+later(function()
 	add("mason-org/mason.nvim")
 	require("mason").setup()
 end)

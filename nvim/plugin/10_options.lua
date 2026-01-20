@@ -18,6 +18,7 @@
 -- General ====================================================================
 vim.g.mapleader = ' ' -- Use `<Space>` as <Leader> key
 
+vim.o.clipboard   = 'unnamedplus'  -- Sync with system clipboard
 vim.o.mouse       = 'a'            -- Enable mouse
 vim.o.mousescroll = 'ver:25,hor:6' -- Customize mouse scroll
 vim.o.swapfile    = false          -- Disable swap files
