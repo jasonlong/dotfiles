@@ -35,32 +35,26 @@ local now_if_args = _G.Config.now_if_args
 -- - `:h MiniHues-examples` - how to define highlighting with 'mini.hues'
 -- - 'plugin/40_plugins.lua' honorable mentions - other good color schemes
 now(function()
-	vim.opt.runtimepath:prepend(vim.fn.expand("~/dev/poimandres.nvim"))
+	MiniDeps.add("sainnhe/gruvbox-material")
 
+	-- Detect macOS appearance for auto light/dark
 	local handle = io.popen("defaults read -g AppleInterfaceStyle 2>/dev/null")
 	local result = handle:read("*a")
 	handle:close()
 	vim.o.background = result:match("Dark") and "dark" or "light"
 
-	require("poimandres").setup()
+	-- Configure gruvbox-material before loading
+	vim.g.gruvbox_material_background = "hard" -- Options: 'hard', 'medium', 'soft'
+	vim.g.gruvbox_material_foreground = "material" -- Options: 'material', 'mix', 'original'
+	vim.g.gruvbox_material_enable_italic = 0
+	vim.g.gruvbox_material_disable_italic_comment = 1
+	vim.g.gruvbox_material_better_performance = 1
 
-	local variant = vim.o.background == "light" and "poimandres-light" or "poimandres"
-	vim.cmd("colorscheme " .. variant)
+	vim.cmd("colorscheme gruvbox-material")
 
-	if vim.o.background == "light" then
-		local light_fg = "#F6F7F7"
-		local modes = {
-			{ "MiniStatuslineModeNormal", "#2d7ba8" },
-			{ "MiniStatuslineModeInsert", "#20808d" },
-			{ "MiniStatuslineModeVisual", "#2d7ba8" },
-			{ "MiniStatuslineModeReplace", "#bf505c" },
-			{ "MiniStatuslineModeCommand", "#9b6c22" },
-			{ "MiniStatuslineModeOther", "#5578a0" },
-		}
-		for _, mode in ipairs(modes) do
-			vim.api.nvim_set_hl(0, mode[1], { fg = light_fg, bg = mode[2], bold = true })
-		end
-	end
+	-- Make indent scope line more subtle (hard variant)
+	local indent_color = vim.o.background == "dark" and "#3c3836" or "#d5c4a1"
+	vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = indent_color })
 end)
 
 -- Common configuration presets. Example usage:
