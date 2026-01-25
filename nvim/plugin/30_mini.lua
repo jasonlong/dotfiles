@@ -54,6 +54,11 @@ now(function()
 	-- Make indent scope line more subtle (hard variant)
 	local indent_color = vim.o.background == "dark" and "#3c3836" or "#d5c4a1"
 	vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = indent_color })
+
+	-- Slightly higher contrast line numbers in light mode
+	if vim.o.background == "light" then
+		vim.api.nvim_set_hl(0, "LineNr", { fg = "#928374" })
+	end
 end)
 
 -- Common configuration presets. Example usage:
