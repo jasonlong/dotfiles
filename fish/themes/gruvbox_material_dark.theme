@@ -1,0 +1,28 @@
+# Gruvbox Material Dark Theme
+
+fish_color_normal d4be98
+fish_color_command a9b665
+fish_color_keyword d3869b
+fish_color_quote 89b482
+fish_color_redirection 7daea3
+fish_color_end e78a4e
+fish_color_error ea6962
+fish_color_param d4be98
+fish_color_comment 928374
+fish_color_selection --background=45403d --foreground=d4be98
+fish_color_operator 7daea3
+fish_color_escape 89b482
+fish_color_autosuggestion 665c54
+fish_color_cwd d8a657
+fish_color_cwd_root ea6962
+fish_color_user 89b482
+fish_color_host a9b665
+fish_color_host_remote d8a657
+fish_color_status ea6962
+fish_color_cancel ea6962
+fish_color_search_match --background=d8a657 --foreground=282828
+fish_pager_color_progress 282828 --background=a9b665
+fish_pager_color_prefix a9b665 --bold
+fish_pager_color_completion d4be98
+fish_pager_color_description 928374
+fish_pager_color_selected_background --background=45403d

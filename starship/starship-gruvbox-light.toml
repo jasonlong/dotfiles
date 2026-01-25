@@ -1,0 +1,53 @@
+palette = "gruvbox-material-light"
+
+format = """
+[](gb_green)[ ](bg:gb_green fg:gb_bg)[](bg:gb_aqua fg:gb_green)$directory[](bg:gb_blue fg:gb_aqua)$git_branch[](bg:gb_visual fg:gb_blue)$git_metrics[ ](fg:gb_visual)
+$character
+"""
+
+[palettes.gruvbox-material-light]
+gb_bg = "#f9f5d7"
+gb_visual = "#ebdbb2"
+gb_fg = "#654735"
+gb_red = "#c14a4a"
+gb_orange = "#c35e0a"
+gb_yellow = "#b47109"
+gb_green = "#6c782e"
+gb_aqua = "#4c7a5d"
+gb_blue = "#45707a"
+gb_purple = "#945e80"
+gb_gray = "#928374"
+
+[character]
+success_symbol = "[❯](bold gb_green)"
+error_symbol = "[❯](bold gb_red)"
+vicmd_symbol = "[↔](bold gb_yellow)"
+
+[battery]
+disabled = true
+
+[cmd_duration]
+format = "[$duration](gb_gray)"
+
+[directory]
+format = "[ $path ](bg:gb_aqua fg:gb_bg)"
+
+[git_branch]
+disabled = false
+format = "[ $branch ](bg:gb_blue fg:gb_bg)"
+
+[git_metrics]
+disabled = false
+format = "([ +$added ](bg:gb_visual fg:gb_green))([ -$deleted ](bg:gb_visual fg:gb_red))"
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
+
+[ruby]
+disabled = true
+
+[lua]
+disabled = true

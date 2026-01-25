@@ -5,13 +5,17 @@ font-size = 14
 # Leading
 adjust-cell-height = 15%
 
+macos-icon = xray
 macos-option-as-alt = true
+macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = hidden
 window-colorspace = display-p3
 window-padding-x = 12
 window-padding-y = 2
 
-# Theme: auto-switches based on macOS appearance
-theme = dark:poimandres-dark,light:poimandres-light
+# Theme: auto-switches based on macOS appearance (hard variant)
+theme = dark:gruvbox-material-hard-dark,light:gruvbox-material-hard-light
+window-theme = auto
 
 background-opacity = 0.97
 background-blur-radius = 20

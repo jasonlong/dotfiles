@@ -1,13 +1,16 @@
 fish_vi_key_bindings
 
+# Clear any inherited STARSHIP_CONFIG first
+set -e STARSHIP_CONFIG
+
 # Auto-switch theme based on macOS appearance
 set -l appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
 if test "$appearance" = "Dark"
-    fish_config theme choose poimandres_dark
-    set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-poimandres-dark.toml
+    fish_config theme choose gruvbox_material_dark
+    set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-gruvbox-dark.toml
 else
-    fish_config theme choose poimandres_light
-    set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-poimandres-light.toml
+    fish_config theme choose gruvbox_material_light
+    set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-gruvbox-light.toml
 end
 
 alias g='git'
@@ -43,7 +46,6 @@ fish_add_path "/Users/jason/.local/share/bob/nvim-bin"
 
 # thefuck
 thefuck --alias | source
-alias claude="/Users/jason/.claude/local/claude"
 fish_add_path $HOME/.local/bin
 direnv hook fish | source
 alias cc='claude --dangerously-skip-permissions'
