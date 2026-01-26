@@ -123,6 +123,7 @@ now_if_args(function()
 		"tailwindcss", -- Tailwind CSS
 		"eslint", -- ESLint diagnostics and auto-fix
 		"emmet_language_server", -- Emmet abbreviations
+		"biome", -- Biome (linter/formatter, used when biome.json exists)
 	})
 end)
 
@@ -149,16 +150,24 @@ later(function()
 		format_after_save = {
 			lsp_fallback = true,
 		},
+		-- Override biome to use `check --write` which runs formatting,
+		-- linting fixes, and organize imports all in one pass
+		formatters = {
+			biome = {
+				args = { "check", "--write", "--unsafe", "$FILENAME" },
+				stdin = false,
+			},
+		},
 		-- Map of filetype to formatters
-		-- Prettier first for formatting, then eslint for auto-fixes
+		-- Biome first (if available), then prettier/eslint as fallback
 		formatters_by_ft = {
-			javascript = { "prettierd", "eslint_d" },
-			typescript = { "prettierd", "eslint_d" },
-			javascriptreact = { "prettierd", "eslint_d" },
-			typescriptreact = { "prettierd", "eslint_d" },
+			javascript = { "biome", "prettierd", "eslint_d", stop_after_first = true },
+			typescript = { "biome", "prettierd", "eslint_d", stop_after_first = true },
+			javascriptreact = { "biome", "prettierd", "eslint_d", stop_after_first = true },
+			typescriptreact = { "biome", "prettierd", "eslint_d", stop_after_first = true },
+			json = { "biome", "prettierd", stop_after_first = true },
 			html = { "prettierd" },
-			css = { "prettierd" },
-			json = { "prettierd" },
+			css = { "biome", "prettierd", stop_after_first = true },
 			markdown = { "prettierd" },
 			lua = { "stylua" },
 		},
