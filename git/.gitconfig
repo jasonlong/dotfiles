@@ -8,15 +8,14 @@
 	default = current
 	autoSetupRemote = true
 [core]
-  pager = delta
+  pager = ~/.config/delta-auto-theme.sh
 	excludesfile = /Users/jason/.gitignore_global
   editor = nvim
 [interactive]
-  diffFilter = delta --color-only
+  diffFilter = ~/.config/delta-auto-theme.sh --color-only
 [delta]
   navigate = true  # use n and N to move between diff sections
-  syntax-theme = Nord
-  light = false
+	line-numbers = false
 [merge]
   conflictstyle = zdiff3
 [diff]
