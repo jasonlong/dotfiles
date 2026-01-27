@@ -27,6 +27,22 @@ vim.o.undofile    = true           -- Enable persistent undo
 
 vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
 
+-- Disable unused built-in plugins for faster startup
+local disabled_plugins = {
+	"gzip",
+	"tarPlugin",
+	"zipPlugin",
+	"rplugin",
+	"shada_plugin",
+	"netrw",
+	"netrwPlugin",
+	"netrwSettings",
+	"netrwFileHandlers",
+}
+for _, plugin in ipairs(disabled_plugins) do
+	vim.g["loaded_" .. plugin] = 1
+end
+
 -- Enable all filetype plugins and syntax (if not enabled, for better startup)
 vim.cmd('filetype plugin indent on')
 if vim.fn.exists('syntax_on') ~= 1 then vim.cmd('syntax enable') end

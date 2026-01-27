@@ -151,11 +151,18 @@ later(function()
 			lsp_fallback = true,
 		},
 		-- Override biome to use `check --write` which runs formatting,
-		-- linting fixes, and organize imports all in one pass
+		-- linting fixes, and organize imports all in one pass.
+		-- Only run biome when a config file exists in the project.
 		formatters = {
 			biome = {
 				args = { "check", "--write", "--unsafe", "$FILENAME" },
 				stdin = false,
+				condition = function(_, ctx)
+					return vim.fs.find({ "biome.json", "biome.jsonc" }, {
+						path = ctx.filename,
+						upward = true,
+					})[1] ~= nil
+				end,
 			},
 		},
 		-- Map of filetype to formatters
