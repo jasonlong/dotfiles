@@ -273,6 +273,67 @@ later(function()
 			-- use tree-sitter. This example makes `aF`/`iF` mean around/inside function
 			-- definition (not call). See `:h MiniAi.gen_spec.treesitter()` for details.
 			F = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
+			-- Custom tag textobject that works with JSX/TSX using treesitter
+			-- Returns all ancestor elements so pressing `at` repeatedly expands selection
+			t = function(ai_type)
+				local node = vim.treesitter.get_node()
+				if not node then return end
+
+				-- Helper to check if node is a tag element
+				local function is_element(n)
+					local t = n:type()
+					return t == "jsx_element" or t == "jsx_self_closing_element" or t == "element" or t == "self_closing_tag"
+				end
+
+				-- Helper to get region for a node
+				local function get_region(n, inner)
+					local sr, sc, er, ec = n:range()
+					local from = { line = sr + 1, col = sc + 1 }
+					local to = { line = er + 1, col = ec }
+
+					if not inner then
+						return { from = from, to = to }
+					end
+
+					-- For "i" (inside), find content between opening and closing tags
+					local ntype = n:type()
+					if ntype == "jsx_self_closing_element" or ntype == "self_closing_tag" then
+						return { from = from, to = to }
+					end
+
+					local open_tag, close_tag
+					for child in n:iter_children() do
+						local ctype = child:type()
+						if ctype == "jsx_opening_element" or ctype == "start_tag" then
+							open_tag = child
+						elseif ctype == "jsx_closing_element" or ctype == "end_tag" then
+							close_tag = child
+						end
+					end
+
+					if open_tag and close_tag then
+						local _, _, oer, oec = open_tag:range()
+						local csr, csc = close_tag:range()
+						return {
+							from = { line = oer + 1, col = oec + 1 },
+							to = { line = csr + 1, col = csc },
+						}
+					end
+					return { from = from, to = to }
+				end
+
+				-- Collect all ancestor elements
+				local regions = {}
+				while node do
+					if is_element(node) then
+						table.insert(regions, get_region(node, ai_type == "i"))
+					end
+					node = node:parent()
+				end
+
+				if #regions == 0 then return end
+				return regions
+			end,
 		},
 
 		-- Search forward if cursor isn't inside a textobject
