@@ -91,6 +91,10 @@ now_if_args(function()
 	require("ts_context_commentstring").setup({
 		enable_autocmd = false,
 	})
+
+	-- Auto-rename and auto-close HTML/JSX tags
+	add("windwp/nvim-ts-autotag")
+	require("nvim-ts-autotag").setup()
 end)
 
 -- Language servers ===========================================================
