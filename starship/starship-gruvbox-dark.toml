@@ -1,7 +1,7 @@
 palette = "gruvbox-material-dark"
 
 format = """
-[](gb_green)[ ](bg:gb_green fg:gb_bg)[](bg:gb_aqua fg:gb_green)$directory[](bg:gb_blue fg:gb_aqua)$git_branch[](bg:gb_visual fg:gb_blue)$git_metrics[ ](fg:gb_visual)
+[](gb_red)[ ](bg:gb_red fg:gb_bg)[](bg:gb_blue fg:gb_red)$directory[](bg:gb_green fg:gb_blue)$git_branch[](bg:gb_visual fg:gb_green)$git_metrics[ ](fg:gb_visual)
 $character
 """
 
@@ -30,11 +30,11 @@ disabled = true
 format = "[$duration](gb_gray)"
 
 [directory]
-format = "[ $path ](bg:gb_aqua fg:gb_bg)"
+format = "[ $path ](bg:gb_blue fg:gb_bg)"
 
 [git_branch]
 disabled = false
-format = "[ $branch ](bg:gb_blue fg:gb_bg)"
+format = "[ $branch ](bg:gb_green fg:gb_bg)"
 
 [git_metrics]
 disabled = false
