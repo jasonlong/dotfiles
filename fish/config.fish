@@ -1,5 +1,8 @@
 fish_vi_key_bindings
 
+# Source secrets (not in version control)
+test -f ~/.config/fish/secrets.fish && source ~/.config/fish/secrets.fish
+
 # Clear any inherited STARSHIP_CONFIG first
 set -e STARSHIP_CONFIG
 
@@ -42,7 +45,6 @@ set -Ux BUN_INSTALL "/Users/jason/.bun"
 set -px --path PATH "/Users/jason/.bun/bin"
 
 set -x PATH "/Library/Frameworks/Python.framework/Versions/3.11/bin" "$PATH"
-fish_add_path "/Users/jason/.local/share/bob/nvim-bin"
 
 # thefuck
 thefuck --alias | source
