@@ -1,3 +1,4 @@
+auto-update = off
 auto-update-channel = tip
 
 
@@ -8,7 +9,8 @@ font-size = 14
 # Leading
 adjust-cell-height = 15%
 
-macos-icon = xray
+macos-icon = custom
+macos-custom-icon = ~/dev/ghostty-theme-icons/icons/gruvbox-light-hard/gruvbox-light-hard.icns
 macos-option-as-alt = true
 macos-titlebar-proxy-icon = hidden
 window-colorspace = display-p3
@@ -34,5 +36,8 @@ clipboard-read = allow
 clipboard-write = allow
 copy-on-select = clipboard
 clipboard-trim-trailing-spaces = true
+
+# Disable notifications because Claude's are annoyingly delayed
+desktop-notifications = false
 
 keybind = shift+enter=text:\n

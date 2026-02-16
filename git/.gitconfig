@@ -21,6 +21,7 @@
 [diff]
   colorMoved = default
   algorithm = histogram
+	external = difft --display inline
 [pull]
 	rebase = true
 [commit]
