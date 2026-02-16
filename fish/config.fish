@@ -27,6 +27,8 @@ alias t='tmux-sessionizer'
 alias h='cht.sh'
 alias oc='opencode'
 
+set -gx DFT_WIDTH 160
+
 set fish_greeting
 status --is-interactive; and source (rbenv init -|psub)
 
