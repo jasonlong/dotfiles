@@ -915,6 +915,11 @@ later(function()
 		},
 		-- Disable default mappings; using 'mini.keymap' multistep instead
 		mappings = { expand = "", jump_next = "", jump_prev = "" },
+		expand = {
+			insert = function(snippet)
+				MiniSnippets.default_insert(snippet, { empty_tabstop = "", empty_tabstop_final = "" })
+			end,
+		},
 	})
 
 	-- By default snippets available at cursor are not shown as candidates in
