@@ -33,8 +33,7 @@ format = "[$duration](gb_gray)"
 format = "[ $path ](bg:gb_blue fg:gb_bg)"
 
 [git_branch]
-disabled = false
-format = "[ $branch ](bg:gb_green fg:gb_bg)"
+format = '[ $branch ](bg:gb_green fg:gb_bg)'
 
 [git_metrics]
 disabled = false

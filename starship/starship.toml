@@ -42,8 +42,7 @@ format = "[$duration](#5b5b5b)"
 format = "[ $path ](bg:seg2 fg:fg)"
 
 [git_branch]
-disabled = false
-format = "[ $branch ](bg:seg3 fg:fg)"
+format = '[ $branch ](bg:seg3 fg:fg)'
 
 [git_metrics]
 disabled = false
