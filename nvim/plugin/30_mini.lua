@@ -24,8 +24,7 @@
 -- - Step one enables everything that is needed for first draw with `now()`.
 --   Sometimes is needed only if Neovim is started as `nvim -- path/to/file`.
 -- - Everything else is delayed until the first draw with `later()`.
-local now, later = MiniDeps.now, MiniDeps.later
-local now_if_args = _G.Config.now_if_args
+local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
 
 -- Step one ===================================================================
 -- Enable color scheme with auto light/dark detection based on macOS appearance.
@@ -34,7 +33,7 @@ local now_if_args = _G.Config.now_if_args
 -- - `:h mini.nvim-color-schemes` - list of other color schemes
 -- - `:h MiniHues-examples` - how to define highlighting with 'mini.hues'
 now(function()
-	MiniDeps.add("sainnhe/gruvbox-material")
+	vim.pack.add({ 'https://github.com/sainnhe/gruvbox-material' })
 
 	-- Detect macOS appearance for auto light/dark
 	local handle = io.popen("defaults read -g AppleInterfaceStyle 2>/dev/null")
@@ -165,8 +164,8 @@ now(function()
 				section = "Builtin actions",
 			},
 			{
-				name = "Update dependencies",
-				action = "DepsUpdate",
+				name = "Update plugins",
+				action = function() vim.pack.update() end,
 				section = "Builtin actions",
 			},
 			{
@@ -514,7 +513,11 @@ end)
 --
 -- It also works with snippet candidates provided by LSP server. Best experience
 -- when paired with 'mini.snippets' (which is set up in this file).
-later(function()
+now_if_args(function()
+	local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
+	local process_items = function(items, base)
+		return MiniCompletion.default_process_items(items, base, process_items_opts)
+	end
 	require("mini.completion").setup({
 		lsp_completion = {
 			-- Without this config autocompletion is set up through `:h 'completefunc'`.
@@ -522,6 +525,7 @@ later(function()
 			-- (sets up only when needed) and makes it possible to use `<C-u>`.
 			source_func = "omnifunc",
 			auto_setup = false,
+			process_items = process_items,
 		},
 	})
 
@@ -599,7 +603,7 @@ end)
 -- - `:h MiniFiles-navigation` - more details about how to navigate
 -- - `:h MiniFiles-manipulation` - more details about how to manipulate
 -- - `:h MiniFiles-examples` - examples of common setups
-later(function()
+now_if_args(function()
 	-- Enable directory/file preview
 	require("mini.files").setup({
 		mappings = {

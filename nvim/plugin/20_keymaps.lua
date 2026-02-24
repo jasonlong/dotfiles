@@ -16,8 +16,8 @@ end
 
 -- Paste linewise before/after current line
 -- Usage: `yiw` to yank a word and `]p` to put it on the next line.
-nmap('[p', '<Cmd>exe "put! " . v:register<CR>', 'Paste Above')
-nmap(']p', '<Cmd>exe "put "  . v:register<CR>', 'Paste Below')
+nmap('[p', '<Cmd>exe "iput! " . v:register<CR>', 'Paste Above')
+nmap(']p', '<Cmd>exe "iput "  . v:register<CR>', 'Paste Below')
 
 -- Clear search highlight with Escape
 nmap('<Esc>', '<Cmd>nohlsearch<CR>', 'Clear search highlight')
@@ -99,7 +99,7 @@ end, 'Comment outer bracket lines')
 -- Create a global table with information about Leader groups in certain modes.
 -- This is used to provide 'mini.clue' with extra clues.
 -- Add an entry if you create a new group.
-_G.Config.leader_group_clues = {
+Config.leader_group_clues = {
   { mode = 'n', keys = '<Leader>b', desc = '+Buffer' },
   { mode = 'n', keys = '<Leader>e', desc = '+Explore/Edit' },
   { mode = 'n', keys = '<Leader>f', desc = '+Find' },
@@ -159,10 +159,10 @@ local explore_at_file = function()
   end
 end
 local explore_quickfix = function()
-  for _, win_id in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-    if vim.fn.getwininfo(win_id)[1].quickfix == 1 then return vim.cmd('cclose') end
-  end
-  vim.cmd('copen')
+  vim.cmd(vim.fn.getqflist({ winid = true }).winid ~= 0 and 'cclose' or 'copen')
+end
+local explore_locations = function()
+  vim.cmd(vim.fn.getloclist(0, { winid = true }).winid ~= 0 and 'lclose' or 'lopen')
 end
 
 nmap_leader('ed', '<Cmd>lua MiniFiles.open()<CR>',          'Directory')
@@ -174,6 +174,7 @@ nmap_leader('en', '<Cmd>lua MiniNotify.show_history()<CR>', 'Notifications')
 nmap_leader('eo', edit_plugin_file('10_options.lua'),       'Options config')
 nmap_leader('ep', edit_plugin_file('40_plugins.lua'),       'Plugins config')
 nmap_leader('eq', explore_quickfix,                         'Quickfix')
+nmap_leader('eQ', explore_locations,                        'Location list')
 
 -- f is for 'Fuzzy Find'. Common usage:
 -- - `<Leader>ff` - find files; for best performance requires `ripgrep`
@@ -237,7 +238,7 @@ xmap_leader('gs', '<Cmd>lua MiniGit.show_at_cursor()<CR>', 'Show at selection')
 -- NOTE: most LSP mappings represent a more structured way of replacing built-in
 -- LSP mappings (like `:h gra` and others). This is needed because `gr` is mapped
 -- by an "replace" operator in 'mini.operators' (which is more commonly used).
-local formatting_cmd = '<Cmd>lua require("conform").format({lsp_fallback=true})<CR>'
+local formatting_cmd = '<Cmd>lua require("conform").format()<CR>'
 
 nmap_leader('la', '<Cmd>lua vim.lsp.buf.code_action()<CR>',     'Actions')
 nmap_leader('ld', '<Cmd>lua vim.diagnostic.open_float()<CR>',   'Diagnostic popup')

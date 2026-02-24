@@ -108,7 +108,7 @@ vim.o.completeopt = 'menuone,fuzzy,noinsert' -- First item selected, but not ins
 -- Don't auto-wrap comments and don't insert comment leader after hitting 'o'.
 -- Do on `FileType` to always override these changes from filetype plugins.
 local f = function() vim.cmd('setlocal formatoptions-=c formatoptions-=o') end
-_G.Config.new_autocmd('FileType', nil, f, "Proper 'formatoptions'")
+Config.new_autocmd('FileType', nil, f, "Proper 'formatoptions'")
 
 -- There are other autocommands created by 'mini.basics'. See 'plugin/30_mini.lua'.
 
@@ -136,5 +136,10 @@ local diagnostic_opts = {
 }
 
 -- Use `later()` to avoid sourcing `vim.diagnostic` on startup
-MiniDeps.later(function() vim.diagnostic.config(diagnostic_opts) end)
+Config.later(function() vim.diagnostic.config(diagnostic_opts) end)
+
+-- Neovim 0.12+ popup menu and completion options
+vim.o.pumborder       = 'single'
+vim.o.pummaxwidth     = 100
+vim.o.completetimeout = 100
 -- stylua: ignore end
