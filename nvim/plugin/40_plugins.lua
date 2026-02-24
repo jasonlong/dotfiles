@@ -9,8 +9,8 @@
 -- Use this file to install and configure other such plugins.
 
 -- Make concise helpers for installing/adding plugins in two stages
-local add, later = MiniDeps.add, MiniDeps.later
-local now_if_args = _G.Config.now_if_args
+local add = vim.pack.add
+local now_if_args, later = Config.now_if_args, Config.later
 
 -- Tree-sitter ================================================================
 
@@ -32,20 +32,10 @@ local now_if_args = _G.Config.now_if_args
 -- Add these plugins now if file (and not 'mini.starter') is shown after startup.
 now_if_args(function()
 	add({
-		source = "nvim-treesitter/nvim-treesitter",
-		-- Update tree-sitter parser after plugin is updated
-		hooks = {
-			post_checkout = function()
-				vim.cmd("TSUpdate")
-			end,
-		},
+		'https://github.com/nvim-treesitter/nvim-treesitter',
+		'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
 	})
-	add({
-		source = "nvim-treesitter/nvim-treesitter-textobjects",
-		-- Use `main` branch since `master` branch is frozen, yet still default
-		-- It is needed for compatibility with 'nvim-treesitter' `main` branch
-		checkout = "main",
-	})
+	Config.on_packchanged('nvim-treesitter', { 'update' }, function() vim.cmd('TSUpdate') end, ':TSUpdate')
 
 	-- Define languages which will have parsers installed and auto enabled
 	local languages = {
@@ -84,16 +74,16 @@ now_if_args(function()
 	local ts_start = function(ev)
 		vim.treesitter.start(ev.buf)
 	end
-	_G.Config.new_autocmd("FileType", filetypes, ts_start, "Start tree-sitter")
+	Config.new_autocmd("FileType", filetypes, ts_start, "Start tree-sitter")
 
 	-- Context-aware commentstring (for JSX, TSX, HTML, etc.)
-	add("JoosepAlviste/nvim-ts-context-commentstring")
+	add({ 'https://github.com/JoosepAlviste/nvim-ts-context-commentstring' })
 	require("ts_context_commentstring").setup({
 		enable_autocmd = false,
 	})
 
 	-- Auto-rename and auto-close HTML/JSX tags
-	add("windwp/nvim-ts-autotag")
+	add({ 'https://github.com/windwp/nvim-ts-autotag' })
 	require("nvim-ts-autotag").setup()
 end)
 
@@ -113,7 +103,7 @@ end)
 --
 -- Add it now if file (and not 'mini.starter') is shown after startup.
 now_if_args(function()
-	add("neovim/nvim-lspconfig")
+	add({ 'https://github.com/neovim/nvim-lspconfig' })
 
 	-- Use `:h vim.lsp.enable()` to automatically enable language server based on
 	-- the rules provided by 'nvim-lspconfig'.
@@ -143,17 +133,19 @@ end)
 -- Install formatters: `npm install -g @fsouza/prettierd eslint_d`
 -- Or via Mason: `:MasonInstall prettierd eslint_d`
 later(function()
-	add("stevearc/conform.nvim")
+	add({ 'https://github.com/stevearc/conform.nvim' })
 
 	-- See also:
 	-- - `:h Conform`
 	-- - `:h conform-options`
 	-- - `:h conform-formatters`
 	require("conform").setup({
-		-- Format after save (async, non-blocking)
-		format_after_save = {
-			lsp_fallback = true,
+		-- Use LSP as fallback when no formatter is configured
+		default_format_opts = {
+			lsp_format = 'fallback',
 		},
+		-- Format after save (async, non-blocking)
+		format_after_save = {},
 		-- Override biome to use `check --write` which runs formatting,
 		-- linting fixes, and organize imports all in one pass.
 		-- Only run biome when a config file exists in the project.
@@ -195,7 +187,7 @@ end)
 -- 'mini.snippets' is designed to work with it as seamlessly as possible.
 -- See `:h MiniSnippets.gen_loader.from_lang()`.
 later(function()
-	add("rafamadriz/friendly-snippets")
+	add({ 'https://github.com/rafamadriz/friendly-snippets' })
 end)
 
 -- Mason =======================================================================
@@ -209,7 +201,7 @@ end)
 --
 -- Use `:Mason` to open the Mason UI, `:MasonInstall <package>` to install.
 later(function()
-	add("mason-org/mason.nvim")
+	add({ 'https://github.com/mason-org/mason.nvim' })
 	require("mason").setup()
 end)
 
@@ -218,7 +210,7 @@ end)
 -- Fast motion plugin. Jump to any location by typing 2 characters.
 -- Usage: `<CR>` to start leap, then type 2 characters to jump
 later(function()
-	add({ source = "https://codeberg.org/andyg/leap.nvim", name = "leap.nvim" })
+	add({ 'https://codeberg.org/andyg/leap.nvim' })
 
 	vim.keymap.set("n", ";", "<Plug>(leap)", { desc = "Leap" })
 end)
@@ -230,13 +222,9 @@ end)
 --
 -- Usage: `:Neogit` or `<Leader>gn` to open
 later(function()
-	add({
-		source = "NeogitOrg/neogit",
-		depends = {
-			"nvim-lua/plenary.nvim",
-			"sindrets/diffview.nvim",
-		},
-	})
+	add({ 'https://github.com/nvim-lua/plenary.nvim' })
+	add({ 'https://github.com/sindrets/diffview.nvim' })
+	add({ 'https://github.com/NeogitOrg/neogit' })
 	require("neogit").setup({
 		use_per_project_settings = false, -- avoids vim.uv.cwd() nil error
 	})
