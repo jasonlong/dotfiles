@@ -128,6 +128,8 @@ brew "openhue/cli/openhue-cli"
 brew "steipete/tap/imsg"
 # Column-oriented database management system
 cask "clickhouse"
+# Menu bar calendar with meeting reminders
+cask "dot"
 cask "font-symbols-only-nerd-font"
 # Desktop automation application
 cask "hammerspoon"
