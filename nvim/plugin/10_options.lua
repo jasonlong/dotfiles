@@ -101,7 +101,7 @@ vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
 
 -- Built-in completion
 vim.o.complete    = '.,w,b,kspell'                  -- Use less sources
-vim.o.completeopt = 'menuone,fuzzy,noinsert' -- First item selected, but not inserted until confirmed
+vim.o.completeopt = 'menuone,noselect,fuzzy,nosort' -- Show menu, preserve LSP ordering
 
 -- Autocommands ===============================================================
 

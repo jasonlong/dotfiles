@@ -139,7 +139,7 @@ end)
 --
 -- See also:
 -- - `:h MiniNotify.config` for some of common configuration examples.
-later(function()
+now(function()
 	require("mini.notify").setup()
 end)
 
@@ -335,8 +335,7 @@ later(function()
 			end,
 		},
 
-		-- Search forward if cursor isn't inside a textobject
-		-- search_method = 'cover_or_next',
+		search_method = 'cover',
 	})
 end)
 
@@ -620,7 +619,7 @@ now_if_args(function()
 	-- - `g?` to see available bookmarks
 	local add_marks = function()
 		MiniFiles.set_bookmark("c", vim.fn.stdpath("config"), { desc = "Config" })
-		local minideps_plugins = vim.fn.stdpath("data") .. "/site/pack/deps/opt"
+		local minideps_plugins = vim.fn.stdpath("data") .. "/site/pack/core/opt"
 		MiniFiles.set_bookmark("p", minideps_plugins, { desc = "Plugins" })
 		MiniFiles.set_bookmark("w", vim.fn.getcwd, { desc = "Working directory" })
 	end
