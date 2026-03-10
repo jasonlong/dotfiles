@@ -31,11 +31,11 @@ local now_if_args, later = Config.now_if_args, Config.later
 --
 -- Add these plugins now if file (and not 'mini.starter') is shown after startup.
 now_if_args(function()
+	Config.on_packchanged('nvim-treesitter', { 'update' }, function() vim.cmd('TSUpdate') end, ':TSUpdate')
 	add({
 		'https://github.com/nvim-treesitter/nvim-treesitter',
 		'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
 	})
-	Config.on_packchanged('nvim-treesitter', { 'update' }, function() vim.cmd('TSUpdate') end, ':TSUpdate')
 
 	-- Define languages which will have parsers installed and auto enabled
 	local languages = {
