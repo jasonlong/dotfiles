@@ -9,7 +9,7 @@ return {
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			buffer = bufnr,
 			callback = function()
-				local params = vim.lsp.util.make_range_params()
+				local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
 				params.context = { only = { "source.fixAll.eslint" }, diagnostics = {} }
 				local result = client:request_sync("textDocument/codeAction", params, 3000, bufnr)
 				if result and result.result and result.result[1] then
