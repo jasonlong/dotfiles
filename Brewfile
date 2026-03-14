@@ -131,6 +131,8 @@ cask "clickhouse"
 # Menu bar calendar with meeting reminders
 cask "dot"
 cask "font-symbols-only-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Desktop automation application
 cask "hammerspoon"
 # Speech to text application
