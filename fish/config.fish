@@ -3,17 +3,13 @@ fish_vi_key_bindings
 # Source secrets (not in version control)
 test -f ~/.config/fish/secrets.fish && source ~/.config/fish/secrets.fish
 
-# Clear any inherited STARSHIP_CONFIG first
-set -e STARSHIP_CONFIG
-
-# Auto-switch theme based on macOS appearance
-set -l appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
-if test "$appearance" = "Dark"
-    fish_config theme choose gruvbox_material_dark
-    set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-gruvbox-dark.toml
+# Poimandres theme — auto dark/storm based on macOS appearance
+if defaults read -g AppleInterfaceStyle &>/dev/null
+    set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-poimandres-dark.toml
+    source ~/dev/dotfiles/fish/themes/poimandres.theme
 else
-    fish_config theme choose gruvbox_material_light
-    set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-gruvbox-light.toml
+    set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-poimandres-storm.toml
+    source ~/dev/dotfiles/fish/themes/poimandres_storm.theme
 end
 
 alias g='git'
