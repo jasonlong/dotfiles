@@ -1,0 +1,68 @@
+palette = "poimandres"
+
+format = """
+[](bright-mint)\
+[ ](bg:bright-mint fg:bg)\
+[](bg:lower-mint fg:bright-mint)\
+$directory\
+[](bg:blueish-green fg:lower-mint)\
+$git_branch\
+[](bg:focus fg:blueish-green)\
+$git_metrics\
+[ ](fg:focus)\n$character
+"""
+
+[palettes.poimandres]
+bright-yellow = "#fffac2"
+bright-mint = "#5de4c7"
+lower-mint = "#5fb3a1"
+blueish-green = "#42675a"
+lower-blue = "#89ddff"
+light-blue = "#add7ff"
+desaturated-blue = "#91b4d5"
+bluishGray-brighter = "#7390aa"
+hot-red = "#d0679d"
+pink = "#f087bd"
+gray = "#a6accd"
+white = "#ffffff"
+off-white = "#e4f0fb"
+darker-gray = "#767c9d"
+bluish-gray = "#506477"
+selection = "#717cb4"
+focus = "#303340"
+bg = "#1b1e28"
+black = "#000000"
+
+[character]
+success_symbol = "[❯](bold bright-mint)"
+error_symbol = "[❯](bold hot-red)"
+vicmd_symbol = "[↔](bold bright-yellow)"
+
+[battery]
+disabled = true
+
+[cmd_duration]
+format = "[$duration](gray)"
+
+[directory]
+format = "[ $path ](bg:lower-mint fg:bg)"
+
+[git_branch]
+disabled = false
+format = "[ $branch ](bg:blueish-green fg:off-white)"
+
+[git_metrics]
+disabled = false
+format = "([ +$added ](bg:focus fg:bright-mint))([ -$deleted ](bg:focus fg:hot-red))"
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
+
+[ruby]
+disabled = true
+
+[lua]
+disabled = true
