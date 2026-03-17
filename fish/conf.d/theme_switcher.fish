@@ -1,21 +1,16 @@
-# Auto-detect macOS appearance changes and update theme
-function _theme_check --on-event fish_prompt
-    set -l appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
-
-    # Determine target config based on appearance
-    if test "$appearance" = "Dark"
-        set -l target_config ~/dev/dotfiles/starship/starship-gruvbox-dark.toml
-        set -l target_theme gruvbox_material_dark
-        if test "$STARSHIP_CONFIG" != "$target_config"
-            set -gx STARSHIP_CONFIG $target_config
-            fish_config theme choose $target_theme
+# Auto-detect macOS appearance on every prompt and switch starship + fish theme
+function __theme_switcher --on-event fish_prompt
+    if defaults read -g AppleInterfaceStyle &>/dev/null
+        if test "$__current_theme" != dark
+            set -g __current_theme dark
+            set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-poimandres-dark.toml
+            source ~/dev/dotfiles/fish/themes/poimandres.theme
         end
     else
-        set -l target_config ~/dev/dotfiles/starship/starship-gruvbox-light.toml
-        set -l target_theme gruvbox_material_light
-        if test "$STARSHIP_CONFIG" != "$target_config"
-            set -gx STARSHIP_CONFIG $target_config
-            fish_config theme choose $target_theme
+        if test "$__current_theme" != light
+            set -g __current_theme light
+            set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-poimandres-storm.toml
+            source ~/dev/dotfiles/fish/themes/poimandres_storm.theme
         end
     end
 end

@@ -6,18 +6,18 @@ set --global fish_color_redirection 5fb3a1
 set --global fish_color_end add7ff
 set --global fish_color_error d0679d
 set --global fish_color_param e4f0fb
-set --global fish_color_comment 868cad
-set --global fish_color_selection --background=404350 --foreground=e4f0fb
+set --global fish_color_comment 767c9d
+set --global fish_color_selection --background=303340 --foreground=e4f0fb
 set --global fish_color_operator c3e88d
 set --global fish_color_escape 89ddff
-set --global fish_color_autosuggestion 868cad
+set --global fish_color_autosuggestion 767c9d
 set --global fish_color_cwd 5de4c7
 set --global fish_color_cwd_root d0679d
 set --global fish_color_user 5fb3a1
-set --global fish_color_host 607487
+set --global fish_color_host 42675a
 set --global fish_color_host_remote fffac2
 set --global fish_color_status d0679d
 set --global fish_color_cancel d0679d
-set --global fish_color_search_match --background=404350 --foreground=e4f0fb
+set --global fish_color_search_match --background=303340 --foreground=e4f0fb
 set --global fish_color_valid_path --underline
 set --global fish_color_history_current --bold
