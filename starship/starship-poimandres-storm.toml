@@ -1,4 +1,4 @@
-palette = "poimandres"
+palette = "poimandres-storm"
 
 format = """
 [](bright-mint)\
@@ -12,7 +12,7 @@ $git_metrics\
 [ ](fg:focus)\n$character
 """
 
-[palettes.poimandres]
+[palettes.poimandres-storm]
 bright-yellow = "#fffac2"
 bright-mint = "#5de4c7"
 lower-mint = "#5fb3a1"
