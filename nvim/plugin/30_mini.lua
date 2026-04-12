@@ -498,7 +498,7 @@ end)
 -- It also works with snippet candidates provided by LSP server. Best experience
 -- when paired with 'mini.snippets' (which is set up in this file).
 now_if_args(function()
-	local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
+	local process_items_opts = { kind_priority = { Text = -1 } }
 	local process_items = function(items, base)
 		return MiniCompletion.default_process_items(items, base, process_items_opts)
 	end
@@ -871,50 +871,7 @@ end)
 -- - `:h MiniSnippets-examples` - examples of common setups
 -- - `:h MiniSnippets-session` - details about snippet session
 -- - `:h MiniSnippets.gen_loader` - list of available loaders
-later(function()
-	-- Define language patterns to work better with 'friendly-snippets'
-	local latex_patterns = { "latex/**/*.json", "**/latex.json" }
-	local lang_patterns = {
-		tex = latex_patterns,
-		plaintex = latex_patterns,
-		-- Recognize special injected language of markdown tree-sitter parser
-		markdown_inline = { "markdown.json" },
-	}
-
-	local snippets = require("mini.snippets")
-	local config_path = vim.fn.stdpath("config")
-	snippets.setup({
-		snippets = {
-			-- Load global snippets
-			snippets.gen_loader.from_file(config_path .. "/snippets/global.json"),
-			-- Load language-specific snippets from config (e.g., typescriptreact.json)
-			snippets.gen_loader.from_lang({ lang_patterns = lang_patterns }),
-			-- Load <filetype>.json from config snippets directory
-			function()
-				local ft = vim.bo.filetype
-				-- Map react filetypes to shared react.json
-				local file = ({ typescriptreact = "react", javascriptreact = "react" })[ft] or ft
-				local path = config_path .. "/snippets/" .. file .. ".json"
-				if vim.fn.filereadable(path) == 1 then
-					return snippets.read_file(path)
-				end
-				return {}
-			end,
-		},
-		-- Disable default mappings; using 'mini.keymap' multistep instead
-		mappings = { expand = "", jump_next = "", jump_prev = "" },
-		expand = {
-			insert = function(snippet)
-				MiniSnippets.default_insert(snippet, { empty_tabstop = "", empty_tabstop_final = "" })
-			end,
-		},
-	})
-
-	-- By default snippets available at cursor are not shown as candidates in
-	-- 'mini.completion' menu. This requires a dedicated in-process LSP server
-	-- that will provide them.
-	MiniSnippets.start_lsp_server()
-end)
+-- mini.snippets disabled — emmet handles abbreviation expansion via LSP
 
 -- Split and join arguments (regions inside brackets between allowed separators).
 -- It uses Lua patterns to find arguments, which means it works in comments and
