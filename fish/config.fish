@@ -13,6 +13,7 @@ else
 end
 
 alias g='git'
+alias b='but'
 alias ss='script/server'
 alias rc='rails console'
 alias api='cd ~/dev/api-bb/'
@@ -24,6 +25,7 @@ alias h='cht.sh'
 alias oc='opencode'
 
 set -gx DFT_WIDTH 160
+set -gx CLAUDE_CODE_NO_FLICKER 1 # Prevent mouse scrolling prompt history
 
 set fish_greeting
 status --is-interactive; and source (rbenv init -|psub)
@@ -49,3 +51,10 @@ thefuck --alias | source
 fish_add_path $HOME/.local/bin
 direnv hook fish | source
 alias cc='claude --dangerously-skip-permissions'
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# Mole shell completion
+set -l output (mole completion fish 2>/dev/null); and echo "$output" | source
