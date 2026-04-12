@@ -1,7 +1,12 @@
 tap "iina/mpv-iina"
+tap "jasonlong/tap"
 tap "koekeishiya/formulae"
 tap "openhue/cli"
 tap "steipete/tap"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Browser automation CLI for AI agents
+brew "agent-browser"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin", restart_service: :changed
 # Programmable completion for Bash 3.2
@@ -18,8 +23,6 @@ brew "cmake"
 brew "difftastic"
 # Load/unload environment variables based on $PWD
 brew "direnv"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
 # AST-based pattern checker for JavaScript
 brew "eslint"
 # Modern, maintained replacement for ls
@@ -75,7 +78,7 @@ brew "mysql@8.4", restart_service: :changed
 # Incremental parsing library
 brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
-brew "neovim", args: ["HEAD"]
+brew "neovim"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # AI coding agent, built for the terminal
@@ -139,12 +142,9 @@ cask "hammerspoon"
 cask "handy"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
+# GitHub notifications in the macOS menu bar
+cask "jasonlong/tap/octodot"
+# Replacement for Docker Desktop
+cask "orbstack"
 # Voice to text app
 cask "voiceink"
-vscode "enkia.tokyo-night"
-vscode "github.copilot"
-vscode "github.copilot-chat"
-vscode "mvllow.rose-pine"
-vscode "pmndrs.pmndrs"
-vscode "sallar.vscode-duotone-dark"
-vscode "vscodevim.vim"
