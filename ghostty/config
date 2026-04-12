@@ -2,7 +2,9 @@
 #auto-update-channel = tip
 
 
-font-family = TX-02
+font-family = Geist Mono
+#font-family = TX-02
+#font-family = MD IO Trial
 font-style = Regular
 font-size = 14
 
@@ -10,7 +12,7 @@ font-size = 14
 adjust-cell-height = 15%
 
 macos-icon = custom
-macos-custom-icon = ~/dev/ghostty-theme-icons/icons/rose-pine/rose-pine.icns
+macos-custom-icon = ~/dev/ghostty-theme-icons/icons/poimandres-storm/poimandres-storm.icns
 macos-option-as-alt = true
 macos-titlebar-proxy-icon = hidden
 window-colorspace = display-p3
