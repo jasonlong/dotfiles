@@ -65,8 +65,6 @@ brew "libffi"
 brew "libsodium"
 # Powerful, lightweight programming language
 brew "lua"
-# Web and API based SMTP testing tool
-brew "mailhog"
 # High performance, distributed memory object caching system
 brew "memcached"
 # Syntax-aware git merge driver
@@ -140,6 +138,8 @@ cask "ghostty"
 cask "hammerspoon"
 # Speech to text application
 cask "handy"
+# Pomodoro timer in the macOS menu bar
+cask "jasonlong/tap/mater"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 # GitHub notifications in the macOS menu bar
