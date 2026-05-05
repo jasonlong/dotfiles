@@ -39,6 +39,7 @@ link_dir "$DOTFILES/nvim"     "$HOME/.config/nvim"
 link_dir "$DOTFILES/ghostty"  "$HOME/.config/ghostty"
 link_dir "$DOTFILES/skhd"     "$HOME/.config/skhd"
 link_dir "$DOTFILES/yabai"    "$HOME/.config/yabai"
+link_dir "$DOTFILES/glow"     "$HOME/Library/Preferences/glow"
 
 # Pi coding agent
 link_dir "$DOTFILES/pi/themes"     "$HOME/.pi/agent/themes"

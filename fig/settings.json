@@ -1,7 +1,0 @@
-{
-  "autocomplete.disable" : false,
-  "autocomplete.fontFamily" : "Source Code Pro",
-  "autocomplete.fontSize" : 13,
-  "autocomplete.fuzzySearch" : true,
-  "autocomplete.theme" : "nord"
-}
