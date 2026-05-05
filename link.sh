@@ -6,6 +6,7 @@ DOTFILES="$HOME/dev/dotfiles"
 # Helper: symlink a directory, backing up any existing non-symlink
 link_dir() {
   local src="$1" dest="$2"
+  mkdir -p "$(dirname "$dest")"
   if [ -L "$dest" ]; then
     rm "$dest"
   elif [ -d "$dest" ]; then
@@ -38,6 +39,11 @@ link_dir "$DOTFILES/nvim"     "$HOME/.config/nvim"
 link_dir "$DOTFILES/ghostty"  "$HOME/.config/ghostty"
 link_dir "$DOTFILES/skhd"     "$HOME/.config/skhd"
 link_dir "$DOTFILES/yabai"    "$HOME/.config/yabai"
+
+# Pi coding agent
+link_dir "$DOTFILES/pi/themes"     "$HOME/.pi/agent/themes"
+link_dir "$DOTFILES/pi/extensions" "$HOME/.pi/agent/extensions"
+link_file "$DOTFILES/pi/settings.json" "$HOME/.pi/agent/settings.json"
 
 # Hammerspoon lives in ~/
 link_dir "$DOTFILES/hammerspoon" "$HOME/.hammerspoon"
