@@ -1,0 +1,10 @@
+{
+  "lastChangelogVersion": "0.73.0",
+  "defaultProvider": "openai",
+  "defaultModel": "gpt-5.5",
+  "packages": [
+    "npm:@dreki-gg/pi-context7",
+    "npm:pi-vim"
+  ],
+  "theme": "poimandres-dark"
+}
