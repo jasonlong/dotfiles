@@ -14,6 +14,7 @@
  *   /codex-prompt toggle   Toggle the prompt
  */
 
+import { execFileSync } from "node:child_process";
 import type { ExtensionAPI, ExtensionContext } from "@mariozechner/pi-coding-agent";
 import { Editor, truncateToWidth, visibleWidth } from "@mariozechner/pi-tui";
 import { ModalEditor } from "/Users/jason/.local/share/nvm/v22.12.0/lib/node_modules/pi-vim/index.ts";
@@ -126,6 +127,32 @@ function compactPath(path: string): string {
 	return home && path.startsWith(home) ? `~${path.slice(home.length)}` : path;
 }
 
+function currentGitBranch(cwd: string): string | undefined {
+	try {
+		const branch = execFileSync("git", ["-C", cwd, "branch", "--show-current"], {
+			encoding: "utf8",
+			stdio: ["ignore", "pipe", "ignore"],
+		}).trim();
+
+		if (branch) return branch;
+
+		const detachedHead = execFileSync("git", ["-C", cwd, "rev-parse", "--short", "HEAD"], {
+			encoding: "utf8",
+			stdio: ["ignore", "pipe", "ignore"],
+		}).trim();
+
+		return detachedHead ? `detached:${detachedHead}` : undefined;
+	} catch {
+		return undefined;
+	}
+}
+
+function pathWithBranch(cwd: string): string {
+	const path = compactPath(cwd);
+	const branch = currentGitBranch(cwd);
+	return branch ? `${path} (${branch})` : path;
+}
+
 function makeStyles(ctx: ExtensionContext): CodexPromptStyles {
 	const theme = ctx.ui.theme;
 	return {
@@ -166,7 +193,7 @@ function usageStats(ctx: ExtensionContext): string {
 
 function statusFor(ctx: ExtensionContext): StatusProvider {
 	return () => ({
-		left: compactPath(ctx.cwd),
+		left: pathWithBranch(ctx.cwd),
 		right: `${ctx.model?.id ?? "no model"} · ${usageStats(ctx)}`,
 	});
 }
