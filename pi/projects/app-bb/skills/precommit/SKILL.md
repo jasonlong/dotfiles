@@ -1,10 +1,10 @@
 ---
-name: ui-precommit
+name: precommit
 description: Prepare app-bb UI/frontend changes for commit by running formatting/lint/type checks, fixing issues, and performing a final UI review against design-system and web-design guidelines.
 argument-hint: [optional-file-or-diff-scope]
 ---
 
-# UI Precommit
+# Precommit
 
 You are preparing app-bb UI/frontend changes for commit. The goal is to leave the working tree in a state that passes project checks and has had a focused UI/design/accessibility review.
 
@@ -38,7 +38,7 @@ When browser inspection is requested but no route is provided:
    - Use minimal, targeted edits.
    - Re-run the failing command after fixes.
    - Do not claim a command passed unless it actually passed.
-5. Perform a final UI review using `/skill:ui-review` expectations:
+5. Perform a final UI review using `/skill:review` expectations:
    - Bugs and regressions
    - Accessibility and Web Interface Guidelines
    - Unnecessary complexity
