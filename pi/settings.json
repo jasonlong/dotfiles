@@ -1,10 +1,12 @@
 {
-  "lastChangelogVersion": "0.73.0",
-  "defaultProvider": "openai",
+  "lastChangelogVersion": "0.74.0",
+  "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "packages": [
     "npm:@dreki-gg/pi-context7",
-    "npm:pi-vim"
+    "npm:pi-simplify",
+    "npm:@a5c-ai/babysitter-pi"
   ],
-  "theme": "poimandres-dark"
+  "theme": "poimandres-light",
+  "hideThinkingBlock": true
 }
