@@ -17,6 +17,8 @@ brew "bat"
 brew "biome"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
 # Cross-platform make
 brew "cmake"
 # Diff that understands syntax
