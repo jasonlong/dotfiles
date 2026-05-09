@@ -42,7 +42,13 @@ async function ensureBrowser() {
 
 async function getActivePage(browser) {
 	const pages = await browser.pages();
-	return pages.at(-1) ?? browser.newPage();
+	const appPage = pages.find((page) => page.url().startsWith(BASE_URL));
+	if (appPage) return appPage;
+
+	const webPage = pages.find((page) => /^https?:\/\//.test(page.url()));
+	if (webPage) return webPage;
+
+	return browser.newPage();
 }
 
 async function pageSnapshot(page) {
