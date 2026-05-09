@@ -31,3 +31,24 @@ http://app.pscaledev.com:3001/
 ```
 
 Browser inspections should use that base URL unless a prompt provides a different URL.
+
+## Browser helper
+
+Use the route helper for app-bb browser checks:
+
+```bash
+~/dev/dotfiles/pi/projects/app-bb/scripts/open-route.js /bb/derp/deploy-requests
+```
+
+The helper starts browser-tools if needed, opens the route, clicks the pre-filled dev login submit button when the auth screen appears, and then re-opens the requested route after auth.
+
+Use the breakpoint helper for quick responsive checks:
+
+```bash
+~/dev/dotfiles/pi/projects/app-bb/scripts/check-breakpoints.js /bb/derp/deploy-requests
+~/dev/dotfiles/pi/projects/app-bb/scripts/check-breakpoints.js /bb/derp/deploy-requests --widths=375,768,1024 --screenshots
+```
+
+Screenshots are opt-in because Chromium screenshot capture can be slow on some app pages.
+
+Prefer these helpers over `browser-start.js --profile`; copying the full Chrome profile is slow and can make browser-tools less reliable.
