@@ -35,15 +35,24 @@ Create GitHub pull requests for app-bb using `gh` and the user's preferred PR st
    - `git branch --show-current`
    - `git diff --stat origin/main...HEAD` when appropriate
    - `git log --oneline origin/main...HEAD` when appropriate
-2. If the base branch is unclear, infer it from repo conventions or ask. Prefer `main` unless evidence says otherwise.
-3. Check whether a PR already exists for the branch:
+2. Check branch hygiene before creating anything:
+   - Warn if the working tree has uncommitted changes.
+   - Warn if the current branch is `main` or another protected/default-looking branch.
+   - Check whether the branch has an upstream with `git rev-parse --abbrev-ref --symbolic-full-name @{u}`.
+   - If the branch is not pushed, ask before pushing it.
+   - If checks have not been run in the current conversation, mention that and ask whether to proceed anyway.
+3. If the base branch is unclear, infer it from repo conventions or ask. Prefer `main` unless evidence says otherwise.
+4. Check whether a PR already exists for the branch:
    - `gh pr view --json url,title,isDraft`.
-4. Draft the title and body following the preferences above.
-5. If important context is missing, ask before creating the PR.
-6. Create the PR as draft:
+   - If one exists, report the URL instead of creating a duplicate unless the user explicitly asks.
+5. Draft the title and body following the preferences above.
+6. Show the proposed PR title and body to the user and ask for confirmation before running `gh pr create`.
+   - If the user asked only to draft a PR body, stop after showing the draft.
+   - If important context is missing, ask before creating the PR.
+7. Create the PR as draft after confirmation:
    - `gh pr create --draft --title "..." --body-file <temp-file>`
    - Include `--base <branch>` if needed.
-7. Report the PR URL and mention that it was created as draft.
+8. Report the PR URL and mention that it was created as draft.
 
 ## Body Examples
 

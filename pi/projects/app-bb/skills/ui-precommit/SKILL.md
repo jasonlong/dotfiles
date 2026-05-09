@@ -12,6 +12,15 @@ You are preparing app-bb UI/frontend changes for commit. The goal is to leave th
 
 app-bb runs locally at `http://app.pscaledev.com:3001/`. When browser inspection is needed, open that base URL unless the user provides a different URL or route.
 
+## Route Finder Convention
+
+When browser inspection is requested but no route is provided:
+
+1. Infer the likely route from changed files, route filenames, links, tests, story names, or nearby page usage.
+2. If exactly one route is likely, use it and state the assumption.
+3. If multiple routes are plausible, ask one concise clarification question instead of guessing.
+4. Build the URL from `http://app.pscaledev.com:3001/` plus the route path.
+
 ## Process
 
 1. Identify changed files:
