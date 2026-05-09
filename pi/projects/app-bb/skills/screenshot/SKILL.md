@@ -21,6 +21,10 @@ Use this skill when the user asks to:
 
 app-bb runs locally at `http://app.pscaledev.com:3001/`. When using browser-tools for visual inspection, open that base URL unless the user provides a different URL or route.
 
+Prefer `~/dev/dotfiles/pi/projects/app-bb/scripts/open-route.js <route-or-url>` for browser checks. It starts browser-tools, handles the dev login screen, and re-opens the requested route after auth.
+
+If manually using browser-tools, use a fresh browser first instead of `--profile`. The auth app may show a login screen; the username/password are pre-filled in dev mode, so click the submit/sign-in button to continue. Do not combine the login click and post-login waiting in one browser eval because navigation can destroy the eval context.
+
 ## Route Finder Convention
 
 When browser inspection is requested but no route is provided:
