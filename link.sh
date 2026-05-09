@@ -46,6 +46,12 @@ link_dir "$DOTFILES/pi/themes"     "$HOME/.pi/agent/themes"
 link_dir "$DOTFILES/pi/extensions" "$HOME/.pi/agent/extensions"
 link_file "$DOTFILES/pi/settings.json" "$HOME/.pi/agent/settings.json"
 
+# Project-local Pi config
+if [ -d "$HOME/dev/app-bb" ]; then
+  link_dir "$DOTFILES/pi/projects/app-bb/skills" "$HOME/dev/app-bb/.pi/skills"
+  link_file "$DOTFILES/pi/projects/app-bb/APPEND_SYSTEM.md" "$HOME/dev/app-bb/.pi/APPEND_SYSTEM.md"
+fi
+
 # Hammerspoon lives in ~/
 link_dir "$DOTFILES/hammerspoon" "$HOME/.hammerspoon"
 
