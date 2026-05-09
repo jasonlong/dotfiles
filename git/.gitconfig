@@ -8,7 +8,7 @@
 	default = current
 	autoSetupRemote = true
 [core]
-  pager = ~/.config/delta-auto-theme.sh
+	pager = hunk pager
 	excludesfile = /Users/jason/.gitignore_global
   editor = nvim
 [interactive]
@@ -21,7 +21,6 @@
 [diff]
   colorMoved = default
   algorithm = histogram
-	external = difft --display inline
 [pull]
 	rebase = true
 [commit]
