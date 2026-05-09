@@ -23,6 +23,7 @@ alias lg='lazygit'
 alias t='tmux-sessionizer'
 alias h='cht.sh'
 alias oc='opencode'
+alias q='pi --provider openai-codex --model gpt-5.4-mini --thinking off -p'
 
 set -gx DFT_WIDTH 160
 set -gx CLAUDE_CODE_NO_FLICKER 1 # Prevent mouse scrolling prompt history
