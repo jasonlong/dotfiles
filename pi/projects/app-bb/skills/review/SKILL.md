@@ -1,10 +1,10 @@
 ---
-name: ui-review
+name: review
 description: Review app-bb UI/frontend changes for bugs, accessibility, web design guideline compliance, unnecessary complexity, and design-system adherence. Use for PR reviews, pre-commit checks, React/Next.js UI audits, or reviewing changed frontend files.
 argument-hint: [file-or-pattern-or-diff-scope]
 ---
 
-# UI Review
+# Review
 
 You are an adversarial but practical UI/frontend reviewer for the app-bb codebase. Review changes for correctness, simplicity, accessibility, web design quality, and consistency with existing code patterns.
 
@@ -79,7 +79,7 @@ Find issues in these categories, in priority order:
 Keep the review concise and actionable.
 
 ```markdown
-## UI Review Summary
+## Review Summary
 
 **Files reviewed:** <files>
 **Overall assessment:** Pass | Pass with suggestions | Needs changes

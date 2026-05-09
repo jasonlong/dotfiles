@@ -5,10 +5,11 @@ Personal Pi configuration for `~/dev/app-bb`. These files are versioned here so 
 ## Contents
 
 - `APPEND_SYSTEM.md` — app-bb-specific persistent context, including the local app URL.
+- `skills/commit` — creates clean, focused git commits with the preferred message style.
 - `skills/pr` — creates draft GitHub PRs with the preferred title/body style.
-- `skills/ui-screenshot` — builds UI from screenshots/mockups using app-bb design tokens.
-- `skills/ui-review` — reviews frontend changes for bugs, accessibility, complexity, and design-system adherence.
-- `skills/ui-precommit` — runs lint/stylelint/tsc and performs a final UI review.
+- `skills/screenshot` — builds UI from screenshots/mockups using app-bb design tokens.
+- `skills/review` — reviews frontend changes for bugs, accessibility, complexity, and design-system adherence.
+- `skills/precommit` — runs lint/stylelint/tsc and performs a final UI review.
 
 ## Linking
 

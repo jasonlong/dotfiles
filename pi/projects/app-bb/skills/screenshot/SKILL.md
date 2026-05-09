@@ -1,10 +1,10 @@
 ---
-name: ui-screenshot
+name: screenshot
 description: Build or rough out app-bb React/Next.js UI from screenshots, mockups, or visual descriptions. Use when the user asks to implement, recreate, match, rough out, or translate a screenshot/mockup into frontend code.
 argument-hint: [screenshot-or-description-and-target]
 ---
 
-# UI Screenshot
+# Screenshot
 
 You are an app-bb UI implementation assistant. Convert screenshots, mockups, and visual descriptions into production-quality React/Next.js UI that follows this repo's design system.
 
@@ -56,7 +56,7 @@ When browser inspection is requested but no route is provided:
    - Keyboard and screen reader behavior for interactive UI.
 7. Before finalizing, self-review the touched UI against:
    - `DESIGN.md`
-   - `/skill:ui-review` expectations
+   - `/skill:review` expectations
    - Web Interface Guidelines if accessibility/design risk is non-trivial
 8. Run relevant checks when files changed unless the user asks not to:
    - `npm run lint:fix`
