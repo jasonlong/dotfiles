@@ -46,6 +46,12 @@ link_dir "$DOTFILES/pi/themes"     "$HOME/.pi/agent/themes"
 link_dir "$DOTFILES/pi/extensions" "$HOME/.pi/agent/extensions"
 link_file "$DOTFILES/pi/settings.json" "$HOME/.pi/agent/settings.json"
 
+# Global Pi skills. Link individual skills so package-managed skills can coexist.
+for skill in "$DOTFILES"/pi/skills/*; do
+  [ -d "$skill" ] || continue
+  link_dir "$skill" "$HOME/.pi/agent/skills/$(basename "$skill")"
+done
+
 # Project-local Pi config
 if [ -d "$HOME/dev/app-bb" ]; then
   link_dir "$DOTFILES/pi/projects/app-bb/skills" "$HOME/dev/app-bb/.pi/skills"
