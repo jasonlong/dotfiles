@@ -2,3 +2,6 @@ nvim/lazy-lock.json
 nvim/nvim-pack-lock.json
 .DS_Store
 fish/secrets.fish
+
+node_modules/
+pi/extensions/context7/
