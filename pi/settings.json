@@ -1,12 +1,14 @@
 {
-  "lastChangelogVersion": "0.74.0",
+  "lastChangelogVersion": "0.75.4",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "packages": [
     "npm:@dreki-gg/pi-context7",
     "npm:pi-simplify",
-    "npm:@a5c-ai/babysitter-pi"
+    "npm:pi-agent-browser-native"
   ],
   "theme": "poimandres-light",
-  "hideThinkingBlock": true
+  "hideThinkingBlock": true,
+  "quietStartup": true,
+  "defaultThinkingLevel": "medium"
 }
