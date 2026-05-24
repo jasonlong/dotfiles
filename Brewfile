@@ -150,3 +150,4 @@ cask "jasonlong/tap/octodot"
 cask "orbstack"
 # Voice to text app
 cask "voiceink"
+npm "corepack"
