@@ -8,7 +8,6 @@
 	default = current
 	autoSetupRemote = true
 [core]
-	pager = hunk pager
 	excludesfile = /Users/jason/.gitignore_global
   editor = nvim
 [interactive]
@@ -46,3 +45,6 @@
 [merge "mergiraf"]
 	name = mergiraf
 	driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+[pager]
+	diff = hunk
+	branch = false
