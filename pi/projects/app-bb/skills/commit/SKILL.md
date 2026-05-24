@@ -18,6 +18,7 @@ Create clean git commits for app-bb. Prefer careful staging and logical grouping
 - Do not commit without showing what will be included and asking for confirmation.
 - Stage only files that belong in the confirmed commit.
 - Do not include generated, temporary, or unrelated files unless the user explicitly asks.
+- When updating an existing PR branch, do not force-push by default. Pull the latest remote branch state, rebase local changes, and push normally unless the user explicitly asks for a force push.
 
 ## Process
 
