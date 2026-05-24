@@ -11,6 +11,7 @@ else
     set -gx STARSHIP_CONFIG ~/dev/dotfiles/starship/starship-poimandres-storm.toml
     source ~/dev/dotfiles/fish/themes/poimandres_storm.theme
 end
+sync_hunk_theme
 
 alias g='git'
 alias b='but'

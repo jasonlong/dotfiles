@@ -1,6 +1,7 @@
 tap "iina/mpv-iina"
 tap "jasonlong/tap"
 tap "koekeishiya/formulae"
+tap "modem-dev/tap"
 tap "openhue/cli"
 tap "steipete/tap"
 # Open-source, cross-platform JavaScript runtime environment
@@ -23,6 +24,8 @@ brew "cloudflared"
 brew "cmake"
 # Diff that understands syntax
 brew "difftastic"
+# Review-first terminal diff viewer
+brew "hunk"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # AST-based pattern checker for JavaScript

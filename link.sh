@@ -40,6 +40,11 @@ link_dir "$DOTFILES/ghostty"  "$HOME/.config/ghostty"
 link_dir "$DOTFILES/skhd"     "$HOME/.config/skhd"
 link_dir "$DOTFILES/yabai"    "$HOME/.config/yabai"
 link_dir "$DOTFILES/glow"     "$HOME/Library/Preferences/glow"
+if defaults read -g AppleInterfaceStyle &>/dev/null; then
+  link_file "$DOTFILES/hunk/config-dark.toml" "$HOME/.config/hunk/config.toml"
+else
+  link_file "$DOTFILES/hunk/config-storm.toml" "$HOME/.config/hunk/config.toml"
+fi
 
 # Pi coding agent
 link_dir "$DOTFILES/pi/themes"     "$HOME/.pi/agent/themes"

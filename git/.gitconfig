@@ -46,5 +46,6 @@
 	name = mergiraf
 	driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
 [pager]
-	diff = hunk
+	diff = hunk pager
+	show = hunk pager
 	branch = false
