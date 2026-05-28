@@ -24,8 +24,6 @@ brew "cloudflared"
 brew "cmake"
 # Diff that understands syntax
 brew "difftastic"
-# Review-first terminal diff viewer
-brew "hunk"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # AST-based pattern checker for JavaScript
@@ -128,6 +126,8 @@ brew "yarn"
 brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Desktop-inspired terminal diff viewer for agent-authored changesets
+brew "modem-dev/tap/hunk"
 # OpenHue CLI is a command-line interface for interacting with Philips Hue smart lighting systems
 brew "openhue/cli/openhue-cli"
 # Send and read iMessage / SMS from the terminal
