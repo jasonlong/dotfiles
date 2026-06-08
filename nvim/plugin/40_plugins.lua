@@ -215,6 +215,21 @@ later(function()
 	vim.keymap.set("n", ";", "<Plug>(leap)", { desc = "Leap" })
 end)
 
+-- Git blame ===================================================================
+
+-- Lightweight inline blame for the current line.
+-- Usage: `<Leader>gb` to toggle blame virtual text.
+later(function()
+	vim.g.gitblame_enabled = 0 -- start disabled; toggle when needed
+	vim.g.gitblame_message_template = "<author> • <date> • <summary>"
+	vim.g.gitblame_date_format = "%r"
+	vim.g.gitblame_delay = 500
+
+	add({ 'https://github.com/f-person/git-blame.nvim' })
+	vim.keymap.set("n", "<Leader>gb", "<Cmd>GitBlameToggle<CR>", { desc = "Toggle git blame inline" })
+	vim.keymap.set("n", "<Leader>gB", "<Cmd>GitBlameOpenCommitURL<CR>", { desc = "Open blame commit" })
+end)
+
 -- Neogit ======================================================================
 
 -- A Magit-inspired Git interface for Neovim. Provides a rich UI for staging,
