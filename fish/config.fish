@@ -13,18 +13,17 @@ else
 end
 sync_hunk_theme
 
-alias g='git'
-alias b='but'
-alias ss='script/server'
-alias rc='rails console'
-alias api='cd ~/dev/api-bb/'
-alias app='cd ~/dev/app-bb/'
-alias v='nvim'
-alias lg='lazygit'
-alias t='tmux-sessionizer'
-alias h='cht.sh'
-alias oc='opencode'
-alias q='pi --provider openai-codex --model gpt-5.4-mini --thinking off -p'
+abbr -a g git
+abbr -a b but
+abbr -a ss script/server
+abbr -a rc "rails console"
+abbr -a api "cd ~/dev/api-bb/"
+abbr -a app "cd ~/dev/app-bb/"
+abbr -a v nvim
+abbr -a lg lazygit
+abbr -a h cht.sh
+abbr -a oc opencode
+abbr -a q "pi --provider openai-codex --model gpt-5.4-mini --thinking off -p"
 
 set -gx DFT_WIDTH 160
 set -gx CLAUDE_CODE_NO_FLICKER 1 # Prevent mouse scrolling prompt history
