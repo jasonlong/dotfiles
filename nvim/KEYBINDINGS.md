@@ -56,6 +56,8 @@
 | Key | Description |
 |-----|-------------|
 | `<Leader>gs` | Show git info at cursor |
+| `<Leader>gb` | Toggle git blame inline |
+| `<Leader>gB` | Open blame commit |
 | `<Leader>gd` | Git diff |
 | `<Leader>gD` | Git diff (buffer) |
 | `<Leader>ga` | Show staged diff |
