@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.78.1",
+  "lastChangelogVersion": "0.79.9",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "packages": [
@@ -10,5 +10,5 @@
   "theme": "poimandres-light",
   "hideThinkingBlock": true,
   "quietStartup": true,
-  "defaultThinkingLevel": "high"
+  "defaultThinkingLevel": "xhigh"
 }

@@ -1,9 +1,11 @@
+tap "asmvik/formulae"
 tap "iina/mpv-iina"
-tap "jasonlong/tap"
-tap "koekeishiya/formulae"
+tap "jasonlong/tap", trusted: true
 tap "modem-dev/tap"
 tap "openhue/cli"
 tap "steipete/tap"
+# Portable Foreign Function Interface library
+brew "libffi"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Browser automation CLI for AI agents
@@ -48,6 +50,8 @@ brew "git"
 brew "git-delta"
 # Render markdown on the CLI
 brew "glow"
+# GNU multiple precision arithmetic library
+brew "gmp"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Post-modern modal text editor
@@ -62,8 +66,6 @@ brew "jj"
 brew "jq"
 # Open-source distributed event streaming platform
 brew "kafka"
-# Portable Foreign Function Interface library
-brew "libffi"
 # NaCl networking and cryptography library
 brew "libsodium"
 # Powerful, lightweight programming language
@@ -100,6 +102,8 @@ brew "rust"
 brew "sox"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Nodejs-based tool for optimizing SVG vector graphics files
+brew "svgo"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Programmatically correct mistyped console commands
@@ -126,14 +130,6 @@ brew "yarn"
 brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-# Desktop-inspired terminal diff viewer for agent-authored changesets
-brew "modem-dev/tap/hunk"
-# OpenHue CLI is a command-line interface for interacting with Philips Hue smart lighting systems
-brew "openhue/cli/openhue-cli"
-# Send and read iMessage / SMS from the terminal
-brew "steipete/tap/imsg"
-# Column-oriented database management system
-cask "clickhouse"
 # Menu bar calendar with meeting reminders
 cask "dot"
 cask "font-symbols-only-nerd-font"
@@ -153,4 +149,8 @@ cask "jasonlong/tap/octodot"
 cask "orbstack"
 # Voice to text app
 cask "voiceink"
+npm "@olrtg/emmet-language-server"
+npm "@tailwindcss/language-server"
 npm "corepack"
+npm "typescript-language-server"
+npm "typescript"
