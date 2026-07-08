@@ -128,6 +128,17 @@ now(function()
 	require("mini.notify").setup()
 end)
 
+-- User input provider. This replaces `vim.ui.input()` and is also used by MINI
+-- modules that ask for text (for example 'mini.ai', 'mini.surround', and
+-- 'mini.pick' interactive filters) once it is enabled.
+--
+-- See also:
+-- - `:h MiniInput.config` - available handlers and input scopes
+-- - `:h MiniInput.gen_view` - floating/windowline/virtual input views
+later(function()
+	require("mini.input").setup()
+end)
+
 -- Start screen. This is what is shown when you open Neovim like `nvim`.
 -- Example usage:
 -- - Type prefix keys to limit available candidates
@@ -593,6 +604,10 @@ now_if_args(function()
 		mappings = {
 			go_in_plus = "<CR>",
 		},
+		options = {
+			-- Keep v0.18 LSP-aware file operations enabled, with the default timeout.
+			lsp_timeout = 1000,
+		},
 		windows = {
 			preview = true,
 			width_preview = 80,
@@ -604,8 +619,8 @@ now_if_args(function()
 	-- - `g?` to see available bookmarks
 	local add_marks = function()
 		MiniFiles.set_bookmark("c", vim.fn.stdpath("config"), { desc = "Config" })
-		local minideps_plugins = vim.fn.stdpath("data") .. "/site/pack/core/opt"
-		MiniFiles.set_bookmark("p", minideps_plugins, { desc = "Plugins" })
+		local pack_plugins = vim.fn.stdpath("data") .. "/site/pack/core/opt"
+		MiniFiles.set_bookmark("p", pack_plugins, { desc = "Plugins" })
 		MiniFiles.set_bookmark("w", vim.fn.getcwd, { desc = "Working directory" })
 	end
 	_G.Config.new_autocmd("User", "MiniFilesExplorerOpen", add_marks, "Add bookmarks")

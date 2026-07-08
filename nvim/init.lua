@@ -46,7 +46,9 @@
 vim.g.start_time = vim.loop.hrtime()
 
 -- Use built-in `vim.pack` (Neovim 0.12+) to manage plugins
-vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
+vim.pack.add({
+  { src = 'https://github.com/nvim-mini/mini.nvim', version = 'v0.18.0' },
+})
 
 -- Define config table to be able to pass data between scripts
 _G.Config = {}

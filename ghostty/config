@@ -2,7 +2,8 @@
 #auto-update-channel = tip
 
 
-font-family = Geist Mono
+#font-family = Geist Mono
+font-family = MonaLisaCode Trial
 #font-family = TX-02
 #font-family = MD IO Trial
 font-style = Regular
