@@ -45,6 +45,9 @@ now_if_args(function()
 		"markdown",
 		-- Frontend web development
 		"html",
+		-- Ruby/Rails (ERB templates use the "embedded_template" parser)
+		"ruby",
+		"embedded_template",
 		"css",
 		"javascript",
 		"typescript",
@@ -150,6 +153,14 @@ later(function()
 		-- linting fixes, and organize imports all in one pass.
 		-- Only run biome when a config file exists in the project.
 		formatters = {
+			oxfmt = {
+				condition = function(_, ctx)
+					return vim.fs.find({ ".oxfmtrc.json" }, {
+						path = ctx.filename,
+						upward = true,
+					})[1] ~= nil
+				end,
+			},
 			biome = {
 				args = { "check", "--write", "--unsafe", "$FILENAME" },
 				stdin = false,
@@ -162,12 +173,12 @@ later(function()
 			},
 		},
 		-- Map of filetype to formatters
-		-- Biome first (if available), then prettier/eslint as fallback
+		-- Prefer project-local oxfmt/biome configs, then prettier/eslint as fallback.
 		formatters_by_ft = {
-			javascript = { "biome", "prettierd", "eslint_d", stop_after_first = true },
-			typescript = { "biome", "prettierd", "eslint_d", stop_after_first = true },
-			javascriptreact = { "biome", "prettierd", "eslint_d", stop_after_first = true },
-			typescriptreact = { "biome", "prettierd", "eslint_d", stop_after_first = true },
+			javascript = { "oxfmt", "biome", "prettierd", "eslint_d", stop_after_first = true },
+			typescript = { "oxfmt", "biome", "prettierd", "eslint_d", stop_after_first = true },
+			javascriptreact = { "oxfmt", "biome", "prettierd", "eslint_d", stop_after_first = true },
+			typescriptreact = { "oxfmt", "biome", "prettierd", "eslint_d", stop_after_first = true },
 			json = { "biome", "prettierd", stop_after_first = true },
 			html = { "prettierd" },
 			css = { "biome", "prettierd", stop_after_first = true },

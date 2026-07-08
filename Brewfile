@@ -1,4 +1,4 @@
-tap "asmvik/formulae"
+tap "asmvik/formulae", "https://github.com/asmvik/homebrew-formulae.git"
 tap "iina/mpv-iina"
 tap "jasonlong/tap", trusted: true
 tap "modem-dev/tap"
