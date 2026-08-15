@@ -1,0 +1,32 @@
+onboarding = false
+
+[theme]
+name = "terminal"
+
+[theme.custom]
+panel_bg = "reset"
+surface_dim = "#1b1e28"
+surface0 = "#252b37"
+surface1 = "#303340"
+overlay0 = "#506477"
+overlay1 = "#767c9d"
+text = "#e4f0fb"
+subtext0 = "#a6accd"
+accent = "#5de4c7"
+mauve = "#f087bd"
+green = "#5de4c7"
+yellow = "#fffac2"
+red = "#d0679d"
+blue = "#add7ff"
+teal = "#89ddff"
+peach = "#fcc5e9"
+
+[keys]
+prefix = "ctrl+a"
+
+[ui]
+prompt_new_workspace_name = true
+
+show_agent_labels_on_pane_borders = true
+[ui.toast]
+delivery = "terminal"

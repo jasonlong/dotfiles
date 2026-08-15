@@ -73,5 +73,6 @@ link_file "$DOTFILES/git/.gitalias.txt"     "$HOME/.gitalias.txt"
 link_file "$DOTFILES/tmux/.tmux.conf"       "$HOME/.tmux.conf"
 link_file "$DOTFILES/starship/starship.toml" "$HOME/.config/starship.toml"
 link_file "$DOTFILES/gh/config.yml"         "$HOME/.config/gh/config.yml"
+link_file "$DOTFILES/herdr/config.toml"     "$HOME/.config/herdr/config.toml"
 
 echo "Done!"
