@@ -5,3 +5,4 @@ fish/secrets.fish
 
 node_modules/
 pi/extensions/context7/
+/fish/fish_variables
